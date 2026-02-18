@@ -9,14 +9,7 @@ vi.mock("../../tools/validateToolUse", () => ({
 	validateToolUse: vi.fn(),
 	isValidToolName: vi.fn(() => false),
 }))
-vi.mock("@roo-code/telemetry", () => ({
-	TelemetryService: {
-		instance: {
-			captureToolUsage: vi.fn(),
-			captureConsecutiveMistakeError: vi.fn(),
-		},
-	},
-}))
+
 
 describe("presentAssistantMessage - Unknown Tool Handling", () => {
 	let mockTask: any

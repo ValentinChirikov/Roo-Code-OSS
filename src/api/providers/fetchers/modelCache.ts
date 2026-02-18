@@ -7,7 +7,6 @@ import { z } from "zod"
 
 import type { ProviderName, ModelRecord } from "@roo-code/types"
 import { modelInfoSchema, TelemetryEventName } from "@roo-code/types"
-import { TelemetryService } from "@roo-code/telemetry"
 
 import { safeWriteJson } from "../../../utils/safeWriteJson"
 
@@ -16,14 +15,10 @@ import { getCacheDirectoryPath } from "../../../utils/storage"
 import type { RouterName } from "../../../shared/api"
 import { fileExistsAtPath } from "../../../utils/fs"
 
-import { getOpenRouterModels } from "./openrouter"
-import { getVercelAiGatewayModels } from "./vercel-ai-gateway"
-import { getRequestyModels } from "./requesty"
 import { getLiteLLMModels } from "./litellm"
 import { GetModelsOptions } from "../../../shared/api"
 import { getOllamaModels } from "./ollama"
 import { getLMStudioModels } from "./lmstudio"
-import { getRooModels } from "./roo"
 
 const memoryCache = new NodeCache({ stdTTL: 5 * 60, checkperiod: 5 * 60 })
 
@@ -113,12 +108,6 @@ export const getModels = async (options: GetModelsOptions): Promise<ModelRecord>
 			await writeModels(provider, models).catch((err) =>
 				console.error(`[MODEL_CACHE] Error writing ${provider} models to file cache:`, err),
 			)
-		} else {
-			TelemetryService.instance.captureEvent(TelemetryEventName.MODEL_CACHE_EMPTY_RESPONSE, {
-				provider,
-				context: "getModels",
-				hasExistingCache: false,
-			})
 		}
 
 		return models
@@ -162,12 +151,6 @@ export const refreshModels = async (options: GetModelsOptions): Promise<ModelRec
 			const existingCount = existingCache ? Object.keys(existingCache).length : 0
 
 			if (modelCount === 0) {
-				TelemetryService.instance.captureEvent(TelemetryEventName.MODEL_CACHE_EMPTY_RESPONSE, {
-					provider,
-					context: "refreshModels",
-					hasExistingCache: existingCount > 0,
-					existingCacheSize: existingCount,
-				})
 				if (existingCount > 0) {
 					return existingCache!
 				} else {

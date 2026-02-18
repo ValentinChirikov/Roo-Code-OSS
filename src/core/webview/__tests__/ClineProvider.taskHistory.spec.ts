@@ -2,7 +2,7 @@
 
 import * as vscode from "vscode"
 import type { HistoryItem, ExtensionMessage } from "@roo-code/types"
-import { TelemetryService } from "@roo-code/telemetry"
+
 
 import { ContextProxy } from "../../config/ContextProxy"
 import { ClineProvider } from "../ClineProvider"
@@ -241,10 +241,6 @@ describe("ClineProvider Task History Synchronization", () => {
 
 	beforeEach(() => {
 		vi.clearAllMocks()
-
-		if (!TelemetryService.hasInstance()) {
-			TelemetryService.createInstance([])
-		}
 
 		// Initialize task history state
 		taskHistoryState = []

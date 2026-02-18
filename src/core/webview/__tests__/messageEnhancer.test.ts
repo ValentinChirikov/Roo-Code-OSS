@@ -1,5 +1,5 @@
 import { ProviderSettings, ClineMessage } from "@roo-code/types"
-import { TelemetryService } from "@roo-code/telemetry"
+
 
 import { MessageEnhancer } from "../messageEnhancer"
 import * as singleCompletionHandlerModule from "../../../utils/single-completion-handler"
@@ -42,15 +42,6 @@ describe("MessageEnhancer", () => {
 		mockSingleCompletionHandler = vi.fn().mockResolvedValue("Enhanced prompt text")
 		vi.mocked(singleCompletionHandlerModule).singleCompletionHandler = mockSingleCompletionHandler
 
-		// Mock TelemetryService
-		vi.mocked(TelemetryService).hasInstance = vi.fn().mockReturnValue(true)
-		// Mock the instance getter
-		Object.defineProperty(TelemetryService, "instance", {
-			get: vi.fn().mockReturnValue({
-				capturePromptEnhanced: vi.fn(),
-			}),
-			configurable: true,
-		})
 	})
 
 	afterEach(() => {
@@ -253,52 +244,6 @@ describe("MessageEnhancer", () => {
 			const calledPrompt = mockSingleCompletionHandler.mock.calls[0][1]
 			// Should not include task history section
 			expect(calledPrompt).not.toContain("previous conversation context")
-		})
-	})
-
-	describe("captureTelemetry", () => {
-		it("should capture telemetry when TelemetryService is available", () => {
-			const mockTaskId = "task-123"
-			const mockCaptureEvent = vi.fn()
-			vi.mocked(TelemetryService.instance).captureEvent = mockCaptureEvent
-
-			MessageEnhancer.captureTelemetry(mockTaskId, true)
-
-			expect(TelemetryService.hasInstance).toHaveBeenCalled()
-			expect(mockCaptureEvent).toHaveBeenCalledWith(expect.any(String), {
-				taskId: mockTaskId,
-				includeTaskHistory: true,
-			})
-		})
-
-		it("should handle missing TelemetryService gracefully", () => {
-			vi.mocked(TelemetryService).hasInstance = vi.fn().mockReturnValue(false)
-
-			// Should not throw
-			expect(() => MessageEnhancer.captureTelemetry("task-123", true)).not.toThrow()
-		})
-
-		it("should work without task ID", () => {
-			const mockCaptureEvent = vi.fn()
-			vi.mocked(TelemetryService.instance).captureEvent = mockCaptureEvent
-
-			MessageEnhancer.captureTelemetry(undefined, false)
-
-			expect(mockCaptureEvent).toHaveBeenCalledWith(expect.any(String), {
-				includeTaskHistory: false,
-			})
-		})
-
-		it("should default includeTaskHistory to false when not provided", () => {
-			const mockCaptureEvent = vi.fn()
-			vi.mocked(TelemetryService.instance).captureEvent = mockCaptureEvent
-
-			MessageEnhancer.captureTelemetry("task-123")
-
-			expect(mockCaptureEvent).toHaveBeenCalledWith(expect.any(String), {
-				taskId: "task-123",
-				includeTaskHistory: false,
-			})
 		})
 	})
 

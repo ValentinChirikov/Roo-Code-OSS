@@ -1,20 +1,10 @@
 import { Anthropic } from "@anthropic-ai/sdk"
-import { TelemetryService } from "@roo-code/telemetry"
+
 import {
 	validateAndFixToolResultIds,
 	ToolResultIdMismatchError,
 	MissingToolResultError,
 } from "../validateToolResultIds"
-
-// Mock TelemetryService
-vi.mock("@roo-code/telemetry", () => ({
-	TelemetryService: {
-		hasInstance: vi.fn(() => true),
-		instance: {
-			captureException: vi.fn(),
-		},
-	},
-}))
 
 describe("validateAndFixToolResultIds", () => {
 	beforeEach(() => {
@@ -799,27 +789,6 @@ describe("validateAndFixToolResultIds", () => {
 			}
 
 			validateAndFixToolResultIds(userMessage, [assistantMessage])
-
-			// A mismatch also triggers missing detection since the wrong-id doesn't match any tool_use
-			expect(TelemetryService.instance.captureException).toHaveBeenCalledTimes(2)
-			expect(TelemetryService.instance.captureException).toHaveBeenCalledWith(
-				expect.any(MissingToolResultError),
-				expect.objectContaining({
-					missingToolUseIds: ["correct-id"],
-					existingToolResultIds: ["wrong-id"],
-					toolUseCount: 1,
-					toolResultCount: 1,
-				}),
-			)
-			expect(TelemetryService.instance.captureException).toHaveBeenCalledWith(
-				expect.any(ToolResultIdMismatchError),
-				expect.objectContaining({
-					toolResultIds: ["wrong-id"],
-					toolUseIds: ["correct-id"],
-					toolResultCount: 1,
-					toolUseCount: 1,
-				}),
-			)
 		})
 
 		it("should not call captureException when IDs match", () => {
@@ -848,7 +817,6 @@ describe("validateAndFixToolResultIds", () => {
 
 			validateAndFixToolResultIds(userMessage, [assistantMessage])
 
-			expect(TelemetryService.instance.captureException).not.toHaveBeenCalled()
 		})
 	})
 
@@ -908,16 +876,6 @@ describe("validateAndFixToolResultIds", () => {
 
 			validateAndFixToolResultIds(userMessage, [assistantMessage])
 
-			expect(TelemetryService.instance.captureException).toHaveBeenCalledTimes(1)
-			expect(TelemetryService.instance.captureException).toHaveBeenCalledWith(
-				expect.any(MissingToolResultError),
-				expect.objectContaining({
-					missingToolUseIds: ["tool-123"],
-					existingToolResultIds: [],
-					toolUseCount: 1,
-					toolResultCount: 0,
-				}),
-			)
 		})
 
 		it("should call captureException twice when both mismatch and missing occur", () => {
@@ -953,16 +911,7 @@ describe("validateAndFixToolResultIds", () => {
 
 			validateAndFixToolResultIds(userMessage, [assistantMessage])
 
-			// Should be called twice: once for missing, once for mismatch
-			expect(TelemetryService.instance.captureException).toHaveBeenCalledTimes(2)
-			expect(TelemetryService.instance.captureException).toHaveBeenCalledWith(
-				expect.any(MissingToolResultError),
-				expect.any(Object),
-			)
-			expect(TelemetryService.instance.captureException).toHaveBeenCalledWith(
-				expect.any(ToolResultIdMismatchError),
-				expect.any(Object),
-			)
+
 		})
 
 		it("should not call captureException for missing when all tool_results exist", () => {
@@ -991,7 +940,6 @@ describe("validateAndFixToolResultIds", () => {
 
 			validateAndFixToolResultIds(userMessage, [assistantMessage])
 
-			expect(TelemetryService.instance.captureException).not.toHaveBeenCalled()
 		})
 	})
 })

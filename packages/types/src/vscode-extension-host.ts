@@ -648,11 +648,6 @@ export interface WebviewMessage {
 			| "openai"
 			| "ollama"
 			| "openai-compatible"
-			| "gemini"
-			| "mistral"
-			| "vercel-ai-gateway"
-			| "bedrock"
-			| "openrouter"
 		codebaseIndexEmbedderBaseUrl?: string
 		codebaseIndexEmbedderModelId: string
 		codebaseIndexEmbedderModelDimension?: number // Generic dimension for all providers

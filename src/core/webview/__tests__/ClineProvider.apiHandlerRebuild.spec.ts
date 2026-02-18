@@ -2,7 +2,7 @@
 
 import * as vscode from "vscode"
 
-import { TelemetryService } from "@roo-code/telemetry"
+
 import { getModelId } from "@roo-code/types"
 
 import { ContextProxy } from "../../config/ContextProxy"

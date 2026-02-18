@@ -3,7 +3,7 @@
 import type { Mock } from "vitest"
 
 import { Anthropic } from "@anthropic-ai/sdk"
-import { TelemetryService } from "@roo-code/telemetry"
+
 
 import { ApiHandler } from "../../../api"
 import { ApiMessage } from "../../task-persistence/apiMessages"
@@ -25,13 +25,6 @@ vi.mock("../../../api/transform/image-cleaning", () => ({
 	maybeRemoveImageBlocks: vi.fn((messages: ApiMessage[], _apiHandler: ApiHandler) => [...messages]),
 }))
 
-vi.mock("@roo-code/telemetry", () => ({
-	TelemetryService: {
-		instance: {
-			captureContextCondensed: vi.fn(),
-		},
-	},
-}))
 
 const taskId = "test-task-id"
 
@@ -1150,9 +1143,6 @@ describe("summarizeConversation with custom settings", () => {
 		// Reset mocks
 		vi.clearAllMocks()
 
-		// Reset telemetry mock
-		;(TelemetryService.instance.captureContextCondensed as Mock).mockClear()
-
 		// Setup mock API handler
 		mockMainApiHandler = {
 			createMessage: vi.fn().mockImplementation(() => {
@@ -1257,12 +1247,6 @@ describe("summarizeConversation with custom settings", () => {
 			customCondensingPrompt: "Custom prompt",
 		})
 
-		// Verify telemetry was called with custom prompt flag
-		expect(TelemetryService.instance.captureContextCondensed).toHaveBeenCalledWith(
-			localTaskId,
-			false,
-			true, // usedCustomPrompt
-		)
 	})
 
 	/**
@@ -1278,13 +1262,6 @@ describe("summarizeConversation with custom settings", () => {
 			customCondensingPrompt: "Custom prompt",
 		})
 
-		// Verify telemetry was called with isAutomaticTrigger flag
-		expect(TelemetryService.instance.captureContextCondensed).toHaveBeenCalledWith(
-			localTaskId,
-			true, // isAutomaticTrigger
-			true, // usedCustomPrompt
-		)
-	})
 })
 
 describe("toolUseToText", () => {
