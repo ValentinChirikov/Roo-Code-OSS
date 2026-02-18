@@ -28,7 +28,7 @@ export function getProviderSettings(
 			if (model) config.apiModelId = model
 			break
 		default:
-			if (apiKey) config.apiKey = apiKey
+			if (apiKey) config.openAiApiKey = apiKey
 			if (model) config.apiModelId = model
 	}
 

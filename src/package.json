@@ -463,7 +463,6 @@
 		"@roo-code-oss/cloud": "workspace:^",
 		"@roo-code-oss/core": "workspace:^",
 		"@roo-code-oss/ipc": "workspace:^",
-		"@roo-code-oss/telemetry": "workspace:^",
 		"@roo-code-oss/types": "workspace:^",
 		"@vscode/codicons": "^0.0.36",
 		"async-mutex": "^0.5.0",

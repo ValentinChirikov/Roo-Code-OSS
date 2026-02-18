@@ -83,7 +83,7 @@ export async function run(promptArg: string | undefined, flagOptions: FlagOption
 	const effectiveModel = flagOptions.model || settings.model || DEFAULT_FLAGS.model
 	const effectiveReasoningEffort =
 		flagOptions.reasoningEffort || settings.reasoningEffort || DEFAULT_FLAGS.reasoningEffort
-	const effectiveProvider = flagOptions.provider ?? settings.provider ?? (rooToken ? "roo" : "openrouter")
+	const effectiveProvider = flagOptions.provider ?? settings.provider ?? "openai-native"
 	const effectiveWorkspacePath = flagOptions.workspace ? path.resolve(flagOptions.workspace) : process.cwd()
 	const legacyRequireApprovalFromSettings =
 		settings.requireApproval ??
@@ -105,50 +105,6 @@ export async function run(promptArg: string | undefined, flagOptions: FlagOption
 		debug: flagOptions.debug,
 		exitOnComplete: effectiveExitOnComplete,
 	}
-
-	// Roo Code Cloud Authentication
-
-	if (isOnboardingEnabled) {
-		let { onboardingProviderChoice } = settings
-
-		if (!onboardingProviderChoice) {
-			const { choice, token } = await runOnboarding()
-			onboardingProviderChoice = choice
-			rooToken = token ?? null
-		}
-
-		if (onboardingProviderChoice === OnboardingProviderChoice.Roo) {
-			extensionHostOptions.provider = "roo"
-		}
-	}
-
-	if (extensionHostOptions.provider === "roo") {
-		if (rooToken) {
-			try {
-				const client = createClient({ url: SDK_BASE_URL, authToken: rooToken })
-				const me = await client.auth.me.query()
-
-				if (me?.type !== "user") {
-					throw new Error("Invalid token")
-				}
-
-				extensionHostOptions.apiKey = rooToken
-				extensionHostOptions.user = me.user
-			} catch {
-				// If an explicit API key was provided via flag or env var, fall through
-				// to the general API key resolution below instead of exiting.
-				if (!flagOptions.apiKey && !getApiKeyFromEnv(extensionHostOptions.provider)) {
-					console.error("[CLI] Your Roo Code Router token is not valid.")
-					console.error("[CLI] Please run: roo auth login")
-					console.error("[CLI] Or use --api-key or set ROO_API_KEY to provide your own API key.")
-					process.exit(1)
-				}
-			}
-		}
-		// If no rooToken, fall through to the general API key resolution below
-		// which will check flagOptions.apiKey and ROO_API_KEY env var.
-	}
-
 	// Validations
 	// TODO: Validate the API key for the chosen provider.
 	// TODO: Validate the model for the chosen provider.
@@ -164,11 +120,7 @@ export async function run(promptArg: string | undefined, flagOptions: FlagOption
 		extensionHostOptions.apiKey || flagOptions.apiKey || getApiKeyFromEnv(extensionHostOptions.provider)
 
 	if (!extensionHostOptions.apiKey) {
-		if (extensionHostOptions.provider === "roo") {
-			console.error("[CLI] Error: Authentication with Roo Code Cloud failed or was cancelled.")
-			console.error("[CLI] Please run: roo auth login")
-			console.error("[CLI] Or use --api-key to provide your own API key.")
-		} else {
+		{
 			console.error(
 				`[CLI] Error: No API key provided. Use --api-key or set the appropriate environment variable.`,
 			)

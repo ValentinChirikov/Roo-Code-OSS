@@ -251,7 +251,7 @@ export const runTaskInVscode = async ({ run, task, publish, logger, jobToken }: 
 		data: {
 			configuration: {
 				...EVALS_SETTINGS,
-				openRouterApiKey: process.env.OPENROUTER_API_KEY,
+				openAiApiKey: process.env.OPENAI_API_KEY,
 				...run.settings, // Allow the provided settings to override `openRouterApiKey`.
 			},
 			text: prompt,

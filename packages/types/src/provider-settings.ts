@@ -209,12 +209,6 @@ const openAiNativeSchema = apiModelIdProviderModelSchema.extend({
 	openAiNativeServiceTier: serviceTierSchema.optional(),
 })
 
-const requestySchema = baseProviderSettingsSchema.extend({
-	requestyBaseUrl: z.string().optional(),
-	requestyApiKey: z.string().optional(),
-	requestyModelId: z.string().optional(),
-})
-
 const fakeAiSchema = baseProviderSettingsSchema.extend({
 	fakeAi: z.unknown().optional(),
 })
@@ -256,7 +250,6 @@ export const providerSettingsSchema = z.object({
 	...openAiCodexSchema.shape,
 	...openAiNativeSchema.shape,
 
-	...requestySchema.shape,
 	...fakeAiSchema.shape,
 	...litellmSchema.shape,
 	...codebaseIndexProviderSchema.shape,
@@ -284,7 +277,6 @@ export const modelIdKeys = [
 	"ollamaModelId",
 	"lmStudioModelId",
 	"lmStudioDraftModelId",
-	"requestyModelId",
 	"litellmModelId",
 ] as const satisfies readonly (keyof ProviderSettings)[]
 

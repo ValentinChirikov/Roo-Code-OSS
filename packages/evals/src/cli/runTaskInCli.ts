@@ -56,7 +56,7 @@ export const runTaskWithCli = async ({ run, task, publish, logger, jobToken }: R
 		cliArgs.push("--provider", run.settings.apiProvider)
 	}
 
-	const modelId = run.settings?.apiModelId || run.settings?.openRouterModelId
+	const modelId = run.settings?.apiModelId
 
 	if (modelId) {
 		cliArgs.push("--model", modelId)

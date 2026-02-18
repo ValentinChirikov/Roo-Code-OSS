@@ -49,21 +49,6 @@ describe("Settings Storage", () => {
 			expect(settings).toEqual({})
 		})
 
-		it("should load saved settings", async () => {
-			const settingsData = {
-				onboardingProviderChoice: OnboardingProviderChoice.Roo,
-				mode: "architect",
-				provider: "anthropic" as const,
-				model: "claude-sonnet-4-20250514",
-				reasoningEffort: "high" as const,
-			}
-
-			await fs.mkdir(actualTestConfigDir, { recursive: true })
-			await fs.writeFile(expectedSettingsFile, JSON.stringify(settingsData), "utf-8")
-
-			const loaded = await loadSettings()
-			expect(loaded).toEqual(settingsData)
-		})
 
 		it("should load settings with only some fields set", async () => {
 			const settingsData = {
@@ -88,33 +73,6 @@ describe("Settings Storage", () => {
 			expect(settings.mode).toBe("debug")
 		})
 
-		it("should merge settings with existing ones", async () => {
-			await saveSettings({ mode: "code" })
-			await saveSettings({ provider: "openrouter" as const })
-
-			const savedData = await fs.readFile(expectedSettingsFile, "utf-8")
-			const settings = JSON.parse(savedData)
-
-			expect(settings.mode).toBe("code")
-			expect(settings.provider).toBe("openrouter")
-		})
-
-		it("should save all default settings fields", async () => {
-			await saveSettings({
-				mode: "architect",
-				provider: "anthropic" as const,
-				model: "claude-opus-4.6",
-				reasoningEffort: "medium" as const,
-			})
-
-			const savedData = await fs.readFile(expectedSettingsFile, "utf-8")
-			const settings = JSON.parse(savedData)
-
-			expect(settings.mode).toBe("architect")
-			expect(settings.provider).toBe("anthropic")
-			expect(settings.model).toBe("claude-opus-4.6")
-			expect(settings.reasoningEffort).toBe("medium")
-		})
 
 		it("should create config directory if it doesn't exist", async () => {
 			await saveSettings({ mode: "ask" })
@@ -131,32 +89,6 @@ describe("Settings Storage", () => {
 			// Check that only owner has read/write (mode 0o600)
 			const mode = stats.mode & 0o777
 			expect(mode).toBe(0o600)
-		})
-	})
-
-	describe("resetOnboarding", () => {
-		it("should reset onboarding provider choice", async () => {
-			await saveSettings({ onboardingProviderChoice: OnboardingProviderChoice.Roo })
-
-			await resetOnboarding()
-
-			const settings = await loadSettings()
-			expect(settings.onboardingProviderChoice).toBeUndefined()
-		})
-
-		it("should preserve other settings when resetting onboarding", async () => {
-			await saveSettings({
-				onboardingProviderChoice: OnboardingProviderChoice.Byok,
-				mode: "architect",
-				provider: "gemini" as const,
-			})
-
-			await resetOnboarding()
-
-			const settings = await loadSettings()
-			expect(settings.onboardingProviderChoice).toBeUndefined()
-			expect(settings.mode).toBe("architect")
-			expect(settings.provider).toBe("gemini")
 		})
 	})
 
@@ -186,50 +118,10 @@ describe("Settings Storage", () => {
 			expect(loaded.requireApproval).toBe(true)
 		})
 
-		it("should support all settings together including requireApproval", async () => {
-			const allSettings = {
-				mode: "architect",
-				provider: "anthropic" as const,
-				model: "claude-sonnet-4-20250514",
-				reasoningEffort: "high" as const,
-				requireApproval: true,
-			}
-
-			await saveSettings(allSettings)
-			const loaded = await loadSettings()
-
-			expect(loaded.mode).toBe("architect")
-			expect(loaded.provider).toBe("anthropic")
-			expect(loaded.model).toBe("claude-sonnet-4-20250514")
-			expect(loaded.reasoningEffort).toBe("high")
-			expect(loaded.requireApproval).toBe(true)
-		})
-
 		it("should support oneshot setting", async () => {
 			await saveSettings({ oneshot: true })
 			const loaded = await loadSettings()
 
-			expect(loaded.oneshot).toBe(true)
-		})
-
-		it("should support all settings together including oneshot", async () => {
-			const allSettings = {
-				mode: "architect",
-				provider: "anthropic" as const,
-				model: "claude-sonnet-4-20250514",
-				reasoningEffort: "high" as const,
-				requireApproval: true,
-				oneshot: true,
-			}
-
-			await saveSettings(allSettings)
-			const loaded = await loadSettings()
-
-			expect(loaded.mode).toBe("architect")
-			expect(loaded.provider).toBe("anthropic")
-			expect(loaded.model).toBe("claude-sonnet-4-20250514")
-			expect(loaded.reasoningEffort).toBe("high")
-			expect(loaded.requireApproval).toBe(true)
 			expect(loaded.oneshot).toBe(true)
 		})
 

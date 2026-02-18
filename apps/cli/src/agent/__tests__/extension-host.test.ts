@@ -25,7 +25,7 @@ vi.mock("@/lib/storage/index.js", () => ({
  */
 function createTestHost({
 	mode = "code",
-	provider = "openrouter",
+	provider = "openai-native",
 	model = "test-model",
 	...options
 }: Partial<ExtensionHostOptions> = {}): ExtensionHost {
@@ -95,7 +95,7 @@ describe("ExtensionHost", () => {
 				extensionPath: "/my/extension",
 				user: null,
 				apiKey: "test-key",
-				provider: "openrouter",
+				provider: "openai-native",
 				model: "test-model",
 				ephemeral: false,
 				debug: false,
