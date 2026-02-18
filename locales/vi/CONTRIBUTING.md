@@ -69,7 +69,7 @@ Hãy đề cập đến sự phù hợp với các lĩnh vực này trong PR c�
 
 Tất cả các đóng góp đều bắt đầu bằng một Vấn đề trên GitHub bằng cách sử dụng các mẫu gọn nhẹ của chúng tôi.
 
-- **Kiểm tra các vấn đề hiện có**: Tìm kiếm trong [Vấn đề trên GitHub](https://github.com/RooCodeInc/Roo-Code/issues).
+- **Kiểm tra các vấn đề hiện có**: Tìm kiếm trong [Vấn đề trên GitHub](https://github.com/ValentinChirikov/Roo-Code/issues).
 - **Tạo một vấn đề** bằng cách sử dụng:
     - **Cải tiến:** mẫu "Yêu cầu cải tiến" (ngôn ngữ đơn giản tập trung vào lợi ích của người dùng).
     - **Lỗi:** mẫu "Báo cáo lỗi" (tái tạo tối thiểu + mong đợi so với thực tế + phiên bản).
@@ -79,16 +79,16 @@ Tất cả các đóng góp đều bắt đầu bằng một Vấn đề trên G
 ### Quyết định nên làm gì
 
 - Kiểm tra [Dự án GitHub](https://github.com/orgs/RooCodeInc/projects/1) để tìm các vấn đề "Vấn đề [Chưa được giao]".
-- Để biết tài liệu, hãy truy cập [Tài liệu Roo Code](https://github.com/RooCodeInc/Roo-Code-Docs).
+- Để biết tài liệu, hãy truy cập [Tài liệu Roo Code](https://github.com/ValentinChirikov/Roo-Code-Docs).
 
 ### Báo cáo lỗi
 
 - Trước tiên hãy kiểm tra các báo cáo hiện có.
-- Tạo một lỗi mới bằng cách sử dụng [mẫu "Báo cáo lỗi"](https://github.com/RooCodeInc/Roo-Code/issues/new/choose) với:
+- Tạo một lỗi mới bằng cách sử dụng [mẫu "Báo cáo lỗi"](https://github.com/ValentinChirikov/Roo-Code/issues/new/choose) với:
     - Các bước tái tạo rõ ràng, được đánh số
     - Kết quả mong đợi so với thực tế
     - Phiên bản Roo Code (bắt buộc); nhà cung cấp/mô hình API nếu có liên quan
-- **Vấn đề bảo mật**: Báo cáo riêng tư qua [tư vấn bảo mật](https://github.com/RooCodeInc/Roo-Code/security/advisories/new).
+- **Vấn đề bảo mật**: Báo cáo riêng tư qua [tư vấn bảo mật](https://github.com/ValentinChirikov/Roo-Code/security/advisories/new).
 
 ## Quy trình phát triển và gửi
 

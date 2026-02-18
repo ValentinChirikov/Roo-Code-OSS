@@ -365,7 +365,7 @@ export function SlackThreadDemo({ className }: SlackThreadDemoProps): JSX.Elemen
 							<div className="mt-2">
 								<span className="font-semibold text-[#F8F8F9]">PR #10853</span>:{" "}
 								<FakeLink className="hover:text-violet-200">
-									https://github.com/RooCodeInc/Roo-Code/pull/10853
+									https://github.com/ValentinChirikov/Roo-Code/pull/10853
 								</FakeLink>
 							</div>
 						</div>

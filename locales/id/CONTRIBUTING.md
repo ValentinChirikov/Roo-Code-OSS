@@ -69,7 +69,7 @@ Sebutkan keselarasan dengan area-area ini di PR Anda.
 
 Semua kontribusi dimulai dengan Masalah GitHub menggunakan template ramping kami.
 
-- **Periksa masalah yang ada**: Cari di [Masalah GitHub](https://github.com/RooCodeInc/Roo-Code/issues).
+- **Periksa masalah yang ada**: Cari di [Masalah GitHub](https://github.com/ValentinChirikov/Roo-Code/issues).
 - **Buat masalah** menggunakan:
     - **Penyempurnaan:** Template "Permintaan Penyempurnaan" (bahasa sederhana yang berfokus pada manfaat pengguna).
     - **Bug:** Template "Laporan Bug" (repro minimal + yang diharapkan vs aktual + versi).
@@ -79,16 +79,16 @@ Semua kontribusi dimulai dengan Masalah GitHub menggunakan template ramping kami
 ### Memutuskan Apa yang Akan Dikerjakan
 
 - Periksa [Proyek GitHub](https://github.com/orgs/RooCodeInc/projects/1) untuk masalah "Masalah [Belum Ditugaskan]".
-- Untuk dokumentasi, kunjungi [Dokumentasi Roo Code](https://github.com/RooCodeInc/Roo-Code-Docs).
+- Untuk dokumentasi, kunjungi [Dokumentasi Roo Code](https://github.com/ValentinChirikov/Roo-Code-Docs).
 
 ### Melaporkan Bug
 
 - Periksa laporan yang ada terlebih dahulu.
-- Buat bug baru menggunakan [template "Laporan Bug"](https://github.com/RooCodeInc/Roo-Code/issues/new/choose) dengan:
+- Buat bug baru menggunakan [template "Laporan Bug"](https://github.com/ValentinChirikov/Roo-Code/issues/new/choose) dengan:
     - Langkah-langkah reproduksi yang jelas dan bernomor
     - Hasil yang diharapkan vs aktual
     - Versi Roo Code (wajib); penyedia/model API jika relevan
-- **Masalah keamanan**: Laporkan secara pribadi melalui [saran keamanan](https://github.com/RooCodeInc/Roo-Code/security/advisories/new).
+- **Masalah keamanan**: Laporkan secara pribadi melalui [saran keamanan](https://github.com/ValentinChirikov/Roo-Code/security/advisories/new).
 
 ## Proses Pengembangan & Pengajuan
 

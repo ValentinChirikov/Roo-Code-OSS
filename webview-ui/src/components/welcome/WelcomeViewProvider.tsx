@@ -239,7 +239,7 @@ const WelcomeViewProvider = () => {
 												ref={manualUrlInputRef as any}
 												value={manualUrl}
 												onKeyUp={handleManualUrlChange}
-												placeholder="vscode://RooVeterinaryInc.roo-cline/auth/clerk/callback?state=..."
+												placeholder="vscode://RooVeterinaryInc.roo-cline-gpt-oss/auth/clerk/callback?state=..."
 												className="flex-1"
 											/>
 											<Button
@@ -344,7 +344,7 @@ const WelcomeViewProvider = () => {
 								(e.target as HTMLInputElement)) as HTMLInputElement
 							setSelectedProvider(target.value as ProviderOption)
 						}}>
-						{/* Roo Code Router Option */}
+						{/* Roo Code Router Option
 						<VSCodeRadio value="roo" className="flex items-start gap-2">
 							<div className="flex-1 space-y-1 cursor-pointer">
 								<p className="text-lg font-semibold block -mt-1">
@@ -359,7 +359,7 @@ const WelcomeViewProvider = () => {
 									</VSCodeLink>
 								</p>
 							</div>
-						</VSCodeRadio>
+						</VSCodeRadio> */}
 
 						{/* Use Another Provider Option */}
 						<VSCodeRadio value="custom" className="flex items-start gap-2">

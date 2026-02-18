@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline"><img src="https://img.shields.io/badge/VS_Code_Marketplace-007ACC?style=flat&logo=visualstudiocode&logoColor=white" alt="VS Code Marketplace"></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline-gpt-oss"><img src="https://img.shields.io/badge/VS_Code_Marketplace-007ACC?style=flat&logo=visualstudiocode&logoColor=white" alt="VS Code Marketplace"></a>
   <a href="https://x.com/roocode"><img src="https://img.shields.io/badge/roocode-000000?style=flat&logo=x&logoColor=white" alt="X"></a>
   <a href="https://youtube.com/@roocodeyt?feature=shared"><img src="https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white" alt="YouTube"></a>
   <a href="https://discord.gg/roocode"><img src="https://img.shields.io/badge/Join%20Discord-5865F2?style=flat&logo=discord&logoColor=white" alt="Join Discord"></a>
@@ -35,7 +35,7 @@
 - [简体中文](../zh-CN/README.md)
 - [繁體中文](../zh-TW/README.md)
 - ...
-  </details>
+    </details>
 
 ---
 
@@ -69,7 +69,7 @@ Więcej: [Korzystanie z trybów](https://docs.roocode.com/basic-usage/using-mode
 |                                                                                                                                                                            |                                                                                                                                                                            |                                                                                                                                                                              |
 | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | <a href="https://www.youtube.com/watch?v=Mcq3r1EPZ-4"><img src="https://img.youtube.com/vi/Mcq3r1EPZ-4/maxresdefault.jpg" width="100%"></a><br><b>Instalacja Roo Code</b>  | <a href="https://www.youtube.com/watch?v=ZBML8h5cCgo"><img src="https://img.youtube.com/vi/ZBML8h5cCgo/maxresdefault.jpg" width="100%"></a><br><b>Konfiguracja profili</b> | <a href="https://www.youtube.com/watch?v=r1bpod1VWhg"><img src="https://img.youtube.com/vi/r1bpod1VWhg/maxresdefault.jpg" width="100%"></a><br><b>Indeksowanie bazy kodu</b> |
-| <a href="https://www.youtube.com/watch?v=iiAv1eKOaxk"><img src="https://img.youtube.com/vi/iiAv1eKOaxk/maxresdefault.jpg" width="100%"></a><br><b>Tryby niestandardowe</b> |   <a href="https://www.youtube.com/watch?v=Ho30nyY332E"><img src="https://img.youtube.com/vi/Ho30nyY332E/maxresdefault.jpg" width="100%"></a><br><b>Punkty kontrolne</b>   |      <a href="https://www.youtube.com/watch?v=HmnNSasv7T8"><img src="https://img.youtube.com/vi/HmnNSasv7T8/maxresdefault.jpg" width="100%"></a><br><b>Zarządzanie Kontekstem</b>       |
+| <a href="https://www.youtube.com/watch?v=iiAv1eKOaxk"><img src="https://img.youtube.com/vi/iiAv1eKOaxk/maxresdefault.jpg" width="100%"></a><br><b>Tryby niestandardowe</b> |   <a href="https://www.youtube.com/watch?v=Ho30nyY332E"><img src="https://img.youtube.com/vi/Ho30nyY332E/maxresdefault.jpg" width="100%"></a><br><b>Punkty kontrolne</b>   | <a href="https://www.youtube.com/watch?v=HmnNSasv7T8"><img src="https://img.youtube.com/vi/HmnNSasv7T8/maxresdefault.jpg" width="100%"></a><br><b>Zarządzanie Kontekstem</b> |
 
 </div>
 <p align="center">
@@ -82,8 +82,8 @@ Więcej: [Korzystanie z trybów](https://docs.roocode.com/basic-usage/using-mode
 - **[Kanał YouTube](https://youtube.com/@roocodeyt?feature=shared):** Oglądaj samouczki i zobacz funkcje w akcji.
 - **[Serwer Discord](https://discord.gg/roocode):** Dołącz do społeczności, aby uzyskać pomoc i dyskutować w czasie rzeczywistym.
 - **[Społeczność Reddit](https://www.reddit.com/r/RooCode):** Dziel się swoimi doświadczeniami i zobacz, co budują inni.
-- **[Problemy na GitHub](https://github.com/RooCodeInc/Roo-Code/issues):** Zgłaszaj błędy i śledź rozwój.
-- **[Prośby o funkcje](https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop):** Masz pomysł? Podziel się nim z deweloperami.
+- **[Problemy na GitHub](https://github.com/ValentinChirikov/Roo-Code/issues):** Zgłaszaj błędy i śledź rozwój.
+- **[Prośby o funkcje](https://github.com/ValentinChirikov/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop):** Masz pomysł? Podziel się nim z deweloperami.
 
 ---
 
@@ -92,7 +92,7 @@ Więcej: [Korzystanie z trybów](https://docs.roocode.com/basic-usage/using-mode
 1. **Sklonuj** repozytorium:
 
 ```sh
-git clone https://github.com/RooCodeInc/Roo-Code.git
+git clone https://github.com/ValentinChirikov/Roo-Code.git
 ```
 
 2. **Zainstaluj zależności**:
@@ -143,10 +143,10 @@ Jeśli wolisz zainstalować pakiet VSIX ręcznie:
     ```sh
     pnpm vsix
     ```
-2.  Plik `.vsix` zostanie wygenerowany w katalogu `bin/` (np. `bin/roo-cline-<version>.vsix`).
+2.  Plik `.vsix` zostanie wygenerowany w katalogu `bin/` (np. `bin/roo-cline-gpt-oss-<version>.vsix`).
 3.  Zainstaluj go ręcznie za pomocą VSCode CLI:
     ```sh
-    code --install-extension bin/roo-cline-<version>.vsix
+    code --install-extension bin/roo-cline-gpt-oss-<version>.vsix
     ```
 
 ---

@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline"><img src="https://img.shields.io/badge/VS_Code_Marketplace-007ACC?style=flat&logo=visualstudiocode&logoColor=white" alt="VS Code Marketplace"></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline-gpt-oss"><img src="https://img.shields.io/badge/VS_Code_Marketplace-007ACC?style=flat&logo=visualstudiocode&logoColor=white" alt="VS Code Marketplace"></a>
   <a href="https://x.com/roocode"><img src="https://img.shields.io/badge/roocode-000000?style=flat&logo=x&logoColor=white" alt="X"></a>
   <a href="https://youtube.com/@roocodeyt?feature=shared"><img src="https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white" alt="YouTube"></a>
   <a href="https://discord.gg/roocode"><img src="https://img.shields.io/badge/Join%20Discord-5865F2?style=flat&logo=discord&logoColor=white" alt="Join Discord"></a>
@@ -35,7 +35,7 @@
 - [简体中文](../zh-CN/README.md)
 - [繁體中文](../zh-TW/README.md)
 - ...
-  </details>
+    </details>
 
 ---
 
@@ -66,9 +66,9 @@ Roo Code 适应您的工作方式，而不是相反：
 
 <div align="center">
 
-|                                                                                                                                                                     |                                                                                                                                                                    |                                                                                                                                                                    |
-| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| <a href="https://www.youtube.com/watch?v=Mcq3r1EPZ-4"><img src="https://img.youtube.com/vi/Mcq3r1EPZ-4/maxresdefault.jpg" width="100%"></a><br><b>安装 Roo Code</b> | <a href="https://www.youtube.com/watch?v=ZBML8h5cCgo"><img src="https://img.youtube.com/vi/ZBML8h5cCgo/maxresdefault.jpg" width="100%"></a><br><b>配置个人资料</b> |  <a href="https://www.youtube.com/watch?v=r1bpod1VWhg"><img src="https://img.youtube.com/vi/r1bpod1VWhg/maxresdefault.jpg" width="100%"></a><br><b>代码库索引</b>  |
+|                                                                                                                                                                     |                                                                                                                                                                    |                                                                                                                                                                  |
+| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| <a href="https://www.youtube.com/watch?v=Mcq3r1EPZ-4"><img src="https://img.youtube.com/vi/Mcq3r1EPZ-4/maxresdefault.jpg" width="100%"></a><br><b>安装 Roo Code</b> | <a href="https://www.youtube.com/watch?v=ZBML8h5cCgo"><img src="https://img.youtube.com/vi/ZBML8h5cCgo/maxresdefault.jpg" width="100%"></a><br><b>配置个人资料</b> | <a href="https://www.youtube.com/watch?v=r1bpod1VWhg"><img src="https://img.youtube.com/vi/r1bpod1VWhg/maxresdefault.jpg" width="100%"></a><br><b>代码库索引</b> |
 |  <a href="https://www.youtube.com/watch?v=iiAv1eKOaxk"><img src="https://img.youtube.com/vi/iiAv1eKOaxk/maxresdefault.jpg" width="100%"></a><br><b>自定义模式</b>   |    <a href="https://www.youtube.com/watch?v=Ho30nyY332E"><img src="https://img.youtube.com/vi/Ho30nyY332E/maxresdefault.jpg" width="100%"></a><br><b>检查点</b>    | <a href="https://www.youtube.com/watch?v=HmnNSasv7T8"><img src="https://img.youtube.com/vi/HmnNSasv7T8/maxresdefault.jpg" width="100%"></a><br><b>上下文管理</b> |
 
 </div>
@@ -82,8 +82,8 @@ Roo Code 适应您的工作方式，而不是相反：
 - **[YouTube 频道](https://youtube.com/@roocodeyt?feature=shared):** 观看教程和功能演示。
 - **[Discord 服务器](https://discord.gg/roocode):** 加入社区以获得实时帮助和讨论。
 - **[Reddit 社区](https://www.reddit.com/r/RooCode):** 分享您的经验，看看别人在构建什么。
-- **[GitHub 问题](https://github.com/RooCodeInc/Roo-Code/issues):** 报告错误并跟踪开发。
-- **[功能请求](https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop):** 有想法吗？与开发人员分享。
+- **[GitHub 问题](https://github.com/ValentinChirikov/Roo-Code/issues):** 报告错误并跟踪开发。
+- **[功能请求](https://github.com/ValentinChirikov/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop):** 有想法吗？与开发人员分享。
 
 ---
 
@@ -92,7 +92,7 @@ Roo Code 适应您的工作方式，而不是相反：
 1. **克隆**仓库：
 
 ```sh
-git clone https://github.com/RooCodeInc/Roo-Code.git
+git clone https://github.com/ValentinChirikov/Roo-Code.git
 ```
 
 2. **安装依赖项**:
@@ -143,10 +143,10 @@ pnpm install:vsix [-y] [--editor=<command>]
     ```sh
     pnpm vsix
     ```
-2.  将在 `bin/` 目录中生成一个 `.vsix` 文件（例如，`bin/roo-cline-<version>.vsix`）。
+2.  将在 `bin/` 目录中生成一个 `.vsix` 文件（例如，`bin/roo-cline-gpt-oss-<version>.vsix`）。
 3.  使用 VSCode CLI 手动安装
     ```sh
-    code --install-extension bin/roo-cline-<version>.vsix
+    code --install-extension bin/roo-cline-gpt-oss-<version>.vsix
     ```
 
 ---

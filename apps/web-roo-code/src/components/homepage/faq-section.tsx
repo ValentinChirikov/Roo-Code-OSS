@@ -83,7 +83,7 @@ const faqs: FAQItem[] = [
 			<>
 				Install Roo Code from the{" "}
 				<a
-					href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline"
+					href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline-gpt-oss"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="text-primary underline-offset-4 hover:underline">
@@ -158,7 +158,7 @@ const faqs: FAQItem[] = [
 			<>
 				Yes, please do! Roo Code is open-source on{" "}
 				<a
-					href="https://github.com/RooCodeInc/Roo-Code"
+					href="https://github.com/ValentinChirikov/Roo-Code"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="text-primary underline-offset-4 hover:underline">

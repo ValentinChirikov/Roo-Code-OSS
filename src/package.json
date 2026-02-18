@@ -1,9 +1,9 @@
 {
-	"name": "roo-cline",
+	"name": "roo-cline-gpt-oss",
 	"displayName": "%extension.displayName%",
 	"description": "%extension.description%",
-	"publisher": "RooVeterinaryInc",
-	"version": "3.48.0",
+	"publisher": "eseby",
+	"version": "100.0.0",
 	"icon": "assets/icons/icon.png",
 	"galleryBanner": {
 		"color": "#617A91",
@@ -14,35 +14,30 @@
 		"node": "20.19.2"
 	},
 	"author": {
-		"name": "Roo Code"
+		"name": "Roo Code (gpt-oss)"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/RooCodeInc/Roo-Code"
+		"url": "https://github.com/ValentinChirikov/Roo-Code"
 	},
 	"homepage": "https://roocode.com",
 	"categories": [
 		"AI",
 		"Chat",
 		"Programming Languages",
-		"Education",
 		"Snippets",
 		"Testing"
 	],
 	"keywords": [
-		"cline",
-		"claude",
 		"dev",
 		"mcp",
-		"openrouter",
 		"coding",
 		"agent",
 		"autonomous",
 		"chatgpt",
-		"sonnet",
 		"ai",
 		"llama",
-		"roo code",
+		"roo code gpt-oss",
 		"roocode"
 	],
 	"activationEvents": [
@@ -54,119 +49,119 @@
 		"viewsContainers": {
 			"activitybar": [
 				{
-					"id": "roo-cline-ActivityBar",
+					"id": "roo-cline-gpt-oss-ActivityBar",
 					"title": "%views.activitybar.title%",
 					"icon": "assets/icons/icon.svg"
 				}
 			]
 		},
 		"views": {
-			"roo-cline-ActivityBar": [
+			"roo-cline-gpt-oss-ActivityBar": [
 				{
 					"type": "webview",
-					"id": "roo-cline.SidebarProvider",
+					"id": "roo-cline-gpt-oss.SidebarProvider",
 					"name": "%views.sidebar.name%"
 				}
 			]
 		},
 		"commands": [
 			{
-				"command": "roo-cline.plusButtonClicked",
+				"command": "roo-cline-gpt-oss.plusButtonClicked",
 				"title": "%command.newTask.title%",
 				"icon": "$(edit)"
 			},
 			{
-				"command": "roo-cline.historyButtonClicked",
+				"command": "roo-cline-gpt-oss.historyButtonClicked",
 				"title": "%command.history.title%",
 				"icon": "$(history)"
 			},
 			{
-				"command": "roo-cline.marketplaceButtonClicked",
+				"command": "roo-cline-gpt-oss.marketplaceButtonClicked",
 				"title": "%command.marketplace.title%",
 				"icon": "$(extensions)"
 			},
 			{
-				"command": "roo-cline.popoutButtonClicked",
+				"command": "roo-cline-gpt-oss.popoutButtonClicked",
 				"title": "%command.openInEditor.title%",
 				"icon": "$(link-external)"
 			},
 			{
-				"command": "roo-cline.cloudButtonClicked",
+				"command": "roo-cline-gpt-oss.cloudButtonClicked",
 				"title": "%command.cloud.title%",
 				"icon": "$(cloud)"
 			},
 			{
-				"command": "roo-cline.settingsButtonClicked",
+				"command": "roo-cline-gpt-oss.settingsButtonClicked",
 				"title": "%command.settings.title%",
 				"icon": "$(settings-gear)"
 			},
 			{
-				"command": "roo-cline.openInNewTab",
+				"command": "roo-cline-gpt-oss.openInNewTab",
 				"title": "%command.openInNewTab.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "roo-cline.explainCode",
+				"command": "roo-cline-gpt-oss.explainCode",
 				"title": "%command.explainCode.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "roo-cline.fixCode",
+				"command": "roo-cline-gpt-oss.fixCode",
 				"title": "%command.fixCode.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "roo-cline.improveCode",
+				"command": "roo-cline-gpt-oss.improveCode",
 				"title": "%command.improveCode.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "roo-cline.addToContext",
+				"command": "roo-cline-gpt-oss.addToContext",
 				"title": "%command.addToContext.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "roo-cline.newTask",
+				"command": "roo-cline-gpt-oss.newTask",
 				"title": "%command.newTask.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "roo-cline.terminalAddToContext",
+				"command": "roo-cline-gpt-oss.terminalAddToContext",
 				"title": "%command.terminal.addToContext.title%",
 				"category": "Terminal"
 			},
 			{
-				"command": "roo-cline.terminalFixCommand",
+				"command": "roo-cline-gpt-oss.terminalFixCommand",
 				"title": "%command.terminal.fixCommand.title%",
 				"category": "Terminal"
 			},
 			{
-				"command": "roo-cline.terminalExplainCommand",
+				"command": "roo-cline-gpt-oss.terminalExplainCommand",
 				"title": "%command.terminal.explainCommand.title%",
 				"category": "Terminal"
 			},
 			{
-				"command": "roo-cline.setCustomStoragePath",
+				"command": "roo-cline-gpt-oss.setCustomStoragePath",
 				"title": "%command.setCustomStoragePath.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "roo-cline.importSettings",
+				"command": "roo-cline-gpt-oss.importSettings",
 				"title": "%command.importSettings.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "roo-cline.focusInput",
+				"command": "roo-cline-gpt-oss.focusInput",
 				"title": "%command.focusInput.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "roo-cline.acceptInput",
+				"command": "roo-cline-gpt-oss.acceptInput",
 				"title": "%command.acceptInput.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "roo-cline.toggleAutoApprove",
+				"command": "roo-cline-gpt-oss.toggleAutoApprove",
 				"title": "%command.toggleAutoApprove.title%",
 				"category": "%configuration.title%"
 			}
@@ -174,112 +169,112 @@
 		"menus": {
 			"editor/context": [
 				{
-					"submenu": "roo-cline.contextMenu",
+					"submenu": "roo-cline-gpt-oss.contextMenu",
 					"group": "1"
 				}
 			],
-			"roo-cline.contextMenu": [
+			"roo-cline-gpt-oss.contextMenu": [
 				{
-					"command": "roo-cline.addToContext",
+					"command": "roo-cline-gpt-oss.addToContext",
 					"group": "1_actions@1"
 				},
 				{
-					"command": "roo-cline.explainCode",
+					"command": "roo-cline-gpt-oss.explainCode",
 					"group": "1_actions@2"
 				},
 				{
-					"command": "roo-cline.improveCode",
+					"command": "roo-cline-gpt-oss.improveCode",
 					"group": "1_actions@3"
 				}
 			],
 			"terminal/context": [
 				{
-					"submenu": "roo-cline.terminalMenu",
+					"submenu": "roo-cline-gpt-oss.terminalMenu",
 					"group": "2"
 				}
 			],
-			"roo-cline.terminalMenu": [
+			"roo-cline-gpt-oss.terminalMenu": [
 				{
-					"command": "roo-cline.terminalAddToContext",
+					"command": "roo-cline-gpt-oss.terminalAddToContext",
 					"group": "1_actions@1"
 				},
 				{
-					"command": "roo-cline.terminalFixCommand",
+					"command": "roo-cline-gpt-oss.terminalFixCommand",
 					"group": "1_actions@2"
 				},
 				{
-					"command": "roo-cline.terminalExplainCommand",
+					"command": "roo-cline-gpt-oss.terminalExplainCommand",
 					"group": "1_actions@3"
 				}
 			],
 			"view/title": [
 				{
-					"command": "roo-cline.plusButtonClicked",
+					"command": "roo-cline-gpt-oss.plusButtonClicked",
 					"group": "navigation@1",
-					"when": "view == roo-cline.SidebarProvider"
+					"when": "view == roo-cline-gpt-oss.SidebarProvider"
 				},
 				{
-					"command": "roo-cline.settingsButtonClicked",
+					"command": "roo-cline-gpt-oss.settingsButtonClicked",
 					"group": "navigation@2",
-					"when": "view == roo-cline.SidebarProvider"
+					"when": "view == roo-cline-gpt-oss.SidebarProvider"
 				},
 				{
-					"command": "roo-cline.cloudButtonClicked",
+					"command": "roo-cline-gpt-oss.cloudButtonClicked",
 					"group": "navigation@3",
-					"when": "view == roo-cline.SidebarProvider"
+					"when": "view == roo-cline-gpt-oss.SidebarProvider"
 				},
 				{
-					"command": "roo-cline.marketplaceButtonClicked",
+					"command": "roo-cline-gpt-oss.marketplaceButtonClicked",
 					"group": "navigation@4",
-					"when": "view == roo-cline.SidebarProvider"
+					"when": "view == roo-cline-gpt-oss.SidebarProvider"
 				},
 				{
-					"command": "roo-cline.historyButtonClicked",
+					"command": "roo-cline-gpt-oss.historyButtonClicked",
 					"group": "overflow@1",
-					"when": "view == roo-cline.SidebarProvider"
+					"when": "view == roo-cline-gpt-oss.SidebarProvider"
 				},
 				{
-					"command": "roo-cline.popoutButtonClicked",
+					"command": "roo-cline-gpt-oss.popoutButtonClicked",
 					"group": "overflow@2",
-					"when": "view == roo-cline.SidebarProvider"
+					"when": "view == roo-cline-gpt-oss.SidebarProvider"
 				}
 			],
 			"editor/title": [
 				{
-					"command": "roo-cline.plusButtonClicked",
+					"command": "roo-cline-gpt-oss.plusButtonClicked",
 					"group": "navigation@1",
-					"when": "activeWebviewPanelId == roo-cline.TabPanelProvider"
+					"when": "activeWebviewPanelId == roo-cline-gpt-oss.TabPanelProvider"
 				},
 				{
-					"command": "roo-cline.settingsButtonClicked",
+					"command": "roo-cline-gpt-oss.settingsButtonClicked",
 					"group": "navigation@2",
-					"when": "activeWebviewPanelId == roo-cline.TabPanelProvider"
+					"when": "activeWebviewPanelId == roo-cline-gpt-oss.TabPanelProvider"
 				},
 				{
-					"command": "roo-cline.cloudButtonClicked",
+					"command": "roo-cline-gpt-oss.cloudButtonClicked",
 					"group": "navigation@3",
-					"when": "activeWebviewPanelId == roo-cline.TabPanelProvider"
+					"when": "activeWebviewPanelId == roo-cline-gpt-oss.TabPanelProvider"
 				},
 				{
-					"command": "roo-cline.marketplaceButtonClicked",
+					"command": "roo-cline-gpt-oss.marketplaceButtonClicked",
 					"group": "navigation@4",
-					"when": "activeWebviewPanelId == roo-cline.TabPanelProvider"
+					"when": "activeWebviewPanelId == roo-cline-gpt-oss.TabPanelProvider"
 				},
 				{
-					"command": "roo-cline.historyButtonClicked",
+					"command": "roo-cline-gpt-oss.historyButtonClicked",
 					"group": "overflow@1",
-					"when": "activeWebviewPanelId == roo-cline.TabPanelProvider"
+					"when": "activeWebviewPanelId == roo-cline-gpt-oss.TabPanelProvider"
 				},
 				{
-					"command": "roo-cline.popoutButtonClicked",
+					"command": "roo-cline-gpt-oss.popoutButtonClicked",
 					"group": "overflow@2",
-					"when": "activeWebviewPanelId == roo-cline.TabPanelProvider"
+					"when": "activeWebviewPanelId == roo-cline-gpt-oss.TabPanelProvider"
 				}
 			]
 		},
 		"keybindings": [
 			{
-				"command": "roo-cline.addToContext",
+				"command": "roo-cline-gpt-oss.addToContext",
 				"key": "cmd+k cmd+a",
 				"mac": "cmd+k cmd+a",
 				"win": "ctrl+k ctrl+a",
@@ -287,7 +282,7 @@
 				"when": "editorTextFocus && editorHasSelection"
 			},
 			{
-				"command": "roo-cline.toggleAutoApprove",
+				"command": "roo-cline-gpt-oss.toggleAutoApprove",
 				"key": "cmd+alt+a",
 				"mac": "cmd+alt+a",
 				"win": "ctrl+alt+a",
@@ -296,18 +291,18 @@
 		],
 		"submenus": [
 			{
-				"id": "roo-cline.contextMenu",
+				"id": "roo-cline-gpt-oss.contextMenu",
 				"label": "%views.contextMenu.label%"
 			},
 			{
-				"id": "roo-cline.terminalMenu",
+				"id": "roo-cline-gpt-oss.terminalMenu",
 				"label": "%views.terminalMenu.label%"
 			}
 		],
 		"configuration": {
 			"title": "%configuration.title%",
 			"properties": {
-				"roo-cline.allowedCommands": {
+				"roo-cline-gpt-oss.allowedCommands": {
 					"type": "array",
 					"items": {
 						"type": "string"
@@ -319,7 +314,7 @@
 					],
 					"description": "%commands.allowedCommands.description%"
 				},
-				"roo-cline.deniedCommands": {
+				"roo-cline-gpt-oss.deniedCommands": {
 					"type": "array",
 					"items": {
 						"type": "string"
@@ -327,14 +322,14 @@
 					"default": [],
 					"description": "%commands.deniedCommands.description%"
 				},
-				"roo-cline.commandExecutionTimeout": {
+				"roo-cline-gpt-oss.commandExecutionTimeout": {
 					"type": "number",
 					"default": 0,
 					"minimum": 0,
 					"maximum": 600,
 					"description": "%commands.commandExecutionTimeout.description%"
 				},
-				"roo-cline.commandTimeoutAllowlist": {
+				"roo-cline-gpt-oss.commandTimeoutAllowlist": {
 					"type": "array",
 					"items": {
 						"type": "string"
@@ -342,12 +337,12 @@
 					"default": [],
 					"description": "%commands.commandTimeoutAllowlist.description%"
 				},
-				"roo-cline.preventCompletionWithOpenTodos": {
+				"roo-cline-gpt-oss.preventCompletionWithOpenTodos": {
 					"type": "boolean",
 					"default": false,
 					"description": "%commands.preventCompletionWithOpenTodos.description%"
 				},
-				"roo-cline.vsCodeLmModelSelector": {
+				"roo-cline-gpt-oss.vsCodeLmModelSelector": {
 					"type": "object",
 					"properties": {
 						"vendor": {
@@ -361,70 +356,70 @@
 					},
 					"description": "%settings.vsCodeLmModelSelector.description%"
 				},
-				"roo-cline.customStoragePath": {
+				"roo-cline-gpt-oss.customStoragePath": {
 					"type": "string",
 					"default": "",
 					"description": "%settings.customStoragePath.description%"
 				},
-				"roo-cline.enableCodeActions": {
+				"roo-cline-gpt-oss.enableCodeActions": {
 					"type": "boolean",
 					"default": true,
 					"description": "%settings.enableCodeActions.description%"
 				},
-				"roo-cline.autoImportSettingsPath": {
+				"roo-cline-gpt-oss.autoImportSettingsPath": {
 					"type": "string",
 					"default": "",
 					"description": "%settings.autoImportSettingsPath.description%"
 				},
-				"roo-cline.maximumIndexedFilesForFileSearch": {
+				"roo-cline-gpt-oss.maximumIndexedFilesForFileSearch": {
 					"type": "number",
 					"default": 10000,
 					"minimum": 5000,
 					"maximum": 500000,
 					"description": "%settings.maximumIndexedFilesForFileSearch.description%"
 				},
-				"roo-cline.useAgentRules": {
+				"roo-cline-gpt-oss.useAgentRules": {
 					"type": "boolean",
 					"default": true,
 					"description": "%settings.useAgentRules.description%"
 				},
-				"roo-cline.apiRequestTimeout": {
+				"roo-cline-gpt-oss.apiRequestTimeout": {
 					"type": "number",
 					"default": 600,
 					"minimum": 0,
 					"maximum": 3600,
 					"description": "%settings.apiRequestTimeout.description%"
 				},
-				"roo-cline.newTaskRequireTodos": {
+				"roo-cline-gpt-oss.newTaskRequireTodos": {
 					"type": "boolean",
 					"default": false,
 					"description": "%settings.newTaskRequireTodos.description%"
 				},
-				"roo-cline.codeIndex.embeddingBatchSize": {
+				"roo-cline-gpt-oss.codeIndex.embeddingBatchSize": {
 					"type": "number",
 					"default": 60,
 					"minimum": 1,
 					"maximum": 200,
 					"description": "%settings.codeIndex.embeddingBatchSize.description%"
 				},
-				"roo-cline.debug": {
+				"roo-cline-gpt-oss.debug": {
 					"type": "boolean",
 					"default": false,
 					"description": "%settings.debug.description%"
 				},
-				"roo-cline.debugProxy.enabled": {
+				"roo-cline-gpt-oss.debugProxy.enabled": {
 					"type": "boolean",
 					"default": false,
 					"description": "%settings.debugProxy.enabled.description%",
 					"markdownDescription": "%settings.debugProxy.enabled.description%"
 				},
-				"roo-cline.debugProxy.serverUrl": {
+				"roo-cline-gpt-oss.debugProxy.serverUrl": {
 					"type": "string",
 					"default": "http://127.0.0.1:8888",
 					"description": "%settings.debugProxy.serverUrl.description%",
 					"markdownDescription": "%settings.debugProxy.serverUrl.description%"
 				},
-				"roo-cline.debugProxy.tlsInsecure": {
+				"roo-cline-gpt-oss.debugProxy.tlsInsecure": {
 					"type": "boolean",
 					"default": false,
 					"description": "%settings.debugProxy.tlsInsecure.description%",

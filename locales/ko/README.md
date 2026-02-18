@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline"><img src="https://img.shields.io/badge/VS_Code_Marketplace-007ACC?style=flat&logo=visualstudiocode&logoColor=white" alt="VS Code Marketplace"></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline-gpt-oss"><img src="https://img.shields.io/badge/VS_Code_Marketplace-007ACC?style=flat&logo=visualstudiocode&logoColor=white" alt="VS Code Marketplace"></a>
   <a href="https://x.com/roocode"><img src="https://img.shields.io/badge/roocode-000000?style=flat&logo=x&logoColor=white" alt="X"></a>
   <a href="https://youtube.com/@roocodeyt?feature=shared"><img src="https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white" alt="YouTube"></a>
   <a href="https://discord.gg/roocode"><img src="https://img.shields.io/badge/Join%20Discord-5865F2?style=flat&logo=discord&logoColor=white" alt="Join Discord"></a>
@@ -35,7 +35,7 @@
 - [简体中文](../zh-CN/README.md)
 - [繁體中文](../zh-TW/README.md)
 - ...
-  </details>
+    </details>
 
 ---
 
@@ -69,7 +69,7 @@ Roo Code는 당신의 작업 방식에 맞춰 적응합니다.
 |                                                                                                                                                                         |                                                                                                                                                                       |                                                                                                                                                                         |
 | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | <a href="https://www.youtube.com/watch?v=Mcq3r1EPZ-4"><img src="https://img.youtube.com/vi/Mcq3r1EPZ-4/maxresdefault.jpg" width="100%"></a><br><b>Roo Code 설치하기</b> | <a href="https://www.youtube.com/watch?v=ZBML8h5cCgo"><img src="https://img.youtube.com/vi/ZBML8h5cCgo/maxresdefault.jpg" width="100%"></a><br><b>프로필 구성하기</b> | <a href="https://www.youtube.com/watch?v=r1bpod1VWhg"><img src="https://img.youtube.com/vi/r1bpod1VWhg/maxresdefault.jpg" width="100%"></a><br><b>코드베이스 인덱싱</b> |
-| <a href="https://www.youtube.com/watch?v=iiAv1eKOaxk"><img src="https://img.youtube.com/vi/iiAv1eKOaxk/maxresdefault.jpg" width="100%"></a><br><b>사용자 지정 모드</b>  |   <a href="https://www.youtube.com/watch?v=Ho30nyY332E"><img src="https://img.youtube.com/vi/Ho30nyY332E/maxresdefault.jpg" width="100%"></a><br><b>체크포인트</b>    |    <a href="https://www.youtube.com/watch?v=HmnNSasv7T8"><img src="https://img.youtube.com/vi/HmnNSasv7T8/maxresdefault.jpg" width="100%"></a><br><b>컨텍스트 관리</b>     |
+| <a href="https://www.youtube.com/watch?v=iiAv1eKOaxk"><img src="https://img.youtube.com/vi/iiAv1eKOaxk/maxresdefault.jpg" width="100%"></a><br><b>사용자 지정 모드</b>  |   <a href="https://www.youtube.com/watch?v=Ho30nyY332E"><img src="https://img.youtube.com/vi/Ho30nyY332E/maxresdefault.jpg" width="100%"></a><br><b>체크포인트</b>    |   <a href="https://www.youtube.com/watch?v=HmnNSasv7T8"><img src="https://img.youtube.com/vi/HmnNSasv7T8/maxresdefault.jpg" width="100%"></a><br><b>컨텍스트 관리</b>   |
 
 </div>
 <p align="center">
@@ -82,8 +82,8 @@ Roo Code는 당신의 작업 방식에 맞춰 적응합니다.
 - **[YouTube 채널](https://youtube.com/@roocodeyt?feature=shared):** 튜토리얼을 시청하고 실제 기능을 확인하세요.
 - **[Discord 서버](https://discord.gg/roocode):** 커뮤니티에 가입하여 실시간 도움과 토론에 참여하세요.
 - **[Reddit 커뮤니티](https://www.reddit.com/r/RooCode):** 경험을 공유하고 다른 사람들이 무엇을 만들고 있는지 확인하세요.
-- **[GitHub 문제](https://github.com/RooCodeInc/Roo-Code/issues):** 버그를 보고하고 개발을 추적하세요.
-- **[기능 요청](https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop):** 아이디어가 있으신가요? 개발자들과 공유하세요.
+- **[GitHub 문제](https://github.com/ValentinChirikov/Roo-Code/issues):** 버그를 보고하고 개발을 추적하세요.
+- **[기능 요청](https://github.com/ValentinChirikov/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop):** 아이디어가 있으신가요? 개발자들과 공유하세요.
 
 ---
 
@@ -92,7 +92,7 @@ Roo Code는 당신의 작업 방식에 맞춰 적응합니다.
 1. **리포지토리 복제**:
 
 ```sh
-git clone https://github.com/RooCodeInc/Roo-Code.git
+git clone https://github.com/ValentinChirikov/Roo-Code.git
 ```
 
 2. **의존성 설치**:
@@ -143,10 +143,10 @@ VSIX 패키지를 수동으로 설치하려면:
     ```sh
     pnpm vsix
     ```
-2.  `.vsix` 파일이 `bin/` 디렉터리에 생성됩니다(예: `bin/roo-cline-<version>.vsix`).
+2.  `.vsix` 파일이 `bin/` 디렉터리에 생성됩니다(예: `bin/roo-cline-gpt-oss-<version>.vsix`).
 3.  VSCode CLI를 사용하여 수동으로 설치합니다:
     ```sh
-    code --install-extension bin/roo-cline-<version>.vsix
+    code --install-extension bin/roo-cline-gpt-oss-<version>.vsix
     ```
 
 ---

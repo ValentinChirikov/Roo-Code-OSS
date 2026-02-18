@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline"><img src="https://img.shields.io/badge/VS_Code_Marketplace-007ACC?style=flat&logo=visualstudiocode&logoColor=white" alt="VS Code Marketplace"></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline-gpt-oss"><img src="https://img.shields.io/badge/VS_Code_Marketplace-007ACC?style=flat&logo=visualstudiocode&logoColor=white" alt="VS Code Marketplace"></a>
   <a href="https://x.com/roocode"><img src="https://img.shields.io/badge/roocode-000000?style=flat&logo=x&logoColor=white" alt="X"></a>
   <a href="https://youtube.com/@roocodeyt?feature=shared"><img src="https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white" alt="YouTube"></a>
   <a href="https://discord.gg/roocode"><img src="https://img.shields.io/badge/Join%20Discord-5865F2?style=flat&logo=discord&logoColor=white" alt="Join Discord"></a>
@@ -35,7 +35,7 @@
 - [简体中文](../zh-CN/README.md)
 - [繁體中文](../zh-TW/README.md)
 - ...
-  </details>
+    </details>
 
 ---
 
@@ -69,7 +69,7 @@ Roo Code адаптируется к вашему стилю работы, а н
 |                                                                                                                                                                               |                                                                                                                                                                          |                                                                                                                                                                               |
 | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 |   <a href="https://www.youtube.com/watch?v=Mcq3r1EPZ-4"><img src="https://img.youtube.com/vi/Mcq3r1EPZ-4/maxresdefault.jpg" width="100%"></a><br><b>Установка Roo Code</b>    | <a href="https://www.youtube.com/watch?v=ZBML8h5cCgo"><img src="https://img.youtube.com/vi/ZBML8h5cCgo/maxresdefault.jpg" width="100%"></a><br><b>Настройка профилей</b> | <a href="https://www.youtube.com/watch?v=r1bpod1VWhg"><img src="https://img.youtube.com/vi/r1bpod1VWhg/maxresdefault.jpg" width="100%"></a><br><b>Индексация кодовой базы</b> |
-| <a href="https://www.youtube.com/watch?v=iiAv1eKOaxk"><img src="https://img.youtube.com/vi/iiAv1eKOaxk/maxresdefault.jpg" width="100%"></a><br><b>Пользовательские режимы</b> | <a href="https://www.youtube.com/watch?v=Ho30nyY332E"><img src="https://img.youtube.com/vi/Ho30nyY332E/maxresdefault.jpg" width="100%"></a><br><b>Контрольные точки</b>  |       <a href="https://www.youtube.com/watch?v=HmnNSasv7T8"><img src="https://img.youtube.com/vi/HmnNSasv7T8/maxresdefault.jpg" width="100%"></a><br><b>Управление Контекстом</b>        |
+| <a href="https://www.youtube.com/watch?v=iiAv1eKOaxk"><img src="https://img.youtube.com/vi/iiAv1eKOaxk/maxresdefault.jpg" width="100%"></a><br><b>Пользовательские режимы</b> | <a href="https://www.youtube.com/watch?v=Ho30nyY332E"><img src="https://img.youtube.com/vi/Ho30nyY332E/maxresdefault.jpg" width="100%"></a><br><b>Контрольные точки</b>  |  <a href="https://www.youtube.com/watch?v=HmnNSasv7T8"><img src="https://img.youtube.com/vi/HmnNSasv7T8/maxresdefault.jpg" width="100%"></a><br><b>Управление Контекстом</b>  |
 
 </div>
 <p align="center">
@@ -82,8 +82,8 @@ Roo Code адаптируется к вашему стилю работы, а н
 - **[Канал на YouTube](https://youtube.com/@roocodeyt?feature=shared):** Смотрите обучающие видео и функции в действии.
 - **[Сервер Discord](https://discord.gg/roocode):** Присоединяйтесь к сообществу для получения помощи и обсуждений в реальном времени.
 - **[Сообщество Reddit](https://www.reddit.com/r/RooCode):** Делитесь своим опытом и смотрите, что создают другие.
-- **[Проблемы на GitHub](https://github.com/RooCodeInc/Roo-Code/issues):** Сообщайте об ошибках и отслеживайте разработку.
-- **[Запросы на новые функции](https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop):** Есть идея? Поделитесь ею с разработчиками.
+- **[Проблемы на GitHub](https://github.com/ValentinChirikov/Roo-Code/issues):** Сообщайте об ошибках и отслеживайте разработку.
+- **[Запросы на новые функции](https://github.com/ValentinChirikov/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop):** Есть идея? Поделитесь ею с разработчиками.
 
 ---
 
@@ -92,7 +92,7 @@ Roo Code адаптируется к вашему стилю работы, а н
 1. **Клонируйте** репозиторий:
 
 ```sh
-git clone https://github.com/RooCodeInc/Roo-Code.git
+git clone https://github.com/ValentinChirikov/Roo-Code.git
 ```
 
 2. **Установите зависимости**:
@@ -143,10 +143,10 @@ pnpm install:vsix [-y] [--editor=<command>]
     ```sh
     pnpm vsix
     ```
-2.  Файл `.vsix` будет сгенерирован в каталоге `bin/` (например, `bin/roo-cline-<version>.vsix`).
+2.  Файл `.vsix` будет сгенерирован в каталоге `bin/` (например, `bin/roo-cline-gpt-oss-<version>.vsix`).
 3.  Установите его вручную с помощью VSCode CLI:
     ```sh
-    code --install-extension bin/roo-cline-<version>.vsix
+    code --install-extension bin/roo-cline-gpt-oss-<version>.vsix
     ```
 
 ---

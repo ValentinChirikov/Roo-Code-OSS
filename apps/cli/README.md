@@ -56,7 +56,7 @@ For contributing or development:
 pnpm install
 
 # Build the main extension first.
-pnpm --filter roo-cline bundle
+pnpm --filter roo-cline-gpt-oss bundle
 
 # Build the cli.
 pnpm --filter @roo-code/cli build

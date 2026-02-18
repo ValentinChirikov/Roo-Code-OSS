@@ -27,12 +27,12 @@ Do NOT use this skill when:
 
 This monorepo has **two distinct evals-related locations** that can cause confusion:
 
-| Component                   | Path                                                           | Purpose                                                        |
-| --------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| **Evals Execution System**  | `packages/evals/`                                              | Core eval infrastructure: CLI, DB schema, Docker configs       |
-| **Evals Management UI**     | `apps/web-evals/`                                              | Next.js app for creating/monitoring eval runs (localhost:3446) |
-| **Website Evals Page**      | `apps/web-roo-code/src/app/evals/`                             | Public roocode.com page displaying eval results                |
-| **External Exercises Repo** | [Roo-Code-Evals](https://github.com/RooCodeInc/Roo-Code-Evals) | Actual coding exercises (NOT in this monorepo)                 |
+| Component                   | Path                                                                 | Purpose                                                        |
+| --------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------- |
+| **Evals Execution System**  | `packages/evals/`                                                    | Core eval infrastructure: CLI, DB schema, Docker configs       |
+| **Evals Management UI**     | `apps/web-evals/`                                                    | Next.js app for creating/monitoring eval runs (localhost:3446) |
+| **Website Evals Page**      | `apps/web-roo-code/src/app/evals/`                                   | Public roocode.com page displaying eval results                |
+| **External Exercises Repo** | [Roo-Code-Evals](https://github.com/ValentinChirikov/Roo-Code-Evals) | Actual coding exercises (NOT in this monorepo)                 |
 
 ## Directory Structure Reference
 
@@ -123,7 +123,7 @@ The evals system is a distributed evaluation platform that runs AI coding tasks 
 
 ### Adding a New Eval Exercise
 
-1. Add exercise to [Roo-Code-Evals](https://github.com/RooCodeInc/Roo-Code-Evals) repo (external)
+1. Add exercise to [Roo-Code-Evals](https://github.com/ValentinChirikov/Roo-Code-Evals) repo (external)
 2. See [`packages/evals/ADDING-EVALS.md`](packages/evals/ADDING-EVALS.md) for structure
 
 ### Modifying Eval CLI Behavior
