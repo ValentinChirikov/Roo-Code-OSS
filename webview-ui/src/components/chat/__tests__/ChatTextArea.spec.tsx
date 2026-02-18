@@ -68,7 +68,7 @@ describe("ChatTextArea", () => {
 			filePaths: [],
 			openedTabs: [],
 			apiConfiguration: {
-				apiProvider: "anthropic",
+				apiProvider: "openai",
 			},
 			taskHistory: [],
 			cwd: "/test/workspace",
@@ -500,7 +500,7 @@ describe("ChatTextArea", () => {
 					filePaths: [],
 					openedTabs: [],
 					apiConfiguration: {
-						apiProvider: "anthropic",
+						apiProvider: "openai",
 					},
 					taskHistory: [],
 					clineMessages: mockClineMessages,
@@ -653,7 +653,7 @@ describe("ChatTextArea", () => {
 					filePaths: [],
 					openedTabs: [],
 					apiConfiguration: {
-						apiProvider: "anthropic",
+						apiProvider: "openai",
 					},
 					taskHistory: [],
 					clineMessages: mixedClineMessages,
@@ -681,7 +681,7 @@ describe("ChatTextArea", () => {
 					filePaths: [],
 					openedTabs: [],
 					apiConfiguration: {
-						apiProvider: "anthropic",
+						apiProvider: "openai",
 					},
 					taskHistory: [],
 					clineMessages: [],
@@ -712,7 +712,7 @@ describe("ChatTextArea", () => {
 					filePaths: [],
 					openedTabs: [],
 					apiConfiguration: {
-						apiProvider: "anthropic",
+						apiProvider: "openai",
 					},
 					taskHistory: [],
 					clineMessages: clineMessagesWithEmpty,
@@ -746,7 +746,7 @@ describe("ChatTextArea", () => {
 					filePaths: [],
 					openedTabs: [],
 					apiConfiguration: {
-						apiProvider: "anthropic",
+						apiProvider: "openai",
 					},
 					taskHistory: mockTaskHistory,
 					clineMessages: [], // No conversation messages
@@ -780,7 +780,7 @@ describe("ChatTextArea", () => {
 					filePaths: [],
 					openedTabs: [],
 					apiConfiguration: {
-						apiProvider: "anthropic",
+						apiProvider: "openai",
 					},
 					taskHistory: [
 						{ task: "Task 1", workspace: "/test/workspace" },
@@ -803,7 +803,7 @@ describe("ChatTextArea", () => {
 					filePaths: [],
 					openedTabs: [],
 					apiConfiguration: {
-						apiProvider: "anthropic",
+						apiProvider: "openai",
 					},
 					taskHistory: [],
 					clineMessages: [

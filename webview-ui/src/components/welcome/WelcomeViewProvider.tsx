@@ -60,7 +60,7 @@ const WelcomeViewProvider = () => {
 			} else {
 				// Auth completed from provider signup flow - save the config now
 				const rooConfig: ProviderSettings = {
-					apiProvider: "roo",
+					apiProvider: "openai",
 				}
 				vscode.postMessage({
 					type: "upsertApiConfiguration",
@@ -102,7 +102,7 @@ const WelcomeViewProvider = () => {
 			if (cloudIsAuthenticated) {
 				// Already authenticated - save config and finish
 				const rooConfig: ProviderSettings = {
-					apiProvider: "roo",
+					apiProvider: "openai",
 				}
 				vscode.postMessage({
 					type: "upsertApiConfiguration",
@@ -344,23 +344,6 @@ const WelcomeViewProvider = () => {
 								(e.target as HTMLInputElement)) as HTMLInputElement
 							setSelectedProvider(target.value as ProviderOption)
 						}}>
-						{/* Roo Code Router Option
-						<VSCodeRadio value="roo" className="flex items-start gap-2">
-							<div className="flex-1 space-y-1 cursor-pointer">
-								<p className="text-lg font-semibold block -mt-1">
-									{t("welcome:providerSignup.rooCloudProvider")}
-								</p>
-								<p className="text-base text-vscode-descriptionForeground mt-0">
-									{t("welcome:providerSignup.rooCloudDescription")}{" "}
-									<VSCodeLink
-										href="https://roocode.com/provider/pricing?utm_source=extension&utm_medium=welcome-screen&utm_campaign=provider-signup&utm_content=learn-more"
-										className="cursor-pointer">
-										{t("welcome:providerSignup.learnMore")}
-									</VSCodeLink>
-								</p>
-							</div>
-						</VSCodeRadio> */}
-
 						{/* Use Another Provider Option */}
 						<VSCodeRadio value="custom" className="flex items-start gap-2">
 							<div className="flex-1 space-y-1 cursor-pointer">

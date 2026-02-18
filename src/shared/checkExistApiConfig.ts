@@ -6,7 +6,7 @@ export function checkExistKey(config: ProviderSettings | undefined) {
 	}
 
 	// Special case for fake-ai, openai-codex, qwen-code, and roo providers which don't need any configuration.
-	if (config.apiProvider && ["fake-ai", "openai-codex", "qwen-code", "roo"].includes(config.apiProvider)) {
+	if (config.apiProvider && ["fake-ai", "openai-codex"].includes(config.apiProvider)) {
 		return true
 	}
 
@@ -16,13 +16,9 @@ export function checkExistKey(config: ProviderSettings | undefined) {
 	const hasSecretKey = providerSecretKeys.some((key) => config[key as keyof ProviderSettings] !== undefined)
 
 	// Check additional non-secret configuration properties
-	const hasOtherConfig = [
-		config.awsRegion,
-		config.vertexProjectId,
-		config.ollamaModelId,
-		config.lmStudioModelId,
-		config.vsCodeLmModelSelector,
-	].some((value) => value !== undefined)
+	const hasOtherConfig = [config.ollamaModelId, config.lmStudioModelId, config.vsCodeLmModelSelector].some(
+		(value) => value !== undefined,
+	)
 
 	return hasSecretKey || hasOtherConfig
 }

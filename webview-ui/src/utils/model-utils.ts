@@ -1,4 +1,4 @@
-import { ANTHROPIC_DEFAULT_MAX_TOKENS } from "@roo-code/types"
+import { DEFAULT_MAX_TOKENS } from "@roo-code/types"
 
 /**
  * Result of token distribution calculation
@@ -51,7 +51,7 @@ export const calculateTokenDistribution = (
 	// Get the actual max tokens value from the model
 	// If maxTokens is valid (positive and not equal to context window), use it, otherwise reserve 8192 tokens as a default
 	const reservedForOutput =
-		maxTokens && maxTokens > 0 && maxTokens !== safeContextWindow ? maxTokens : ANTHROPIC_DEFAULT_MAX_TOKENS
+		maxTokens && maxTokens > 0 && maxTokens !== safeContextWindow ? maxTokens : DEFAULT_MAX_TOKENS
 
 	// Calculate sizes directly without buffer display
 	const availableSize = Math.max(0, safeContextWindow - safeContextTokens - reservedForOutput)

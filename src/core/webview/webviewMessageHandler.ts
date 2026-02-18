@@ -893,28 +893,7 @@ export const webviewMessageHandler = async (
 			}
 
 			// Base candidates (only those handled by this aggregate fetcher)
-			const candidates: { key: RouterName; options: GetModelsOptions }[] = [
-				{ key: "openrouter", options: { provider: "openrouter" } },
-				{
-					key: "requesty",
-					options: {
-						provider: "requesty",
-						apiKey: apiConfiguration.requestyApiKey,
-						baseUrl: apiConfiguration.requestyBaseUrl,
-					},
-				},
-				{ key: "vercel-ai-gateway", options: { provider: "vercel-ai-gateway" } },
-				{
-					key: "roo",
-					options: {
-						provider: "roo",
-						baseUrl: process.env.ROO_CODE_PROVIDER_URL ?? "https://api.roocode.com/proxy",
-						apiKey: CloudService.hasInstance()
-							? CloudService.instance.authService?.getSessionToken()
-							: undefined,
-					},
-				},
-			]
+			const candidates: { key: RouterName; options: GetModelsOptions }[] = []
 
 			// LiteLLM is conditional on baseUrl+apiKey
 			const litellmApiKey = apiConfiguration.litellmApiKey || message?.values?.litellmApiKey

@@ -36,20 +36,14 @@ export function getContextWindow(routerModels: RouterModels | null, apiConfigura
  */
 function getModelIdForProvider(config: ProviderSettings): string | undefined {
 	switch (config.apiProvider) {
-		case "openrouter":
-			return config.openRouterModelId
 		case "ollama":
 			return config.ollamaModelId
 		case "lmstudio":
 			return config.lmStudioModelId
 		case "openai":
 			return config.openAiModelId
-		case "requesty":
-			return config.requestyModelId
 		case "litellm":
 			return config.litellmModelId
-		case "vercel-ai-gateway":
-			return config.vercelAiGatewayModelId
 		default:
 			// For anthropic, bedrock, vertex, gemini, xai, etc.
 			return config.apiModelId

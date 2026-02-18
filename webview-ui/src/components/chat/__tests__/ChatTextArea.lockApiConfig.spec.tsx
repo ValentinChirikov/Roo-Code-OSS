@@ -44,7 +44,7 @@ describe("ChatTextArea - lockApiConfigAcrossModes toggle", () => {
 	const defaultState = {
 		filePaths: [],
 		openedTabs: [],
-		apiConfiguration: { apiProvider: "anthropic" },
+		apiConfiguration: { apiProvider: "openai" },
 		taskHistory: [],
 		cwd: "/test/workspace",
 		listApiConfigMeta: [{ id: "default", name: "Default", modelId: "claude-3" }],

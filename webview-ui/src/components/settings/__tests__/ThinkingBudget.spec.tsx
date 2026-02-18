@@ -164,54 +164,6 @@ describe("ThinkingBudget", () => {
 		expect(sliders[1].getAttribute("min")).toBe("1024")
 	})
 
-	it("should use min thinking tokens of 128 for Gemini 2.5 Pro models", () => {
-		render(
-			<ThinkingBudget
-				{...defaultProps}
-				apiConfiguration={{
-					modelMaxTokens: 10000,
-					apiProvider: "gemini",
-					apiModelId: "gemini-2.5-pro-002",
-				}}
-			/>,
-		)
-
-		const sliders = screen.getAllByTestId("slider")
-		expect(sliders[1].getAttribute("min")).toBe("128")
-	})
-
-	it("should use step of 128 for Gemini 2.5 Pro models", () => {
-		render(
-			<ThinkingBudget
-				{...defaultProps}
-				apiConfiguration={{
-					modelMaxTokens: 10000,
-					apiProvider: "gemini",
-					apiModelId: "gemini-2.5-pro-002",
-				}}
-			/>,
-		)
-
-		const sliders = screen.getAllByTestId("slider")
-		expect(sliders[1].getAttribute("step")).toBe("128")
-	})
-
-	it("should use step of 1024 for non-Gemini models", () => {
-		render(
-			<ThinkingBudget
-				{...defaultProps}
-				apiConfiguration={{
-					modelMaxTokens: 10000,
-					apiProvider: "anthropic",
-					apiModelId: "claude-3-5-sonnet-20241022",
-				}}
-			/>,
-		)
-
-		const sliders = screen.getAllByTestId("slider")
-		expect(sliders[1].getAttribute("step")).toBe("1024")
-	})
-
 	it("should update max tokens when slider changes", () => {
 		const setApiConfigurationField = vi.fn()
 

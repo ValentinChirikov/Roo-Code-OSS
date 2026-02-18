@@ -1654,66 +1654,6 @@ export class ClineProvider
 		return getSettingsDirectoryPath(globalStoragePath)
 	}
 
-	// OpenRouter
-
-	async handleOpenRouterCallback(code: string) {
-		let { apiConfiguration, currentApiConfigName = "default" } = await this.getState()
-
-		let apiKey: string
-
-		try {
-			const baseUrl = apiConfiguration.openRouterBaseUrl || "https://openrouter.ai/api/v1"
-			// Extract the base domain for the auth endpoint.
-			const baseUrlDomain = baseUrl.match(/^(https?:\/\/[^\/]+)/)?.[1] || "https://openrouter.ai"
-			const response = await axios.post(`${baseUrlDomain}/api/v1/auth/keys`, { code })
-
-			if (response.data && response.data.key) {
-				apiKey = response.data.key
-			} else {
-				throw new Error("Invalid response from OpenRouter API")
-			}
-		} catch (error) {
-			this.log(
-				`Error exchanging code for API key: ${JSON.stringify(error, Object.getOwnPropertyNames(error), 2)}`,
-			)
-
-			throw error
-		}
-
-		const newConfiguration: ProviderSettings = {
-			...apiConfiguration,
-			apiProvider: "openrouter",
-			openRouterApiKey: apiKey,
-			openRouterModelId: apiConfiguration?.openRouterModelId || openRouterDefaultModelId,
-		}
-
-		await this.upsertProviderProfile(currentApiConfigName, newConfiguration)
-	}
-
-	// Requesty
-
-	async handleRequestyCallback(code: string, baseUrl: string | null) {
-		let { apiConfiguration } = await this.getState()
-
-		const newConfiguration: ProviderSettings = {
-			...apiConfiguration,
-			apiProvider: "requesty",
-			requestyApiKey: code,
-			requestyModelId: apiConfiguration?.requestyModelId || requestyDefaultModelId,
-		}
-
-		// set baseUrl as undefined if we don't provide one
-		// or if it is the default requesty url
-		if (!baseUrl || baseUrl === REQUESTY_BASE_URL) {
-			newConfiguration.requestyBaseUrl = undefined
-		} else {
-			newConfiguration.requestyBaseUrl = baseUrl
-		}
-
-		const profileName = `Requesty (${new Date().toLocaleString()})`
-		await this.upsertProviderProfile(profileName, newConfiguration)
-	}
-
 	// Task history
 
 	async getTaskWithId(id: string): Promise<{

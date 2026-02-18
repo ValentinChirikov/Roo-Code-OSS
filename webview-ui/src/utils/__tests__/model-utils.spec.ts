@@ -33,7 +33,7 @@ describe("calculateTokenDistribution", () => {
 		expect(result.currentPercent).toBe(0)
 		expect(result.reservedPercent).toBe(100) // 8192 / 8192 = 100%
 		expect(result.availablePercent).toBe(0)
-		expect(result.reservedForOutput).toBe(8192) // Uses ANTHROPIC_DEFAULT_MAX_TOKENS
+		expect(result.reservedForOutput).toBe(8192) // Uses DEFAULT_MAX_TOKENS
 		expect(result.availableSize).toBe(0) // max(0, 0 - 0 - 8192) = 0
 	})
 
@@ -43,7 +43,7 @@ describe("calculateTokenDistribution", () => {
 		expect(result.currentPercent).toBe(0)
 		expect(result.reservedPercent).toBe(100) // When contextWindow is 0, reserved gets 100%
 		expect(result.availablePercent).toBe(0)
-		expect(result.reservedForOutput).toBe(8192) // Uses ANTHROPIC_DEFAULT_MAX_TOKENS when no maxTokens provided
+		expect(result.reservedForOutput).toBe(8192) // Uses DEFAULT_MAX_TOKENS when no maxTokens provided
 		expect(result.availableSize).toBe(0)
 	})
 })

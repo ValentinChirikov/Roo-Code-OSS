@@ -6,7 +6,7 @@ import { TelemetryService } from "@roo-code/telemetry"
 import { ApiHandler, ApiHandlerCreateMessageMetadata } from "../../api"
 import { MAX_CONDENSE_THRESHOLD, MIN_CONDENSE_THRESHOLD, summarizeConversation, SummarizeResponse } from "../condense"
 import { ApiMessage } from "../task-persistence/apiMessages"
-import { ANTHROPIC_DEFAULT_MAX_TOKENS } from "@roo-code/types"
+import { DEFAULT_MAX_TOKENS } from "@roo-code/types"
 import { RooIgnoreController } from "../ignore/RooIgnoreController"
 
 /**
@@ -170,13 +170,13 @@ export function willManageContext({
 }: WillManageContextOptions): boolean {
 	if (!autoCondenseContext) {
 		// When auto-condense is disabled, only truncation can occur
-		const reservedTokens = maxTokens || ANTHROPIC_DEFAULT_MAX_TOKENS
+		const reservedTokens = maxTokens || DEFAULT_MAX_TOKENS
 		const prevContextTokens = totalTokens + lastMessageTokens
 		const allowedTokens = contextWindow * (1 - TOKEN_BUFFER_PERCENTAGE) - reservedTokens
 		return prevContextTokens > allowedTokens
 	}
 
-	const reservedTokens = maxTokens || ANTHROPIC_DEFAULT_MAX_TOKENS
+	const reservedTokens = maxTokens || DEFAULT_MAX_TOKENS
 	const prevContextTokens = totalTokens + lastMessageTokens
 	const allowedTokens = contextWindow * (1 - TOKEN_BUFFER_PERCENTAGE) - reservedTokens
 
@@ -267,7 +267,7 @@ export async function manageContext({
 	let errorDetails: string | undefined
 	let cost = 0
 	// Calculate the maximum tokens reserved for response
-	const reservedTokens = maxTokens || ANTHROPIC_DEFAULT_MAX_TOKENS
+	const reservedTokens = maxTokens || DEFAULT_MAX_TOKENS
 
 	// Estimate tokens for the last message (which is always a user message)
 	const lastMessage = messages[messages.length - 1]

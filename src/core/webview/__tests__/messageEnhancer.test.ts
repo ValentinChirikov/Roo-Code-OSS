@@ -32,7 +32,7 @@ describe("MessageEnhancer", () => {
 		mockProviderSettingsManager = {
 			getProfile: vi.fn().mockResolvedValue({
 				name: "Enhancement Config",
-				apiProvider: "anthropic",
+				apiProvider: "openai",
 				apiKey: "enhancement-key",
 				apiModelId: "claude-3",
 			}),
@@ -92,7 +92,7 @@ describe("MessageEnhancer", () => {
 
 			// Verify the enhancement config was used instead of default
 			const expectedConfig = {
-				apiProvider: "anthropic",
+				apiProvider: "openai",
 				apiKey: "enhancement-key",
 				apiModelId: "claude-3",
 			}

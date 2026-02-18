@@ -484,7 +484,7 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 	useEffect(() => {
 		const currentAuth = state.cloudIsAuthenticated ?? false
 		const currentProvider = state.apiConfiguration?.apiProvider
-		if (!prevCloudIsAuthenticated && currentAuth && currentProvider === "roo") {
+		if (!prevCloudIsAuthenticated && currentAuth && currentProvider === "openai") {
 			// User just authenticated and Roo is the active provider - refresh Roo models
 			vscode.postMessage({ type: "requestRooModels" })
 		}

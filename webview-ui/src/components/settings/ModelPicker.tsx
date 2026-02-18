@@ -28,11 +28,8 @@ import { ApiErrorMessage } from "./ApiErrorMessage"
 
 type ModelIdKey = keyof Pick<
 	ProviderSettings,
-	| "openRouterModelId"
-	| "requestyModelId"
 	| "openAiModelId"
 	| "litellmModelId"
-	| "vercelAiGatewayModelId"
 	| "apiModelId"
 	| "ollamaModelId"
 	| "lmStudioModelId"

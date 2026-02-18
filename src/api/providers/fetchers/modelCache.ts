@@ -61,13 +61,6 @@ async function fetchModelsFromProvider(options: GetModelsOptions): Promise<Model
 	let models: ModelRecord
 
 	switch (provider) {
-		case "openrouter":
-			models = await getOpenRouterModels()
-			break
-		case "requesty":
-			// Requesty models endpoint requires an API key for per-user custom policies.
-			models = await getRequestyModels(options.baseUrl, options.apiKey)
-			break
 		case "litellm":
 			// Type safety ensures apiKey and baseUrl are always provided for LiteLLM.
 			models = await getLiteLLMModels(options.apiKey, options.baseUrl)
@@ -78,15 +71,6 @@ async function fetchModelsFromProvider(options: GetModelsOptions): Promise<Model
 		case "lmstudio":
 			models = await getLMStudioModels(options.baseUrl)
 			break
-		case "vercel-ai-gateway":
-			models = await getVercelAiGatewayModels()
-			break
-		case "roo": {
-			// Roo Code Cloud provider requires baseUrl and optional apiKey
-			const rooBaseUrl = options.baseUrl ?? process.env.ROO_CODE_PROVIDER_URL ?? "https://api.roocode.com/proxy"
-			models = await getRooModels(rooBaseUrl, options.apiKey)
-			break
-		}
 		default: {
 			// Ensures router is exhaustively checked if RouterName is a strict union.
 			const exhaustiveCheck: never = provider
@@ -225,10 +209,7 @@ export async function initializeModelCacheRefresh(): Promise<void> {
 	// Wait for extension to fully activate before refreshing
 	setTimeout(async () => {
 		// Providers that work without API keys
-		const publicProviders: Array<{ provider: RouterName; options: GetModelsOptions }> = [
-			{ provider: "openrouter", options: { provider: "openrouter" } },
-			{ provider: "vercel-ai-gateway", options: { provider: "vercel-ai-gateway" } },
-		]
+		const publicProviders: Array<{ provider: RouterName; options: GetModelsOptions }> = []
 
 		// Refresh each provider in background (fire and forget)
 		for (const { options } of publicProviders) {

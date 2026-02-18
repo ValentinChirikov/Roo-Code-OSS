@@ -1,4 +1,4 @@
-import { type ModelInfo, type ProviderSettings, ANTHROPIC_DEFAULT_MAX_TOKENS } from "@roo-code/types"
+import { type ModelInfo, type ProviderSettings, DEFAULT_MAX_TOKENS } from "@roo-code/types"
 
 import { getModelMaxOutputTokens, shouldUseReasoningBudget, shouldUseReasoningEffort } from "../api"
 
@@ -8,44 +8,6 @@ describe("getModelMaxOutputTokens", () => {
 		contextWindow: 200000,
 		supportsPromptCache: true,
 	}
-
-	test("should return model maxTokens when maxTokens is within 20% of context window", () => {
-		const settings: ProviderSettings = {
-			apiProvider: "anthropic",
-		}
-
-		// mockModel has maxTokens: 8192 and contextWindow: 200000
-		// 8192 is 4.096% of 200000, which is <= 20%, so it should use model.maxTokens
-		const result = getModelMaxOutputTokens({
-			modelId: "claude-3-5-sonnet-20241022",
-			model: mockModel,
-			settings,
-		})
-
-		expect(result).toBe(8192)
-	})
-
-	test("should handle reasoning budget models correctly", () => {
-		const reasoningModel: ModelInfo = {
-			...mockModel,
-			supportsReasoningBudget: true,
-			requiredReasoningBudget: true,
-		}
-
-		const settings: ProviderSettings = {
-			apiProvider: "anthropic",
-			enableReasoningEffort: true,
-			modelMaxTokens: 32000,
-		}
-
-		const result = getModelMaxOutputTokens({
-			modelId: "claude-3-7-sonnet-20250219",
-			model: reasoningModel,
-			settings,
-		})
-
-		expect(result).toBe(32000)
-	})
 
 	test("should return default of 8192 when maxTokens is undefined", () => {
 		const modelWithoutMaxTokens: ModelInfo = {
@@ -60,42 +22,6 @@ describe("getModelMaxOutputTokens", () => {
 		})
 
 		expect(result).toBe(8192)
-	})
-
-	test("should return ANTHROPIC_DEFAULT_MAX_TOKENS for Anthropic models that support reasoning budget but aren't using it", () => {
-		const anthropicModelId = "claude-sonnet-4-20250514"
-		const model: ModelInfo = {
-			contextWindow: 200_000,
-			supportsPromptCache: true,
-			supportsReasoningBudget: true,
-			maxTokens: 64_000, // This should be ignored
-		}
-
-		const settings: ProviderSettings = {
-			apiProvider: "anthropic",
-			enableReasoningEffort: false, // Not using reasoning
-		}
-
-		const result = getModelMaxOutputTokens({ modelId: anthropicModelId, model, settings })
-		expect(result).toBe(ANTHROPIC_DEFAULT_MAX_TOKENS) // Should be 8192, not 64_000
-	})
-
-	test("should return model.maxTokens for non-Anthropic models that support reasoning budget but aren't using it", () => {
-		const geminiModelId = "gemini-2.5-flash-preview-04-17"
-		const model: ModelInfo = {
-			contextWindow: 1_048_576,
-			supportsPromptCache: false,
-			supportsReasoningBudget: true,
-			maxTokens: 65_535, // 65_535 is ~6.25% of 1_048_576, which is <= 20%
-		}
-
-		const settings: ProviderSettings = {
-			apiProvider: "gemini",
-			enableReasoningEffort: false, // Not using reasoning
-		}
-
-		const result = getModelMaxOutputTokens({ modelId: geminiModelId, model, settings })
-		expect(result).toBe(65_535) // Should use model.maxTokens since it's within 20% threshold
 	})
 
 	test("should clamp maxTokens to 20% of context window when maxTokens exceeds threshold", () => {
@@ -114,26 +40,6 @@ describe("getModelMaxOutputTokens", () => {
 			model,
 			settings,
 			format: "openai",
-		})
-		// Should clamp to 20% of context window: 100_000 * 0.2 = 20_000
-		expect(result).toBe(20_000)
-	})
-
-	test("should clamp maxTokens to 20% of context window for Anthropic models when maxTokens exceeds threshold", () => {
-		const model: ModelInfo = {
-			contextWindow: 100_000,
-			supportsPromptCache: true,
-			maxTokens: 50_000, // 50% of context window, exceeds 20% threshold
-		}
-
-		const settings: ProviderSettings = {
-			apiProvider: "anthropic",
-		}
-
-		const result = getModelMaxOutputTokens({
-			modelId: "claude-3-5-sonnet-20241022",
-			model,
-			settings,
 		})
 		// Should clamp to 20% of context window: 100_000 * 0.2 = 20_000
 		expect(result).toBe(20_000)

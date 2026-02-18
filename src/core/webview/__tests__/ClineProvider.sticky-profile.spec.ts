@@ -325,12 +325,12 @@ describe("ClineProvider - Sticky Provider Profile", () => {
 			vi.spyOn(provider.providerSettingsManager, "activateProfile").mockResolvedValue({
 				name: "new-profile",
 				id: "new-profile-id",
-				apiProvider: "anthropic",
+				apiProvider: "openai",
 			})
 
 			// Mock providerSettingsManager.listConfig
 			vi.spyOn(provider.providerSettingsManager, "listConfig").mockResolvedValue([
-				{ name: "new-profile", id: "new-profile-id", apiProvider: "anthropic" },
+				{ name: "new-profile", id: "new-profile-id", apiProvider: "openai" },
 			])
 
 			// Switch provider profile
@@ -473,7 +473,7 @@ describe("ClineProvider - Sticky Provider Profile", () => {
 
 			// Mock providerSettingsManager.listConfig
 			vi.spyOn(provider.providerSettingsManager, "listConfig").mockResolvedValue([
-				{ name: "saved-profile", id: "saved-profile-id", apiProvider: "anthropic" },
+				{ name: "saved-profile", id: "saved-profile-id", apiProvider: "openai" },
 			])
 
 			// Initialize task with history item
@@ -548,7 +548,7 @@ describe("ClineProvider - Sticky Provider Profile", () => {
 			// Mock providerSettingsManager methods
 			vi.spyOn(provider.providerSettingsManager, "getModeConfigId").mockResolvedValue("mode-config-id")
 			vi.spyOn(provider.providerSettingsManager, "listConfig").mockResolvedValue([
-				{ name: "mode-preferred-profile", id: "mode-config-id", apiProvider: "anthropic" },
+				{ name: "mode-preferred-profile", id: "mode-config-id", apiProvider: "openai" },
 				{ name: "task-specific-profile", id: "task-profile-id", apiProvider: "openai" },
 			])
 
@@ -637,12 +637,12 @@ describe("ClineProvider - Sticky Provider Profile", () => {
 			vi.spyOn(provider.providerSettingsManager, "activateProfile").mockResolvedValue({
 				name: "new-profile",
 				id: "new-profile-id",
-				apiProvider: "anthropic",
+				apiProvider: "openai",
 			})
 
 			// Mock providerSettingsManager.listConfig
 			vi.spyOn(provider.providerSettingsManager, "listConfig").mockResolvedValue([
-				{ name: "new-profile", id: "new-profile-id", apiProvider: "anthropic" },
+				{ name: "new-profile", id: "new-profile-id", apiProvider: "openai" },
 			])
 
 			// Trigger a profile switch
@@ -735,14 +735,14 @@ describe("ClineProvider - Sticky Provider Profile", () => {
 			vi.spyOn(provider.providerSettingsManager, "activateProfile").mockResolvedValue({
 				name: "profile-c",
 				id: "profile-c-id",
-				apiProvider: "anthropic",
+				apiProvider: "openai",
 			})
 
 			// Mock providerSettingsManager.listConfig
 			vi.spyOn(provider.providerSettingsManager, "listConfig").mockResolvedValue([
-				{ name: "profile-a", id: "profile-a-id", apiProvider: "anthropic" },
+				{ name: "profile-a", id: "profile-a-id", apiProvider: "openai" },
 				{ name: "profile-b", id: "profile-b-id", apiProvider: "openai" },
-				{ name: "profile-c", id: "profile-c-id", apiProvider: "anthropic" },
+				{ name: "profile-c", id: "profile-c-id", apiProvider: "openai" },
 			])
 
 			// Switch task 1's profile to profile C
@@ -798,12 +798,12 @@ describe("ClineProvider - Sticky Provider Profile", () => {
 			vi.spyOn(provider.providerSettingsManager, "activateProfile").mockResolvedValue({
 				name: "new-profile",
 				id: "new-profile-id",
-				apiProvider: "anthropic",
+				apiProvider: "openai",
 			})
 
 			// Mock providerSettingsManager.listConfig
 			vi.spyOn(provider.providerSettingsManager, "listConfig").mockResolvedValue([
-				{ name: "new-profile", id: "new-profile-id", apiProvider: "anthropic" },
+				{ name: "new-profile", id: "new-profile-id", apiProvider: "openai" },
 			])
 
 			// Mock log to verify error is logged
@@ -866,7 +866,7 @@ describe("ClineProvider - Sticky Provider Profile", () => {
 
 			// Mock providerSettingsManager.listConfig to return the profile
 			vi.spyOn(provider.providerSettingsManager, "listConfig").mockResolvedValue([
-				{ name: "failing-profile", id: "failing-profile-id", apiProvider: "anthropic" },
+				{ name: "failing-profile", id: "failing-profile-id", apiProvider: "openai" },
 			])
 
 			// Mock activateProviderProfile to throw error

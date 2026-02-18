@@ -876,7 +876,7 @@ describe("ClineProvider", () => {
 		await provider.resolveWebviewView(mockWebviewView)
 		const messageHandler = (mockWebviewView.webview.onDidReceiveMessage as any).mock.calls[0][0]
 
-		const profile: ProviderSettingsEntry = { name: "test-config", id: "test-id", apiProvider: "anthropic" }
+		const profile: ProviderSettingsEntry = { name: "test-config", id: "test-id", apiProvider: "openai" }
 
 		;(provider as any).providerSettingsManager = {
 			getModeConfigId: vi.fn().mockResolvedValue("test-id"),
@@ -903,7 +903,7 @@ describe("ClineProvider", () => {
 			getModeConfigId: vi.fn().mockResolvedValue(undefined),
 			listConfig: vi
 				.fn()
-				.mockResolvedValue([{ name: "current-config", id: "current-id", apiProvider: "anthropic" }]),
+				.mockResolvedValue([{ name: "current-config", id: "current-id", apiProvider: "openai" }]),
 			setModeConfig: vi.fn(),
 		} as any
 
@@ -920,7 +920,7 @@ describe("ClineProvider", () => {
 		await provider.resolveWebviewView(mockWebviewView)
 		const messageHandler = (mockWebviewView.webview.onDidReceiveMessage as any).mock.calls[0][0]
 
-		const profile: ProviderSettingsEntry = { apiProvider: "anthropic", id: "new-id", name: "new-config" }
+		const profile: ProviderSettingsEntry = { apiProvider: "openai", id: "new-id", name: "new-config" }
 
 		;(provider as any).providerSettingsManager = {
 			activateProfile: vi.fn().mockResolvedValue(profile),
@@ -946,7 +946,7 @@ describe("ClineProvider", () => {
 		const profile: ProviderSettingsEntry = {
 			name: "config-by-id",
 			id: "config-id-123",
-			apiProvider: "anthropic",
+			apiProvider: "openai",
 		}
 
 		;(provider as any).providerSettingsManager = {
@@ -1120,7 +1120,7 @@ describe("ClineProvider", () => {
 		const messageHandler = (mockWebviewView.webview.onDidReceiveMessage as any).mock.calls[0][0]
 
 		;(provider as any).providerSettingsManager = {
-			listConfig: vi.fn().mockResolvedValue([{ name: "test-config", id: "test-id", apiProvider: "anthropic" }]),
+			listConfig: vi.fn().mockResolvedValue([{ name: "test-config", id: "test-id", apiProvider: "openai" }]),
 			saveConfig: vi.fn().mockResolvedValue("test-id"),
 			setModeConfig: vi.fn(),
 		} as any
@@ -1129,7 +1129,7 @@ describe("ClineProvider", () => {
 		await messageHandler({
 			type: "upsertApiConfiguration",
 			text: "test-config",
-			apiConfiguration: { apiProvider: "anthropic" },
+			apiConfiguration: { apiProvider: "openai" },
 		})
 
 		// Should save config as default for current mode
@@ -1462,7 +1462,7 @@ describe("ClineProvider", () => {
 			const profile: ProviderSettingsEntry = {
 				name: "saved-config",
 				id: "saved-config-id",
-				apiProvider: "anthropic",
+				apiProvider: "openai",
 			}
 
 			;(provider as any).providerSettingsManager = {
@@ -1493,7 +1493,7 @@ describe("ClineProvider", () => {
 				getModeConfigId: vi.fn().mockResolvedValue(undefined),
 				listConfig: vi
 					.fn()
-					.mockResolvedValue([{ name: "current-config", id: "current-id", apiProvider: "anthropic" }]),
+					.mockResolvedValue([{ name: "current-config", id: "current-id", apiProvider: "openai" }]),
 				setModeConfig: vi.fn(),
 			} as any
 
@@ -1617,10 +1617,10 @@ describe("ClineProvider", () => {
 				getModeConfigId: vi.fn().mockResolvedValue("config-id"),
 				listConfig: vi
 					.fn()
-					.mockResolvedValue([{ name: "test-config", id: "config-id", apiProvider: "anthropic" }]),
+					.mockResolvedValue([{ name: "test-config", id: "config-id", apiProvider: "openai" }]),
 				activateProfile: vi
 					.fn()
-					.mockResolvedValue({ name: "test-config", id: "config-id", apiProvider: "anthropic" }),
+					.mockResolvedValue({ name: "test-config", id: "config-id", apiProvider: "openai" }),
 			}
 
 			// Spy on log method to verify no warning was logged
@@ -1752,7 +1752,7 @@ describe("ClineProvider", () => {
 				getModeConfigId: vi.fn().mockResolvedValue("config-id"),
 				listConfig: vi
 					.fn()
-					.mockResolvedValue([{ name: "test-config", id: "config-id", apiProvider: "anthropic" }]),
+					.mockResolvedValue([{ name: "test-config", id: "config-id", apiProvider: "openai" }]),
 				activateProfile: vi.fn().mockRejectedValue(new Error("Failed to load config")),
 			}
 
@@ -1850,9 +1850,7 @@ describe("ClineProvider", () => {
 
 			;(provider as any).providerSettingsManager = {
 				setModeConfig: vi.fn().mockRejectedValue(new Error("Failed to update mode config")),
-				listConfig: vi
-					.fn()
-					.mockResolvedValue([{ name: "test-config", id: "test-id", apiProvider: "anthropic" }]),
+				listConfig: vi.fn().mockResolvedValue([{ name: "test-config", id: "test-id", apiProvider: "openai" }]),
 			} as any
 
 			// Mock getState to provide necessary data
@@ -1865,7 +1863,7 @@ describe("ClineProvider", () => {
 			await messageHandler({
 				type: "upsertApiConfiguration",
 				text: "test-config",
-				apiConfiguration: { apiProvider: "anthropic", apiKey: "test-key" },
+				apiConfiguration: { apiProvider: "openai", apiKey: "test-key" },
 			})
 
 			// Verify error was logged and user was notified
@@ -1882,13 +1880,11 @@ describe("ClineProvider", () => {
 			;(provider as any).providerSettingsManager = {
 				setModeConfig: vi.fn(),
 				saveConfig: vi.fn().mockResolvedValue(undefined),
-				listConfig: vi
-					.fn()
-					.mockResolvedValue([{ name: "test-config", id: "test-id", apiProvider: "anthropic" }]),
+				listConfig: vi.fn().mockResolvedValue([{ name: "test-config", id: "test-id", apiProvider: "openai" }]),
 			} as any
 
 			const testApiConfig = {
-				apiProvider: "anthropic" as const,
+				apiProvider: "openai" as const,
 				apiKey: "test-key",
 			}
 
@@ -1904,7 +1900,7 @@ describe("ClineProvider", () => {
 
 			// Verify state updates
 			expect(mockContext.globalState.update).toHaveBeenCalledWith("listApiConfigMeta", [
-				{ name: "test-config", id: "test-id", apiProvider: "anthropic" },
+				{ name: "test-config", id: "test-id", apiProvider: "openai" },
 			])
 			expect(mockContext.globalState.update).toHaveBeenCalledWith("currentApiConfigName", "test-config")
 
@@ -1925,9 +1921,7 @@ describe("ClineProvider", () => {
 			;(provider as any).providerSettingsManager = {
 				setModeConfig: vi.fn(),
 				saveConfig: vi.fn().mockResolvedValue(undefined),
-				listConfig: vi
-					.fn()
-					.mockResolvedValue([{ name: "test-config", id: "test-id", apiProvider: "anthropic" }]),
+				listConfig: vi.fn().mockResolvedValue([{ name: "test-config", id: "test-id", apiProvider: "openai" }]),
 			} as any
 
 			// Setup Task instance with auto-mock from the top of the file
@@ -1935,7 +1929,7 @@ describe("ClineProvider", () => {
 			await provider.addClineToStack(mockCline)
 
 			const testApiConfig = {
-				apiProvider: "anthropic" as const,
+				apiProvider: "openai" as const,
 				apiKey: "test-key",
 			}
 
@@ -1954,7 +1948,7 @@ describe("ClineProvider", () => {
 
 			// Verify state was still updated
 			expect(mockContext.globalState.update).toHaveBeenCalledWith("listApiConfigMeta", [
-				{ name: "test-config", id: "test-id", apiProvider: "anthropic" },
+				{ name: "test-config", id: "test-id", apiProvider: "openai" },
 			])
 			expect(mockContext.globalState.update).toHaveBeenCalledWith("currentApiConfigName", "test-config")
 		})
@@ -1966,13 +1960,11 @@ describe("ClineProvider", () => {
 			;(provider as any).providerSettingsManager = {
 				setModeConfig: vi.fn(),
 				saveConfig: vi.fn().mockResolvedValue(undefined),
-				listConfig: vi
-					.fn()
-					.mockResolvedValue([{ name: "test-config", id: "test-id", apiProvider: "anthropic" }]),
+				listConfig: vi.fn().mockResolvedValue([{ name: "test-config", id: "test-id", apiProvider: "openai" }]),
 			} as any
 
 			const testApiConfig = {
-				apiProvider: "anthropic" as const,
+				apiProvider: "openai" as const,
 				apiKey: "test-key",
 			}
 
@@ -1988,10 +1980,10 @@ describe("ClineProvider", () => {
 
 			// Verify state updates
 			expect(mockContext.globalState.update).toHaveBeenCalledWith("listApiConfigMeta", [
-				{ name: "test-config", id: "test-id", apiProvider: "anthropic" },
+				{ name: "test-config", id: "test-id", apiProvider: "openai" },
 			])
 			expect(updateGlobalStateSpy).toHaveBeenCalledWith("listApiConfigMeta", [
-				{ name: "test-config", id: "test-id", apiProvider: "anthropic" },
+				{ name: "test-config", id: "test-id", apiProvider: "openai" },
 			])
 		})
 	})
@@ -2471,15 +2463,6 @@ describe("ClineProvider - Router Models", () => {
 		await messageHandler({ type: "requestRouterModels" })
 
 		// Verify getModels was called for each provider with correct options
-		expect(getModels).toHaveBeenCalledWith({ provider: "openrouter" })
-		expect(getModels).toHaveBeenCalledWith({ provider: "requesty", apiKey: "requesty-key" })
-		expect(getModels).toHaveBeenCalledWith({ provider: "vercel-ai-gateway" })
-		expect(getModels).toHaveBeenCalledWith(
-			expect.objectContaining({
-				provider: "roo",
-				baseUrl: expect.any(String),
-			}),
-		)
 		expect(getModels).toHaveBeenCalledWith({
 			provider: "litellm",
 			apiKey: "litellm-key",
@@ -2490,9 +2473,6 @@ describe("ClineProvider - Router Models", () => {
 		expect(mockPostMessage).toHaveBeenCalledWith({
 			type: "routerModels",
 			routerModels: {
-				openrouter: mockModels,
-				requesty: mockModels,
-				roo: mockModels,
 				litellm: mockModels,
 				ollama: {},
 				lmstudio: {},
@@ -2543,14 +2523,6 @@ describe("ClineProvider - Router Models", () => {
 				"vercel-ai-gateway": mockModels,
 			},
 			values: undefined,
-		})
-
-		// Verify error messages were sent for failed providers
-		expect(mockPostMessage).toHaveBeenCalledWith({
-			type: "singleRouterModelFetchResponse",
-			success: false,
-			error: "Requesty API error",
-			values: { provider: "requesty" },
 		})
 
 		expect(mockPostMessage).toHaveBeenCalledWith({

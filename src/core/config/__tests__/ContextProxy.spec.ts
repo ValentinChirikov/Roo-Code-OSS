@@ -315,7 +315,7 @@ describe("ContextProxy", () => {
 			// Call setProviderSettings with new configuration
 			await proxy.setProviderSettings({
 				apiModelId: "new-model",
-				apiProvider: "anthropic",
+				apiProvider: "openai",
 				// Note: openAiBaseUrl is not included in the new config
 			})
 
@@ -325,7 +325,7 @@ describe("ContextProxy", () => {
 			expect(setValuesSpy).toHaveBeenCalledWith(
 				expect.objectContaining({
 					apiModelId: "new-model",
-					apiProvider: "anthropic",
+					apiProvider: "openai",
 					openAiBaseUrl: undefined,
 					modelTemperature: undefined,
 				}),
@@ -535,13 +535,13 @@ describe("ContextProxy", () => {
 		it("should pass through valid apiProvider", async () => {
 			// Set a valid provider in state
 			await proxy.updateGlobalState("apiProvider", "anthropic")
-			await proxy.updateGlobalState("apiModelId", "claude-3-opus-20240229")
+			await proxy.updateGlobalState("apiModelId", "gpt-oss-20b")
 
 			const settings = proxy.getProviderSettings()
 
 			// Valid provider should be returned
 			expect(settings.apiProvider).toBe("anthropic")
-			expect(settings.apiModelId).toBe("claude-3-opus-20240229")
+			expect(settings.apiModelId).toBe("gpt-oss-20b")
 		})
 
 		it("should handle undefined apiProvider gracefully", async () => {

@@ -14,7 +14,7 @@ describe("ContextWindowProgress Logic", () => {
 		const result = calculateTokenDistribution(contextWindow, contextTokens)
 
 		// Expected calculations:
-		// reservedForOutput = 8192 (ANTHROPIC_DEFAULT_MAX_TOKENS)
+		// reservedForOutput = 8192 (DEFAULT_MAX_TOKENS)
 		// availableSize = 10000 - 1000 - 8192 = 808
 		// total = 1000 + 8192 + 808 = 10000
 		expect(result.reservedForOutput).toBe(8192)
@@ -41,7 +41,7 @@ describe("ContextWindowProgress Logic", () => {
 		const customResult = calculateTokenDistribution(contextWindow, contextTokens, customMaxTokens)
 
 		// VERIFY MAXTOKEN PROP EFFECT: Custom maxTokens should be used directly instead of 8192 calculation
-		const defaultReserved = 8192 // ANTHROPIC_DEFAULT_MAX_TOKENS
+		const defaultReserved = 8192 // DEFAULT_MAX_TOKENS
 		expect(defaultResult.reservedForOutput).toBe(defaultReserved)
 		expect(customResult.reservedForOutput).toBe(customMaxTokens) // Should use exact provided value
 
@@ -73,7 +73,7 @@ describe("ContextWindowProgress Logic", () => {
 
 		// Expected calculations:
 		// safeContextTokens = Math.max(0, -500) = 0
-		// reservedForOutput = 8192 (ANTHROPIC_DEFAULT_MAX_TOKENS)
+		// reservedForOutput = 8192 (DEFAULT_MAX_TOKENS)
 		// availableSize = 10000 - 0 - 8192 = 1808
 		// total = 0 + 8192 + 1808 = 10000
 		expect(result.currentPercent).toBeCloseTo(0) // 0/10000 * 100 = 0%
@@ -87,8 +87,8 @@ describe("ContextWindowProgress Logic", () => {
 
 		const result = calculateTokenDistribution(contextWindow, contextTokens)
 
-		// With zero context window, the function uses ANTHROPIC_DEFAULT_MAX_TOKENS but available size becomes 0
-		expect(result.reservedForOutput).toBe(8192) // ANTHROPIC_DEFAULT_MAX_TOKENS
+		// With zero context window, the function uses DEFAULT_MAX_TOKENS but available size becomes 0
+		expect(result.reservedForOutput).toBe(8192) // DEFAULT_MAX_TOKENS
 		expect(result.availableSize).toBe(0) // max(0, 0 - 1000 - 8192) = 0
 
 		// The percentages maintain total of 100% even with zero context window
@@ -104,7 +104,7 @@ describe("ContextWindowProgress Logic", () => {
 		const result = calculateTokenDistribution(contextWindow, contextTokens)
 
 		// Expected calculations:
-		// reservedForOutput = 8192 (ANTHROPIC_DEFAULT_MAX_TOKENS)
+		// reservedForOutput = 8192 (DEFAULT_MAX_TOKENS)
 		// availableSize = Math.max(0, 10000 - 12000 - 8192) = 0
 		expect(result.reservedForOutput).toBe(8192)
 		expect(result.availableSize).toBe(0)

@@ -24,8 +24,8 @@ vi.mock("@/components/ui/hooks/useRooPortal", () => ({
 vi.mock("@/context/ExtensionStateContext", () => ({
 	useExtensionState: () => ({
 		apiConfiguration: {
-			apiProvider: "anthropic",
-			apiModelId: "claude-3-opus-20240229",
+			apiProvider: "openai",
+			apiModelId: "gpt-oss-20b",
 		},
 	}),
 }))
@@ -66,7 +66,7 @@ describe("ApiConfigSelector", () => {
 		title: "API Config",
 		onChange: mockOnChange,
 		listApiConfigMeta: [
-			{ id: "config1", name: "Config 1", modelId: "claude-3-opus-20240229" },
+			{ id: "config1", name: "Config 1", modelId: "gpt-oss-20b" },
 			{ id: "config2", name: "Config 2", modelId: "gpt-4" },
 			{ id: "config3", name: "Config 3", modelId: "claude-3-sonnet-20240229" },
 		],
@@ -127,7 +127,7 @@ describe("ApiConfigSelector", () => {
 		const props = {
 			...defaultProps,
 			listApiConfigMeta: [
-				{ id: "config1", name: "Config 1", modelId: "claude-3-opus-20240229" },
+				{ id: "config1", name: "Config 1", modelId: "gpt-oss-20b" },
 				{ id: "config2", name: "Config 2", modelId: "gpt-4" },
 				{ id: "config3", name: "Config 3", modelId: "claude-3-sonnet-20240229" },
 				{ id: "config4", name: "Config 4", modelId: "gpt-3.5-turbo" },
@@ -161,7 +161,7 @@ describe("ApiConfigSelector", () => {
 		const props = {
 			...defaultProps,
 			listApiConfigMeta: [
-				{ id: "config1", name: "Config 1", modelId: "claude-3-opus-20240229" },
+				{ id: "config1", name: "Config 1", modelId: "gpt-oss-20b" },
 				{ id: "config2", name: "Config 2", modelId: "gpt-4" },
 				{ id: "config3", name: "Config 3", modelId: "claude-3-sonnet-20240229" },
 				{ id: "config4", name: "Config 4", modelId: "gpt-3.5-turbo" },
@@ -191,7 +191,7 @@ describe("ApiConfigSelector", () => {
 		const props = {
 			...defaultProps,
 			listApiConfigMeta: [
-				{ id: "config1", name: "Config 1", modelId: "claude-3-opus-20240229" },
+				{ id: "config1", name: "Config 1", modelId: "gpt-oss-20b" },
 				{ id: "config2", name: "Config 2", modelId: "gpt-4" },
 				{ id: "config3", name: "Config 3", modelId: "claude-3-sonnet-20240229" },
 				{ id: "config4", name: "Config 4", modelId: "gpt-3.5-turbo" },
@@ -217,7 +217,7 @@ describe("ApiConfigSelector", () => {
 		const props = {
 			...defaultProps,
 			listApiConfigMeta: [
-				{ id: "config1", name: "Config 1", modelId: "claude-3-opus-20240229" },
+				{ id: "config1", name: "Config 1", modelId: "gpt-oss-20b" },
 				{ id: "config2", name: "Config 2", modelId: "gpt-4" },
 				{ id: "config3", name: "Config 3", modelId: "claude-3-sonnet-20240229" },
 				{ id: "config4", name: "Config 4", modelId: "gpt-3.5-turbo" },
@@ -353,7 +353,7 @@ describe("ApiConfigSelector", () => {
 		const props = {
 			...defaultProps,
 			listApiConfigMeta: [
-				{ id: "config1", name: "Config 1", modelId: "claude-3-opus-20240229" },
+				{ id: "config1", name: "Config 1", modelId: "gpt-oss-20b" },
 				{ id: "config2", name: "Config 2", modelId: "gpt-4" },
 				{ id: "config3", name: "Config 3", modelId: "claude-3-sonnet-20240229" },
 				{ id: "config4", name: "Config 4", modelId: "gpt-3.5-turbo" },
@@ -410,7 +410,7 @@ describe("ApiConfigSelector", () => {
 		const props = {
 			...defaultProps,
 			listApiConfigMeta: [
-				{ id: "config1", name: "Config 1", modelId: "claude-3-opus-20240229" },
+				{ id: "config1", name: "Config 1", modelId: "gpt-oss-20b" },
 				{ id: "config2", name: "Config 2", modelId: "gpt-4" },
 				{ id: "config3", name: "Config 3", modelId: "claude-3-sonnet-20240229" },
 				{ id: "config4", name: "Config 4", modelId: "gpt-3.5-turbo" },

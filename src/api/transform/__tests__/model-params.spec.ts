@@ -1,6 +1,6 @@
 // npx vitest run api/transform/__tests__/model-params.spec.ts
 
-import { type ModelInfo, ANTHROPIC_DEFAULT_MAX_TOKENS } from "@roo-code/types"
+import { type ModelInfo, DEFAULT_MAX_TOKENS } from "@roo-code/types"
 
 import { getModelParams } from "../model-params"
 import {
@@ -43,7 +43,7 @@ describe("getModelParams", () => {
 
 			expect(result).toEqual({
 				format: anthropicParams.format,
-				maxTokens: ANTHROPIC_DEFAULT_MAX_TOKENS,
+				maxTokens: DEFAULT_MAX_TOKENS,
 				temperature: 0.5,
 				reasoningEffort: undefined,
 				reasoningBudget: undefined,
@@ -72,7 +72,7 @@ describe("getModelParams", () => {
 
 			expect(result).toEqual({
 				format: anthropicParams.format,
-				maxTokens: ANTHROPIC_DEFAULT_MAX_TOKENS,
+				maxTokens: DEFAULT_MAX_TOKENS,
 				temperature: 0.7,
 				reasoningEffort: undefined,
 				reasoningBudget: undefined,
@@ -146,7 +146,7 @@ describe("getModelParams", () => {
 			}
 
 			const result = getModelParams({ ...anthropicParams, settings: {}, model })
-			expect(result.maxTokens).toBe(ANTHROPIC_DEFAULT_MAX_TOKENS)
+			expect(result.maxTokens).toBe(DEFAULT_MAX_TOKENS)
 		})
 	})
 
@@ -181,17 +181,17 @@ describe("getModelParams", () => {
 			expect(result.format).toBe("openrouter")
 		})
 
-		it("should use ANTHROPIC_DEFAULT_MAX_TOKENS for anthropic format when no maxTokens", () => {
+		it("should use DEFAULT_MAX_TOKENS for anthropic format when no maxTokens", () => {
 			const result = getModelParams({
 				...anthropicParams,
 				settings: {},
 				model: baseModel,
 			})
 
-			expect(result.maxTokens).toBe(ANTHROPIC_DEFAULT_MAX_TOKENS)
+			expect(result.maxTokens).toBe(DEFAULT_MAX_TOKENS)
 		})
 
-		it("should use ANTHROPIC_DEFAULT_MAX_TOKENS for openrouter with anthropic model", () => {
+		it("should use DEFAULT_MAX_TOKENS for openrouter with anthropic model", () => {
 			const result = getModelParams({
 				modelId: "anthropic/claude-3-sonnet",
 				format: "openrouter" as const,
@@ -200,7 +200,7 @@ describe("getModelParams", () => {
 				defaultTemperature: 0,
 			})
 
-			expect(result.maxTokens).toBe(ANTHROPIC_DEFAULT_MAX_TOKENS)
+			expect(result.maxTokens).toBe(DEFAULT_MAX_TOKENS)
 		})
 
 		it("should not force maxTokens for openai format", () => {
@@ -699,7 +699,7 @@ describe("getModelParams", () => {
 			supportsReasoningBudget: true,
 		}
 
-		it("should use ANTHROPIC_DEFAULT_MAX_TOKENS for hybrid models when not using reasoning", () => {
+		it("should use DEFAULT_MAX_TOKENS for hybrid models when not using reasoning", () => {
 			const result = getModelParams({
 				...anthropicParams,
 				settings: {},
@@ -707,8 +707,8 @@ describe("getModelParams", () => {
 			})
 
 			// For hybrid models (supportsReasoningBudget) in Anthropic contexts,
-			// should discard model's maxTokens and use ANTHROPIC_DEFAULT_MAX_TOKENS
-			expect(result.maxTokens).toBe(ANTHROPIC_DEFAULT_MAX_TOKENS)
+			// should discard model's maxTokens and use DEFAULT_MAX_TOKENS
+			expect(result.maxTokens).toBe(DEFAULT_MAX_TOKENS)
 			expect(result.reasoningBudget).toBeUndefined()
 		})
 
@@ -757,7 +757,7 @@ describe("getModelParams", () => {
 				model,
 			})
 
-			expect(result.maxTokens).toBe(ANTHROPIC_DEFAULT_MAX_TOKENS) // Should fallback for anthropic
+			expect(result.maxTokens).toBe(DEFAULT_MAX_TOKENS) // Should fallback for anthropic
 		})
 
 		it("should handle very small maxTokens for reasoning budget models", () => {
@@ -784,7 +784,7 @@ describe("getModelParams", () => {
 			})
 
 			expect(result.temperature).toBe(0)
-			expect(result.maxTokens).toBe(ANTHROPIC_DEFAULT_MAX_TOKENS)
+			expect(result.maxTokens).toBe(DEFAULT_MAX_TOKENS)
 		})
 
 		it("should handle all reasoning effort values", () => {

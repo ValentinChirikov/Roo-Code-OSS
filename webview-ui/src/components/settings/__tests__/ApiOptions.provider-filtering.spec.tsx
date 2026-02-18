@@ -103,7 +103,7 @@ describe("ApiOptions Provider Filtering", () => {
 	const defaultProps = {
 		uriScheme: "vscode",
 		apiConfiguration: {
-			apiProvider: "anthropic",
+			apiProvider: "openai",
 			apiKey: "test-key",
 		} as ProviderSettings,
 		setApiConfigurationField: vi.fn(),
@@ -163,30 +163,16 @@ describe("ApiOptions Provider Filtering", () => {
 		const providerValues = options.map((opt: any) => opt.value)
 
 		// Dynamic providers (not in MODELS_BY_PROVIDER) should always be shown
-		expect(providerValues).toContain("openrouter")
 		expect(providerValues).toContain("ollama")
 		expect(providerValues).toContain("lmstudio")
 		expect(providerValues).toContain("litellm")
-		expect(providerValues).toContain("requesty")
 	})
 
 	it("should filter static providers based on organization allow list", () => {
 		// Create a mock organization allow list that only allows certain models
 		const allowList: OrganizationAllowList = {
 			allowAll: false,
-			providers: {
-				anthropic: {
-					allowAll: false,
-					models: ["claude-3-5-sonnet-20241022"], // Only allow one model
-				},
-				gemini: {
-					allowAll: false,
-					models: [], // No models allowed
-				},
-				openrouter: {
-					allowAll: true, // Dynamic provider with all models allowed
-				},
-			},
+			providers: {},
 		}
 
 		// Mock the extension state with the allow list
@@ -201,18 +187,8 @@ describe("ApiOptions Provider Filtering", () => {
 		const options = JSON.parse(selectElement.getAttribute("data-options") || "[]")
 		const providerValues = options.map((opt: any) => opt.value)
 
-		// Should include anthropic (has allowed models)
-		expect(providerValues).toContain("anthropic")
-
-		// Should NOT include gemini (no allowed models)
-		expect(providerValues).not.toContain("gemini")
-
-		// Should include openrouter (dynamic provider)
-		expect(providerValues).toContain("openrouter")
-
 		// Should NOT include providers not in the allow list
 		expect(providerValues).not.toContain("openai-native")
-		expect(providerValues).not.toContain("mistral")
 	})
 
 	it("should show static provider when allowAll is true for that provider", () => {

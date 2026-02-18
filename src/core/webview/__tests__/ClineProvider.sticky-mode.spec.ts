@@ -691,7 +691,7 @@ describe("ClineProvider - Sticky Mode", () => {
 
 		it("should restore API configuration when restoring task from history with mode", async () => {
 			// Setup: Configure different API configs for different modes
-			const codeApiConfig = { apiProvider: "anthropic" as ProviderName, anthropicApiKey: "code-key" }
+			const codeApiConfig = { apiProvider: "openai" as ProviderName, anthropicApiKey: "code-key" }
 			const architectApiConfig = { apiProvider: "openai" as ProviderName, openAiApiKey: "architect-key" }
 
 			// Save API configs

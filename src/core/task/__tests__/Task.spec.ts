@@ -274,7 +274,7 @@ describe("Cline", () => {
 
 		// Setup mock API configuration
 		mockApiConfig = {
-			apiProvider: "anthropic",
+			apiProvider: "openai",
 			apiModelId: "claude-3-5-sonnet-20241022",
 			apiKey: "test-api-key", // Add API key to mock config
 		}
@@ -955,7 +955,7 @@ describe("Cline", () => {
 				Task.resetGlobalApiRequestTime()
 
 				mockApiConfig = {
-					apiProvider: "anthropic",
+					apiProvider: "openai",
 					apiKey: "test-key",
 					rateLimitSeconds: 5,
 				}
@@ -1333,7 +1333,7 @@ describe("Cline", () => {
 				vi.clearAllMocks()
 
 				mockApiConfig = {
-					apiProvider: "anthropic",
+					apiProvider: "openai",
 					apiKey: "test-key",
 				}
 
@@ -1383,73 +1383,6 @@ describe("Cline", () => {
 		})
 
 		describe("getApiProtocol", () => {
-			it("should determine API protocol based on provider and model", async () => {
-				// Test with Anthropic provider
-				const anthropicConfig = {
-					...mockApiConfig,
-					apiProvider: "anthropic" as const,
-					apiModelId: "gpt-4",
-				}
-				const anthropicTask = new Task({
-					provider: mockProvider,
-					apiConfiguration: anthropicConfig,
-					task: "test task",
-					startTask: false,
-				})
-				// Should use anthropic protocol even with non-claude model
-				expect(anthropicTask.apiConfiguration.apiProvider).toBe("anthropic")
-
-				// Test with OpenRouter provider and Claude model
-				const openrouterClaudeConfig = {
-					apiProvider: "openrouter" as const,
-					openRouterModelId: "anthropic/claude-3-opus",
-				}
-				const openrouterClaudeTask = new Task({
-					provider: mockProvider,
-					apiConfiguration: openrouterClaudeConfig,
-					task: "test task",
-					startTask: false,
-				})
-				expect(openrouterClaudeTask.apiConfiguration.apiProvider).toBe("openrouter")
-
-				// Test with OpenRouter provider and non-Claude model
-				const openrouterGptConfig = {
-					apiProvider: "openrouter" as const,
-					openRouterModelId: "openai/gpt-4",
-				}
-				const openrouterGptTask = new Task({
-					provider: mockProvider,
-					apiConfiguration: openrouterGptConfig,
-					task: "test task",
-					startTask: false,
-				})
-				expect(openrouterGptTask.apiConfiguration.apiProvider).toBe("openrouter")
-
-				// Test with various Claude model formats
-				const claudeModelFormats = [
-					"claude-3-opus",
-					"Claude-3-Sonnet",
-					"CLAUDE-instant",
-					"anthropic/claude-3-haiku",
-					"some-provider/claude-model",
-				]
-
-				for (const modelId of claudeModelFormats) {
-					const config = {
-						apiProvider: "openai" as const,
-						openAiModelId: modelId,
-					}
-					const task = new Task({
-						provider: mockProvider,
-						apiConfiguration: config,
-						task: "test task",
-						startTask: false,
-					})
-					// Verify the model ID contains claude (case-insensitive)
-					expect(modelId.toLowerCase()).toContain("claude")
-				}
-			})
-
 			it("should handle edge cases for API protocol detection", async () => {
 				// Test with undefined provider
 				const undefinedProviderConfig = {
@@ -1906,7 +1839,7 @@ describe("Queued message processing after condense", () => {
 	}
 
 	const apiConfig: ProviderSettings = {
-		apiProvider: "anthropic",
+		apiProvider: "openai",
 		apiModelId: "claude-3-5-sonnet-20241022",
 		apiKey: "test-api-key",
 	} as any
@@ -1992,7 +1925,7 @@ describe("pushToolResultToUserContent", () => {
 
 	beforeEach(() => {
 		mockApiConfig = {
-			apiProvider: "anthropic",
+			apiProvider: "openai",
 			apiModelId: "claude-3-5-sonnet-20241022",
 			apiKey: "test-api-key",
 		}

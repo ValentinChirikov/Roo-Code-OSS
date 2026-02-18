@@ -32,3 +32,6 @@ export * from "./vscode.js"
 export * from "./worktree.js"
 
 export * from "./providers/index.js"
+
+export const DEFAULT_MAX_TOKENS = 8192
+export const DEEP_SEEK_DEFAULT_TEMPERATURE = 0.3

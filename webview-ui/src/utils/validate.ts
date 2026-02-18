@@ -38,48 +38,13 @@ export function validateApiConfiguration(
 
 function validateModelsAndKeysProvided(apiConfiguration: ProviderSettings): string | undefined {
 	switch (apiConfiguration.apiProvider) {
-		case "openrouter":
-			if (!apiConfiguration.openRouterApiKey) {
-				return i18next.t("settings:validation.apiKey")
-			}
-			break
-		case "requesty":
-			if (!apiConfiguration.requestyApiKey) {
-				return i18next.t("settings:validation.apiKey")
-			}
-			break
 		case "litellm":
 			if (!apiConfiguration.litellmApiKey) {
 				return i18next.t("settings:validation.apiKey")
 			}
 			break
-		case "anthropic":
-			if (!apiConfiguration.apiKey) {
-				return i18next.t("settings:validation.apiKey")
-			}
-			break
-		case "bedrock":
-			if (!apiConfiguration.awsRegion) {
-				return i18next.t("settings:validation.awsRegion")
-			}
-			break
-		case "vertex":
-			if (!apiConfiguration.vertexProjectId || !apiConfiguration.vertexRegion) {
-				return i18next.t("settings:validation.googleCloud")
-			}
-			break
-		case "gemini":
-			if (!apiConfiguration.geminiApiKey) {
-				return i18next.t("settings:validation.apiKey")
-			}
-			break
 		case "openai-native":
 			if (!apiConfiguration.openAiNativeApiKey) {
-				return i18next.t("settings:validation.apiKey")
-			}
-			break
-		case "mistral":
-			if (!apiConfiguration.mistralApiKey) {
 				return i18next.t("settings:validation.apiKey")
 			}
 			break
@@ -101,26 +66,6 @@ function validateModelsAndKeysProvided(apiConfiguration: ProviderSettings): stri
 		case "vscode-lm":
 			if (!apiConfiguration.vsCodeLmModelSelector) {
 				return i18next.t("settings:validation.modelSelector")
-			}
-			break
-		case "fireworks":
-			if (!apiConfiguration.fireworksApiKey) {
-				return i18next.t("settings:validation.apiKey")
-			}
-			break
-		case "qwen-code":
-			if (!apiConfiguration.qwenCodeOauthPath) {
-				return i18next.t("settings:validation.qwenCodeOauthPath")
-			}
-			break
-		case "vercel-ai-gateway":
-			if (!apiConfiguration.vercelAiGatewayApiKey) {
-				return i18next.t("settings:validation.apiKey")
-			}
-			break
-		case "baseten":
-			if (!apiConfiguration.basetenApiKey) {
-				return i18next.t("settings:validation.apiKey")
 			}
 			break
 	}

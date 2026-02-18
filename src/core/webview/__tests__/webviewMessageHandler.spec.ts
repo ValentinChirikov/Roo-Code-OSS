@@ -294,15 +294,6 @@ describe("webviewMessageHandler - requestRouterModels", () => {
 		})
 
 		// Verify getModels was called for each provider
-		expect(mockGetModels).toHaveBeenCalledWith({ provider: "openrouter" })
-		expect(mockGetModels).toHaveBeenCalledWith({ provider: "requesty", apiKey: "requesty-key" })
-		expect(mockGetModels).toHaveBeenCalledWith({ provider: "vercel-ai-gateway" })
-		expect(mockGetModels).toHaveBeenCalledWith(
-			expect.objectContaining({
-				provider: "roo",
-				baseUrl: expect.any(String),
-			}),
-		)
 		expect(mockGetModels).toHaveBeenCalledWith({
 			provider: "litellm",
 			apiKey: "litellm-key",
@@ -313,13 +304,9 @@ describe("webviewMessageHandler - requestRouterModels", () => {
 		expect(mockClineProvider.postMessageToWebview).toHaveBeenCalledWith({
 			type: "routerModels",
 			routerModels: {
-				openrouter: mockModels,
-				requesty: mockModels,
 				litellm: mockModels,
-				roo: mockModels,
 				ollama: {},
 				lmstudio: {},
-				"vercel-ai-gateway": mockModels,
 			},
 			values: undefined,
 		})
@@ -431,14 +418,6 @@ describe("webviewMessageHandler - requestRouterModels", () => {
 			type: "requestRouterModels",
 		})
 
-		// Verify error messages were sent for failed providers (these come first)
-		expect(mockClineProvider.postMessageToWebview).toHaveBeenCalledWith({
-			type: "singleRouterModelFetchResponse",
-			success: false,
-			error: "Requesty API error",
-			values: { provider: "requesty" },
-		})
-
 		expect(mockClineProvider.postMessageToWebview).toHaveBeenCalledWith({
 			type: "singleRouterModelFetchResponse",
 			success: false,
@@ -476,33 +455,6 @@ describe("webviewMessageHandler - requestRouterModels", () => {
 		})
 
 		// Verify error handling for different error types
-		expect(mockClineProvider.postMessageToWebview).toHaveBeenCalledWith({
-			type: "singleRouterModelFetchResponse",
-			success: false,
-			error: "Structured error message",
-			values: { provider: "openrouter" },
-		})
-
-		expect(mockClineProvider.postMessageToWebview).toHaveBeenCalledWith({
-			type: "singleRouterModelFetchResponse",
-			success: false,
-			error: "Requesty API error",
-			values: { provider: "requesty" },
-		})
-
-		expect(mockClineProvider.postMessageToWebview).toHaveBeenCalledWith({
-			type: "singleRouterModelFetchResponse",
-			success: false,
-			error: "Vercel AI Gateway error",
-			values: { provider: "vercel-ai-gateway" },
-		})
-
-		expect(mockClineProvider.postMessageToWebview).toHaveBeenCalledWith({
-			type: "singleRouterModelFetchResponse",
-			success: false,
-			error: "Roo API error",
-			values: { provider: "roo" },
-		})
 
 		expect(mockClineProvider.postMessageToWebview).toHaveBeenCalledWith({
 			type: "singleRouterModelFetchResponse",

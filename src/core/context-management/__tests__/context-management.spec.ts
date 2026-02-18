@@ -1339,9 +1339,9 @@ describe("Context Management", () => {
 			expect(result2.prevContextTokens).toBe(50001)
 		})
 
-		it("should use ANTHROPIC_DEFAULT_MAX_TOKENS as buffer when maxTokens is undefined", async () => {
+		it("should use DEFAULT_MAX_TOKENS as buffer when maxTokens is undefined", async () => {
 			const modelInfo = createModelInfo(100000, undefined)
-			// Max tokens = 100000 - ANTHROPIC_DEFAULT_MAX_TOKENS = 100000 - 8192 = 91808
+			// Max tokens = 100000 - DEFAULT_MAX_TOKENS = 100000 - 8192 = 91808
 
 			// Create messages with very small content in the last one to avoid token overflow
 			const messagesWithSmallContent = [

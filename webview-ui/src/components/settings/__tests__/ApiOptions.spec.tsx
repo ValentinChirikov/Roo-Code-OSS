@@ -271,31 +271,6 @@ const renderApiOptions = (props: Partial<ApiOptionsProps> = {}) => {
 }
 
 describe("ApiOptions", () => {
-	it("resets model to provider default when switching to openai-codex with an invalid prior apiModelId", () => {
-		const mockSetApiConfigurationField = vi.fn()
-
-		renderApiOptions({
-			apiConfiguration: {
-				apiProvider: "anthropic",
-				// Simulate a previously-selected model ID from another provider.
-				// When switching to OpenAI - ChatGPT Plus/Pro, this is invalid and should be reset.
-				apiModelId: "claude-3-5-sonnet-20241022",
-			},
-			setApiConfigurationField: mockSetApiConfigurationField,
-		})
-
-		const providerSelectContainer = screen.getByTestId("provider-select")
-		const providerSelect = providerSelectContainer.querySelector("select") as HTMLSelectElement
-		expect(providerSelect).toBeInTheDocument()
-
-		fireEvent.change(providerSelect, { target: { value: "openai-codex" } })
-
-		// Provider is updated
-		expect(mockSetApiConfigurationField).toHaveBeenCalledWith("apiProvider", "openai-codex")
-		// Model is reset to the provider default since the previous value is invalid for this provider
-		expect(mockSetApiConfigurationField).toHaveBeenCalledWith("apiModelId", openAiCodexDefaultModelId, false)
-	})
-
 	it("shows temperature and rate limit controls by default", () => {
 		renderApiOptions({
 			apiConfiguration: {},
@@ -310,44 +285,6 @@ describe("ApiOptions", () => {
 		expect(screen.queryByTestId("rate-limit-seconds-control")).not.toBeInTheDocument()
 	})
 
-	describe("thinking functionality", () => {
-		it("should show ThinkingBudget for Anthropic models that support thinking", () => {
-			renderApiOptions({
-				apiConfiguration: {
-					apiProvider: "anthropic",
-					apiModelId: "claude-3-7-sonnet-20250219:thinking",
-				},
-			})
-
-			expect(screen.getByTestId("reasoning-budget")).toBeInTheDocument()
-		})
-
-		it("should show ThinkingBudget for Vertex models that support thinking", () => {
-			renderApiOptions({
-				apiConfiguration: {
-					apiProvider: "vertex",
-					apiModelId: "claude-3-7-sonnet@20250219:thinking",
-				},
-			})
-
-			expect(screen.getByTestId("reasoning-budget")).toBeInTheDocument()
-		})
-
-		it("should not show ThinkingBudget for models that don't support thinking", () => {
-			renderApiOptions({
-				apiConfiguration: {
-					apiProvider: "anthropic",
-					apiModelId: "claude-3-opus-20240229",
-				},
-			})
-
-			expect(screen.queryByTestId("reasoning-budget")).not.toBeInTheDocument()
-		})
-
-		// Note: We don't need to test the actual ThinkingBudget component functionality here
-		// since we have separate tests for that component. We just need to verify that
-		// it's included in the ApiOptions component when appropriate.
-	})
 	it("filters providers by search input and shows no match message when appropriate", () => {
 		renderApiOptions({
 			apiConfiguration: {},
@@ -561,132 +498,11 @@ describe("ApiOptions", () => {
 		it("does not render LiteLLM component when other provider is selected", () => {
 			renderApiOptions({
 				apiConfiguration: {
-					apiProvider: "anthropic",
+					apiProvider: "openai",
 				},
 			})
 
 			expect(screen.queryByTestId("litellm-provider")).not.toBeInTheDocument()
 		})
-	})
-
-	describe("Roo provider tests", () => {
-		it("shows balance display when authenticated", () => {
-			// Mock useExtensionState to return authenticated state
-			const useExtensionStateMock = vi.spyOn(ExtensionStateContext, "useExtensionState")
-			useExtensionStateMock.mockReturnValue({
-				cloudIsAuthenticated: true,
-				organizationAllowList: { providers: {} },
-			} as any)
-
-			renderApiOptions({
-				apiConfiguration: {
-					apiProvider: "roo",
-				},
-			})
-
-			expect(screen.getByTestId("roo-balance-display")).toBeInTheDocument()
-		})
-
-		it("does not show balance display when not authenticated", () => {
-			// Mock useExtensionState to return unauthenticated state
-			const useExtensionStateMock = vi.spyOn(ExtensionStateContext, "useExtensionState")
-			useExtensionStateMock.mockReturnValue({
-				cloudIsAuthenticated: false,
-				organizationAllowList: { providers: {} },
-			} as any)
-
-			renderApiOptions({
-				apiConfiguration: {
-					apiProvider: "roo",
-				},
-			})
-
-			expect(screen.queryByTestId("roo-balance-display")).not.toBeInTheDocument()
-		})
-
-		it("pins roo provider to the top when not on welcome screen", () => {
-			// Mock useExtensionState to ensure no filtering
-			const useExtensionStateMock = vi.spyOn(ExtensionStateContext, "useExtensionState")
-			useExtensionStateMock.mockReturnValue({
-				cloudIsAuthenticated: false,
-				organizationAllowList: { providers: {} },
-			} as any)
-
-			renderApiOptions({
-				apiConfiguration: {},
-				fromWelcomeView: false,
-			})
-
-			const providerSelectContainer = screen.getByTestId("provider-select")
-			const providerSelect = providerSelectContainer.querySelector("select") as HTMLSelectElement
-			const options = Array.from(providerSelect.querySelectorAll("option"))
-
-			// Filter out the placeholder option (empty value)
-			const providerOptions = options.filter((opt) => opt.value !== "")
-
-			// Find the roo option
-			const rooOption = providerOptions.find((opt) => opt.value === "roo")
-
-			// If roo is available, verify it's pinned to the top
-			if (rooOption) {
-				expect(providerOptions[0].value).toBe("roo")
-			}
-
-			useExtensionStateMock.mockRestore()
-		})
-
-		it("filters out roo provider on welcome screen", () => {
-			// Mock useExtensionState to ensure no filtering
-			const useExtensionStateMock = vi.spyOn(ExtensionStateContext, "useExtensionState")
-			useExtensionStateMock.mockReturnValue({
-				cloudIsAuthenticated: false,
-				organizationAllowList: { providers: {} },
-			} as any)
-
-			renderApiOptions({
-				apiConfiguration: {},
-				fromWelcomeView: true,
-			})
-
-			const providerSelectContainer = screen.getByTestId("provider-select")
-			const providerSelect = providerSelectContainer.querySelector("select") as HTMLSelectElement
-			const options = Array.from(providerSelect.querySelectorAll("option"))
-
-			// Filter out the placeholder option (empty value)
-			const providerOptions = options.filter((opt) => opt.value !== "")
-
-			// Check that roo is NOT in the list when on welcome screen
-			const rooOption = providerOptions.find((opt) => opt.value === "roo")
-			expect(rooOption).toBeUndefined()
-
-			useExtensionStateMock.mockRestore()
-		})
-	})
-
-	it("renders retired provider message and hides provider-specific forms", () => {
-		renderApiOptions({
-			apiConfiguration: {
-				apiProvider: "groq",
-			},
-		})
-
-		expect(screen.getByTestId("retired-provider-message")).toHaveTextContent(
-			"settings:providers.retiredProviderMessage",
-		)
-		expect(screen.queryByTestId("litellm-provider")).not.toBeInTheDocument()
-	})
-
-	it("does not reintroduce retired providers into active provider options", () => {
-		renderApiOptions({
-			apiConfiguration: {
-				apiProvider: "groq",
-			},
-		})
-
-		const providerSelectContainer = screen.getByTestId("provider-select")
-		const providerSelect = providerSelectContainer.querySelector("select") as HTMLSelectElement
-		const providerOptions = Array.from(providerSelect.querySelectorAll("option")).map((option) => option.value)
-
-		expect(providerOptions).not.toContain("groq")
 	})
 })

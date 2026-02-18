@@ -3,7 +3,7 @@ import {
 	type ProviderSettings,
 	type DynamicProvider,
 	type LocalProvider,
-	ANTHROPIC_DEFAULT_MAX_TOKENS,
+	DEFAULT_MAX_TOKENS,
 	isDynamicProvider,
 	isLocalProvider,
 } from "@roo-code/types"
@@ -111,25 +111,10 @@ export const getModelMaxOutputTokens = ({
 	modelId: string
 	model: ModelInfo
 	settings?: ProviderSettings
-	format?: "anthropic" | "openai" | "gemini" | "openrouter"
+	format?: "openai"
 }): number | undefined => {
 	if (shouldUseReasoningBudget({ model, settings })) {
 		return settings?.modelMaxTokens || DEFAULT_HYBRID_REASONING_MODEL_MAX_TOKENS
-	}
-
-	const isAnthropicContext =
-		modelId.includes("claude") ||
-		format === "anthropic" ||
-		(format === "openrouter" && modelId.startsWith("anthropic/"))
-
-	// For "Hybrid" reasoning models, discard the model's actual maxTokens for Anthropic contexts
-	if (model.supportsReasoningBudget && isAnthropicContext) {
-		return ANTHROPIC_DEFAULT_MAX_TOKENS
-	}
-
-	// For Anthropic contexts, always ensure a maxTokens value is set
-	if (isAnthropicContext && (!model.maxTokens || model.maxTokens === 0)) {
-		return ANTHROPIC_DEFAULT_MAX_TOKENS
 	}
 
 	// If model has explicit maxTokens, clamp it to 20% of the context window
@@ -153,7 +138,7 @@ export const getModelMaxOutputTokens = ({
 	}
 
 	// Default fallback
-	return ANTHROPIC_DEFAULT_MAX_TOKENS
+	return DEFAULT_MAX_TOKENS
 }
 
 // GetModelsOptions
@@ -169,13 +154,9 @@ type CommonFetchParams = {
 // If a new dynamic provider is added in packages/types, this will fail to compile
 // until a corresponding entry is added here.
 const dynamicProviderExtras = {
-	openrouter: {} as {}, // eslint-disable-line @typescript-eslint/no-empty-object-type
-	"vercel-ai-gateway": {} as {}, // eslint-disable-line @typescript-eslint/no-empty-object-type
 	litellm: {} as { apiKey: string; baseUrl: string },
-	requesty: {} as { apiKey?: string; baseUrl?: string },
 	ollama: {} as {}, // eslint-disable-line @typescript-eslint/no-empty-object-type
 	lmstudio: {} as {}, // eslint-disable-line @typescript-eslint/no-empty-object-type
-	roo: {} as { apiKey?: string; baseUrl?: string },
 } as const satisfies Record<RouterName, object>
 
 // Build the dynamic options union from the map, intersected with CommonFetchParams

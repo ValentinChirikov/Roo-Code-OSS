@@ -17,9 +17,8 @@ export async function run() {
 	const api = extension.isActive ? extension.exports : await extension.activate()
 
 	await api.setConfiguration({
-		apiProvider: "openrouter" as const,
-		openRouterApiKey: process.env.OPENROUTER_API_KEY!,
-		openRouterModelId: "openai/gpt-4.1",
+		apiProvider: "openai" as const,
+		openAiModelId: "gpt-oss-20b",
 	})
 
 	await vscode.commands.executeCommand("roo-cline-gpt-oss.SidebarProvider.focus")

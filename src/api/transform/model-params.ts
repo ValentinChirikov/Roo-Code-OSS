@@ -3,7 +3,7 @@ import {
 	type ProviderSettings,
 	type VerbosityLevel,
 	type ReasoningEffortExtended,
-	ANTHROPIC_DEFAULT_MAX_TOKENS,
+	DEFAULT_MAX_TOKENS,
 } from "@roo-code/types"
 
 import {

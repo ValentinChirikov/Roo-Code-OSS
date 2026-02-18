@@ -96,7 +96,7 @@ describe("ClineProvider flicker-free cancel", () => {
 	let mockTask2: any
 
 	const mockApiConfig: ProviderSettings = {
-		apiProvider: "anthropic",
+		apiProvider: "openai",
 		apiKey: "test-key",
 	} as ProviderSettings
 

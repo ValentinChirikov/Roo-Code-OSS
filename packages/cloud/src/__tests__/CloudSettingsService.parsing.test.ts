@@ -97,8 +97,8 @@ describe("CloudSettingsService - Response Parsing", () => {
 				providerProfiles: {
 					default: {
 						id: "default",
-						apiProvider: "anthropic",
-						apiModelId: "claude-3-opus-20240229",
+						apiProvider: "openai",
+						apiModelId: "gpt-oss-20b",
 						apiKey: "test-key",
 						modelTemperature: 0.7,
 					},

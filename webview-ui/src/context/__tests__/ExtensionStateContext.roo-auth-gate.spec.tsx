@@ -36,7 +36,7 @@ describe("ExtensionStateContext Roo auth gate", () => {
 		// Flip auth to true with a non-roo provider (anthropic)
 		postStateMessage({
 			cloudIsAuthenticated: true,
-			apiConfiguration: { apiProvider: "anthropic" },
+			apiConfiguration: { apiProvider: "openai" },
 		})
 
 		// Should NOT fire auth-driven Roo refresh

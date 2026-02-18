@@ -456,25 +456,7 @@ export function NewRun() {
 
 					const runValues = { ...baseValues }
 
-					if (provider === "openrouter") {
-						runValues.model = selection.model
-						runValues.settings = {
-							...(runValues.settings || {}),
-							apiProvider: "openrouter",
-							openRouterModelId: selection.model,
-							commandExecutionTimeout,
-							terminalShellIntegrationTimeout: terminalShellIntegrationTimeout * 1000,
-						}
-					} else if (provider === "roo") {
-						runValues.model = selection.model
-						runValues.settings = {
-							...(runValues.settings || {}),
-							apiProvider: "roo",
-							apiModelId: selection.model,
-							commandExecutionTimeout,
-							terminalShellIntegrationTimeout: terminalShellIntegrationTimeout * 1000,
-						}
-					} else if (provider === "other" && selection.configName && importedSettings) {
+					if (provider === "other" && selection.configName && importedSettings) {
 						const providerSettings = importedSettings.apiConfigs[selection.configName] ?? {}
 						runValues.model = getModelId(providerSettings) ?? ""
 						runValues.settings = {

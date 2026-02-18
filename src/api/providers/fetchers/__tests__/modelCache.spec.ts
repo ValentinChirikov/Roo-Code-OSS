@@ -111,23 +111,6 @@ describe("getModels with new GetModelsOptions", () => {
 		expect(result).toEqual(mockModels)
 	})
 
-	it("calls getRequestyModels with optional API key", async () => {
-		const mockModels = {
-			"requesty/model": {
-				maxTokens: 4096,
-				contextWindow: 8192,
-				supportsPromptCache: false,
-				description: "Requesty model",
-			},
-		}
-		mockGetRequestyModels.mockResolvedValue(mockModels)
-
-		const result = await getModels({ provider: "requesty", apiKey: DUMMY_REQUESTY_KEY })
-
-		expect(mockGetRequestyModels).toHaveBeenCalledWith(undefined, DUMMY_REQUESTY_KEY)
-		expect(result).toEqual(mockModels)
-	})
-
 	it("handles errors and re-throws them", async () => {
 		const expectedError = new Error("LiteLLM connection failed")
 		mockGetLiteLLMModels.mockRejectedValue(expectedError)

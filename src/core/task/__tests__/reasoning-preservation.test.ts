@@ -181,7 +181,7 @@ describe("Task reasoning preservation", () => {
 		}
 
 		mockApiConfiguration = {
-			apiProvider: "anthropic",
+			apiProvider: "openai",
 			apiKey: "test-key",
 		} as ProviderSettings
 	})

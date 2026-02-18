@@ -42,9 +42,9 @@ let mockExtensionState: {
 	clineMessages: any[]
 } = {
 	apiConfiguration: {
-		apiProvider: "anthropic",
+		apiProvider: "openai",
 		apiKey: "test-api-key",
-		apiModelId: "claude-3-opus-20240229",
+		apiModelId: "gpt-oss-20b",
 	} as ProviderSettings,
 	currentTaskItem: { id: "test-task-id" },
 	clineMessages: [],
@@ -209,9 +209,9 @@ describe("TaskHeader", () => {
 			// Reset the mock state before each test
 			mockExtensionState = {
 				apiConfiguration: {
-					apiProvider: "anthropic",
+					apiProvider: "openai",
 					apiKey: "test-api-key",
-					apiModelId: "claude-3-opus-20240229",
+					apiModelId: "gpt-oss-20b",
 				} as ProviderSettings,
 				currentTaskItem: { id: "test-task-id" },
 				clineMessages: [],

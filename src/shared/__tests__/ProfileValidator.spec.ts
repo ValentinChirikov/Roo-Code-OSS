@@ -144,7 +144,7 @@ describe("ProfileValidator", () => {
 				},
 			}
 			const profile: ProviderSettings = {
-				apiProvider: "anthropic",
+				apiProvider: "openai",
 				apiModelId: "claude-3-opus",
 			}
 
@@ -167,18 +167,7 @@ describe("ProfileValidator", () => {
 		})
 
 		// Test specific providers that use apiModelId
-		const apiModelProviders = [
-			"anthropic",
-			"openai-native",
-			"bedrock",
-			"vertex",
-			"gemini",
-			"mistral",
-			"deepseek",
-			"xai",
-			"sambanova",
-			"fireworks",
-		]
+		const apiModelProviders = ["openai-native"]
 
 		apiModelProviders.forEach((provider) => {
 			it(`should extract apiModelId for ${provider} provider`, () => {
@@ -238,36 +227,6 @@ describe("ProfileValidator", () => {
 			const profile: ProviderSettings = {
 				apiProvider: "lmstudio",
 				lmStudioModelId: "lmstudio-model",
-			}
-
-			expect(ProfileValidator.isProfileAllowed(profile, allowList)).toBe(true)
-		})
-
-		it("should extract openRouterModelId for openrouter provider", () => {
-			const allowList: OrganizationAllowList = {
-				allowAll: false,
-				providers: {
-					openrouter: { allowAll: false, models: ["openrouter-model"] },
-				},
-			}
-			const profile: ProviderSettings = {
-				apiProvider: "openrouter",
-				openRouterModelId: "openrouter-model",
-			}
-
-			expect(ProfileValidator.isProfileAllowed(profile, allowList)).toBe(true)
-		})
-
-		it("should extract requestyModelId for requesty provider", () => {
-			const allowList: OrganizationAllowList = {
-				allowAll: false,
-				providers: {
-					requesty: { allowAll: false, models: ["requesty-model"] },
-				},
-			}
-			const profile: ProviderSettings = {
-				apiProvider: "requesty",
-				requestyModelId: "requesty-model",
 			}
 
 			expect(ProfileValidator.isProfileAllowed(profile, allowList)).toBe(true)

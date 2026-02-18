@@ -68,14 +68,6 @@ describe("webviewMessageHandler - requestRouterModels provider filter", () => {
 		// Default mock: return distinct model maps per provider so we can verify keys
 		getModelsMock.mockImplementation(async (options: any) => {
 			switch (options?.provider) {
-				case "roo":
-					return { "roo/sonnet": { contextWindow: 8192, supportsPromptCache: false } }
-				case "openrouter":
-					return { "openrouter/qwen2.5": { contextWindow: 32768, supportsPromptCache: false } }
-				case "requesty":
-					return { "requesty/model": { contextWindow: 8192, supportsPromptCache: false } }
-				case "vercel-ai-gateway":
-					return { "vercel/model": { contextWindow: 8192, supportsPromptCache: false } }
 				case "litellm":
 					return { "litellm/model": { contextWindow: 8192, supportsPromptCache: false } }
 				default:
@@ -130,32 +122,6 @@ describe("webviewMessageHandler - requestRouterModels provider filter", () => {
 		const routerModels = call[0].routerModels as Record<string, Record<string, any>>
 
 		// Aggregate handler initializes many known routers - ensure a few expected keys exist
-		expect(routerModels).toHaveProperty("openrouter")
-		expect(routerModels).toHaveProperty("roo")
-		expect(routerModels).toHaveProperty("requesty")
-	})
-
-	it("supports filtering another single provider ('openrouter')", async () => {
-		await webviewMessageHandler(
-			mockProvider as any,
-			{
-				type: "requestRouterModels",
-				values: { provider: "openrouter" },
-			} as any,
-		)
-
-		const call = (mockProvider.postMessageToWebview as any).mock.calls.find(
-			(c: any[]) => c[0]?.type === "routerModels",
-		)
-		expect(call).toBeTruthy()
-		const routerModels = call[0].routerModels as Record<string, Record<string, any>>
-		const keys = Object.keys(routerModels)
-
-		expect(keys).toEqual(["openrouter"])
-		expect(Object.keys(routerModels.openrouter || {})).toContain("openrouter/qwen2.5")
-
-		const providersCalled = getModelsMock.mock.calls.map((c: any[]) => c[0]?.provider)
-		expect(providersCalled).toEqual(["openrouter"])
 	})
 
 	it("flushes cache when LiteLLM credentials are provided in message values", async () => {
