@@ -1,14 +1,7 @@
 import type { ProviderName, ReasoningEffortExtended } from "@roo-code/types"
 import type { OutputFormat } from "./json-events.js"
 
-export const supportedProviders = [
-	"anthropic",
-	"openai-native",
-	"gemini",
-	"openrouter",
-	"vercel-ai-gateway",
-	"roo",
-] as const satisfies ProviderName[]
+export const supportedProviders = ["openai-native"] as const satisfies ProviderName[]
 
 export type SupportedProvider = (typeof supportedProviders)[number]
 
@@ -38,7 +31,6 @@ export type FlagOptions = {
 }
 
 export enum OnboardingProviderChoice {
-	Roo = "roo",
 	Byok = "byok",
 }
 
