@@ -42,10 +42,6 @@ import {
 } from "@src/components/ui"
 import { useRooPortal } from "@src/components/ui/hooks/useRooPortal"
 import { useEscapeKey } from "@src/hooks/useEscapeKey"
-import {
-	useOpenRouterModelProviders,
-	OPENROUTER_DEFAULT_PROVIDER_NAME,
-} from "@src/components/ui/hooks/useOpenRouterModelProviders"
 
 // Default URLs for providers
 const DEFAULT_QDRANT_URL = "http://localhost:6333"
@@ -67,20 +63,11 @@ interface LocalCodeIndexSettings {
 	codebaseIndexSearchMaxResults?: number
 	codebaseIndexSearchMinScore?: number
 
-	// Bedrock-specific settings
-	codebaseIndexBedrockRegion?: string
-	codebaseIndexBedrockProfile?: string
-
 	// Secret settings (start empty, will be loaded separately)
 	codeIndexOpenAiKey?: string
 	codeIndexQdrantApiKey?: string
 	codebaseIndexOpenAiCompatibleBaseUrl?: string
 	codebaseIndexOpenAiCompatibleApiKey?: string
-	codebaseIndexGeminiApiKey?: string
-	codebaseIndexMistralApiKey?: string
-	codebaseIndexVercelAiGatewayApiKey?: string
-	codebaseIndexOpenRouterApiKey?: string
-	codebaseIndexOpenRouterSpecificProvider?: string
 }
 
 // Validation schema for codebase index settings
@@ -131,51 +118,6 @@ const createValidationSchema = (provider: EmbedderProvider, t: any) => {
 					.min(1, t("settings:codeIndex.validation.modelDimensionRequired")),
 			})
 
-		case "gemini":
-			return baseSchema.extend({
-				codebaseIndexGeminiApiKey: z.string().min(1, t("settings:codeIndex.validation.geminiApiKeyRequired")),
-				codebaseIndexEmbedderModelId: z
-					.string()
-					.min(1, t("settings:codeIndex.validation.modelSelectionRequired")),
-			})
-
-		case "mistral":
-			return baseSchema.extend({
-				codebaseIndexMistralApiKey: z.string().min(1, t("settings:codeIndex.validation.mistralApiKeyRequired")),
-				codebaseIndexEmbedderModelId: z
-					.string()
-					.min(1, t("settings:codeIndex.validation.modelSelectionRequired")),
-			})
-
-		case "vercel-ai-gateway":
-			return baseSchema.extend({
-				codebaseIndexVercelAiGatewayApiKey: z
-					.string()
-					.min(1, t("settings:codeIndex.validation.vercelAiGatewayApiKeyRequired")),
-				codebaseIndexEmbedderModelId: z
-					.string()
-					.min(1, t("settings:codeIndex.validation.modelSelectionRequired")),
-			})
-
-		case "bedrock":
-			return baseSchema.extend({
-				codebaseIndexBedrockRegion: z.string().min(1, t("settings:codeIndex.validation.bedrockRegionRequired")),
-				codebaseIndexBedrockProfile: z.string().optional(),
-				codebaseIndexEmbedderModelId: z
-					.string()
-					.min(1, t("settings:codeIndex.validation.modelSelectionRequired")),
-			})
-
-		case "openrouter":
-			return baseSchema.extend({
-				codebaseIndexOpenRouterApiKey: z
-					.string()
-					.min(1, t("settings:codeIndex.validation.openRouterApiKeyRequired")),
-				codebaseIndexEmbedderModelId: z
-					.string()
-					.min(1, t("settings:codeIndex.validation.modelSelectionRequired")),
-			})
-
 		default:
 			return baseSchema
 	}
@@ -187,7 +129,7 @@ export const CodeIndexPopover: React.FC<CodeIndexPopoverProps> = ({
 }) => {
 	const SECRET_PLACEHOLDER = "••••••••••••••••"
 	const { t } = useAppTranslation()
-	const { codebaseIndexConfig, codebaseIndexModels, cwd, apiConfiguration } = useExtensionState()
+	const { codebaseIndexConfig, codebaseIndexModels, cwd } = useExtensionState()
 	const [open, setOpen] = useState(false)
 	const [isAdvancedSettingsOpen, setIsAdvancedSettingsOpen] = useState(false)
 	const [isSetupSettingsOpen, setIsSetupSettingsOpen] = useState(false)
@@ -214,17 +156,10 @@ export const CodeIndexPopover: React.FC<CodeIndexPopoverProps> = ({
 		codebaseIndexEmbedderModelDimension: undefined,
 		codebaseIndexSearchMaxResults: CODEBASE_INDEX_DEFAULTS.DEFAULT_SEARCH_RESULTS,
 		codebaseIndexSearchMinScore: CODEBASE_INDEX_DEFAULTS.DEFAULT_SEARCH_MIN_SCORE,
-		codebaseIndexBedrockRegion: "",
-		codebaseIndexBedrockProfile: "",
 		codeIndexOpenAiKey: "",
 		codeIndexQdrantApiKey: "",
 		codebaseIndexOpenAiCompatibleBaseUrl: "",
 		codebaseIndexOpenAiCompatibleApiKey: "",
-		codebaseIndexGeminiApiKey: "",
-		codebaseIndexMistralApiKey: "",
-		codebaseIndexVercelAiGatewayApiKey: "",
-		codebaseIndexOpenRouterApiKey: "",
-		codebaseIndexOpenRouterSpecificProvider: "",
 	})
 
 	// Initial settings state - stores the settings when popover opens
@@ -259,12 +194,6 @@ export const CodeIndexPopover: React.FC<CodeIndexPopoverProps> = ({
 				codeIndexQdrantApiKey: "",
 				codebaseIndexOpenAiCompatibleBaseUrl: codebaseIndexConfig.codebaseIndexOpenAiCompatibleBaseUrl || "",
 				codebaseIndexOpenAiCompatibleApiKey: "",
-				codebaseIndexGeminiApiKey: "",
-				codebaseIndexMistralApiKey: "",
-				codebaseIndexVercelAiGatewayApiKey: "",
-				codebaseIndexOpenRouterApiKey: "",
-				codebaseIndexOpenRouterSpecificProvider:
-					codebaseIndexConfig.codebaseIndexOpenRouterSpecificProvider || "",
 			}
 			setInitialSettings(settings)
 			setCurrentSettings(settings)
@@ -367,28 +296,6 @@ export const CodeIndexPopover: React.FC<CodeIndexPopoverProps> = ({
 							? SECRET_PLACEHOLDER
 							: ""
 					}
-					if (!prev.codebaseIndexGeminiApiKey || prev.codebaseIndexGeminiApiKey === SECRET_PLACEHOLDER) {
-						updated.codebaseIndexGeminiApiKey = secretStatus.hasGeminiApiKey ? SECRET_PLACEHOLDER : ""
-					}
-					if (!prev.codebaseIndexMistralApiKey || prev.codebaseIndexMistralApiKey === SECRET_PLACEHOLDER) {
-						updated.codebaseIndexMistralApiKey = secretStatus.hasMistralApiKey ? SECRET_PLACEHOLDER : ""
-					}
-					if (
-						!prev.codebaseIndexVercelAiGatewayApiKey ||
-						prev.codebaseIndexVercelAiGatewayApiKey === SECRET_PLACEHOLDER
-					) {
-						updated.codebaseIndexVercelAiGatewayApiKey = secretStatus.hasVercelAiGatewayApiKey
-							? SECRET_PLACEHOLDER
-							: ""
-					}
-					if (
-						!prev.codebaseIndexOpenRouterApiKey ||
-						prev.codebaseIndexOpenRouterApiKey === SECRET_PLACEHOLDER
-					) {
-						updated.codebaseIndexOpenRouterApiKey = secretStatus.hasOpenRouterApiKey
-							? SECRET_PLACEHOLDER
-							: ""
-					}
 
 					return updated
 				}
@@ -457,14 +364,7 @@ export const CodeIndexPopover: React.FC<CodeIndexPopoverProps> = ({
 			// For secret fields with placeholder values, treat them as valid (they exist in backend)
 			if (value === SECRET_PLACEHOLDER) {
 				// Add a dummy value that will pass validation for these fields
-				if (
-					key === "codeIndexOpenAiKey" ||
-					key === "codebaseIndexOpenAiCompatibleApiKey" ||
-					key === "codebaseIndexGeminiApiKey" ||
-					key === "codebaseIndexMistralApiKey" ||
-					key === "codebaseIndexVercelAiGatewayApiKey" ||
-					key === "codebaseIndexOpenRouterApiKey"
-				) {
+				if (key === "codeIndexOpenAiKey" || key === "codebaseIndexOpenAiCompatibleApiKey") {
 					dataToValidate[key] = "placeholder-valid"
 				}
 			} else {
@@ -580,19 +480,6 @@ export const CodeIndexPopover: React.FC<CodeIndexPopoverProps> = ({
 			codebaseIndexModels[currentSettings.codebaseIndexEmbedderProvider as keyof typeof codebaseIndexModels]
 		return models ? Object.keys(models) : []
 	}
-
-	// Fetch OpenRouter model providers for embedding model
-	const { data: openRouterEmbeddingProviders } = useOpenRouterModelProviders(
-		currentSettings.codebaseIndexEmbedderProvider === "openrouter"
-			? currentSettings.codebaseIndexEmbedderModelId
-			: undefined,
-		undefined,
-		{
-			enabled:
-				currentSettings.codebaseIndexEmbedderProvider === "openrouter" &&
-				!!currentSettings.codebaseIndexEmbedderModelId,
-		},
-	)
 
 	const portalContainer = useRooPortal("roo-portal")
 

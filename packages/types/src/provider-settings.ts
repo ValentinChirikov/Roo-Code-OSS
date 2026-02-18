@@ -319,7 +319,7 @@ export const modelIdKeysByProvider: Record<TypicalProvider, ModelIdKey> = {
 // Providers that use Anthropic-style API protocol.
 export const ANTHROPIC_STYLE_PROVIDERS: ProviderName[] = []
 
-export const getApiProtocol = (provider: ProviderName | undefined, modelId?: string): "anthropic" | "openai" => {
+export const getApiProtocol = (provider: ProviderName | undefined, _modelId?: string): "anthropic" | "openai" => {
 	if (provider && ANTHROPIC_STYLE_PROVIDERS.includes(provider)) {
 		return "anthropic"
 	}

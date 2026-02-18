@@ -1,5 +1,3 @@
-import { ExternalLinkIcon } from "@radix-ui/react-icons"
-import { VSCodeLink } from "@vscode/webview-ui-toolkit/react"
 import React, { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { useDebounce } from "react-use"
 import { convertHeadersToObject } from "./utils/headers"
@@ -21,21 +19,7 @@ import {
 	shouldUseGenericModelPicker,
 } from "./utils/providerModelConfig"
 
-import {
-	Collapsible,
-	CollapsibleContent,
-	CollapsibleTrigger,
-	SearchableSelect,
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@src/components/ui"
-import {
-	OPENROUTER_DEFAULT_PROVIDER_NAME,
-	useOpenRouterModelProviders,
-} from "@src/components/ui/hooks/useOpenRouterModelProviders"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger, SearchableSelect } from "@src/components/ui"
 import { useRouterModels } from "@src/components/ui/hooks/useRouterModels"
 import { useSelectedModel } from "@src/components/ui/hooks/useSelectedModel"
 import { useExtensionState } from "@src/context/ExtensionStateContext"
@@ -47,7 +31,6 @@ import { filterModels, filterProviders } from "./utils/organizationFilters"
 import { LMStudio, LiteLLM, Ollama, OpenAICompatible, VSCodeLM } from "./providers"
 
 import { buildDocLink } from "@src/utils/docLinks"
-import { BookOpenText } from "lucide-react"
 import { ApiErrorMessage } from "./ApiErrorMessage"
 import { ConsecutiveMistakeLimitControl } from "./ConsecutiveMistakeLimitControl"
 import { MODELS_BY_PROVIDER, PROVIDERS } from "./constants"
@@ -183,7 +166,6 @@ const ApiOptions = ({
 		250,
 		[
 			selectedProvider,
-			apiConfiguration?.requestyApiKey,
 			apiConfiguration?.openAiBaseUrl,
 			apiConfiguration?.openAiApiKey,
 			apiConfiguration?.ollamaBaseUrl,

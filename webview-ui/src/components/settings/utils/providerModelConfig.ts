@@ -32,7 +32,7 @@ export const getDefaultModelIdForProvider = (provider: ProviderName, apiConfigur
 
 export const getStaticModelsForProvider = (
 	provider: ProviderName,
-	customArnLabel?: string,
+	_customArnLabel?: string,
 ): Record<string, ModelInfo> => {
 	const models = MODELS_BY_PROVIDER[provider] ?? {}
 

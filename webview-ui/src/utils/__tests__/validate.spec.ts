@@ -16,22 +16,11 @@ vi.mock("i18next", () => ({
 	},
 }))
 
-import { getModelValidationError, validateApiConfigurationExcludingModelErrors, validateBedrockArn } from "../validate"
+import { getModelValidationError } from "../validate"
 
 describe("Model Validation Functions", () => {
-	const mockRouterModels: RouterModels = {
-		litellm: {},
-		ollama: {},
-		lmstudio: {},
-	}
-
 	const allowAllOrganization: OrganizationAllowList = {
 		allowAll: true,
-		providers: {},
-	}
-
-	const restrictiveOrganization: OrganizationAllowList = {
-		allowAll: false,
 		providers: {},
 	}
 
@@ -46,6 +35,4 @@ describe("Model Validation Functions", () => {
 			expect(result).toBeUndefined()
 		})
 	})
-
-	describe("validateApiConfigurationExcludingModelErrors", () => {})
 })

@@ -98,7 +98,6 @@ function getSelectedModel({
 	provider,
 	apiConfiguration,
 	routerModels,
-	openRouterModelProviders,
 	lmStudioModels,
 	ollamaModels,
 }: {
