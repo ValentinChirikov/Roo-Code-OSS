@@ -23,7 +23,7 @@ import { Trans } from "react-i18next"
 import { ArrowLeft, ArrowRight, BadgeInfo, Brain, TriangleAlert } from "lucide-react"
 import { buildDocLink } from "@/utils/docLinks"
 
-type ProviderOption = "roo" | "custom"
+type ProviderOption = "custom"
 type AuthOrigin = "landing" | "providerSelection"
 
 const WelcomeViewProvider = () => {
@@ -97,41 +97,21 @@ const WelcomeViewProvider = () => {
 			vscode.postMessage({ type: "rooCloudSignIn", useProviderSignup: true })
 			setAuthInProgress(true)
 		}
-		// Provider Selection screen
-		else if (selectedProvider === "roo") {
-			if (cloudIsAuthenticated) {
-				// Already authenticated - save config and finish
-				const rooConfig: ProviderSettings = {
-					apiProvider: "openai",
-				}
-				vscode.postMessage({
-					type: "upsertApiConfiguration",
-					text: currentApiConfigName,
-					apiConfiguration: rooConfig,
-				})
-			} else {
-				// Need to authenticate
-				setAuthOrigin("providerSelection")
-				vscode.postMessage({ type: "rooCloudSignIn", useProviderSignup: true })
-				setAuthInProgress(true)
-			}
-		} else {
-			// Custom provider - validate first
-			const error = apiConfiguration ? validateApiConfiguration(apiConfiguration) : undefined
+		// Custom provider - validate first
+		const error = apiConfiguration ? validateApiConfiguration(apiConfiguration) : undefined
 
-			if (error) {
-				setErrorMessage(error)
-				return
-			}
-
-			setErrorMessage(undefined)
-			vscode.postMessage({ type: "upsertApiConfiguration", text: currentApiConfigName, apiConfiguration })
+		if (error) {
+			setErrorMessage(error)
+			return
 		}
+
+		setErrorMessage(undefined)
+		vscode.postMessage({ type: "upsertApiConfiguration", text: currentApiConfigName, apiConfiguration })
 	}, [selectedProvider, cloudIsAuthenticated, apiConfiguration, currentApiConfigName])
 
 	const handleNoAccount = useCallback(() => {
 		// Navigate to Provider Selection, defaulting to Roo option
-		setSelectedProvider("roo")
+		setSelectedProvider("custom")
 	}, [])
 
 	const handleBackToLanding = useCallback(() => {
@@ -299,18 +279,12 @@ const WelcomeViewProvider = () => {
 						<p className="text-base text-vscode-foreground">
 							<Trans i18nKey="welcome:landing.introduction" />
 						</p>
-						<p className="mb-0 font-semibold">
-							<Trans i18nKey="welcome:landing.accountMention" />
-						</p>
 					</div>
 
 					<div className="mt-2 flex gap-2 items-center">
-						<Button onClick={handleGetStarted} variant="primary">
-							{t("welcome:landing.getStarted")}
-						</Button>
-						<VSCodeLink onClick={handleNoAccount} className="cursor-pointer">
+						<Button onClick={handleNoAccount} variant="primary">
 							{t("welcome:landing.noAccount")}
-						</VSCodeLink>
+						</Button>
 					</div>
 
 					<div className="absolute bottom-6 left-6">
