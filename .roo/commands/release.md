@@ -12,7 +12,7 @@ mode: code
 
 ```
 ---
-"roo-cline-gpt-oss": patch|minor|major
+"roo-cline-oss": patch|minor|major
 ---
 [list of changes]
 ```

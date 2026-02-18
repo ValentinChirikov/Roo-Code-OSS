@@ -6,7 +6,7 @@ describe("generatePackageJson", () => {
 	it("should be a test", () => {
 		const generatedPackageJson = generatePackageJson({
 			packageJson: {
-				name: "roo-cline-gpt-oss",
+				name: "roo-cline-oss",
 				displayName: "%extension.displayName%",
 				description: "%extension.description%",
 				publisher: "RooVeterinaryInc",
@@ -16,29 +16,29 @@ describe("generatePackageJson", () => {
 					viewsContainers: {
 						activitybar: [
 							{
-								id: "roo-cline-gpt-oss-ActivityBar",
+								id: "roo-cline-oss-ActivityBar",
 								title: "%views.activitybar.title%",
 								icon: "assets/icons/icon.svg",
 							},
 						],
 					},
 					views: {
-						"roo-cline-gpt-oss-ActivityBar": [
+						"roo-cline-oss-ActivityBar": [
 							{
 								type: "webview",
-								id: "roo-cline-gpt-oss.SidebarProvider",
+								id: "roo-cline-oss.SidebarProvider",
 								name: "",
 							},
 						],
 					},
 					commands: [
 						{
-							command: "roo-cline-gpt-oss.plusButtonClicked",
+							command: "roo-cline-oss.plusButtonClicked",
 							title: "%command.newTask.title%",
 							icon: "$(edit)",
 						},
 						{
-							command: "roo-cline-gpt-oss.openInNewTab",
+							command: "roo-cline-oss.openInNewTab",
 							title: "%command.openInNewTab.title%",
 							category: "%configuration.title%",
 						},
@@ -46,48 +46,48 @@ describe("generatePackageJson", () => {
 					menus: {
 						"editor/context": [
 							{
-								submenu: "roo-cline-gpt-oss.contextMenu",
+								submenu: "roo-cline-oss.contextMenu",
 								group: "navigation",
 							},
 						],
-						"roo-cline-gpt-oss.contextMenu": [
+						"roo-cline-oss.contextMenu": [
 							{
-								command: "roo-cline-gpt-oss.addToContext",
+								command: "roo-cline-oss.addToContext",
 								group: "1_actions@1",
 							},
 						],
 						"editor/title": [
 							{
-								command: "roo-cline-gpt-oss.plusButtonClicked",
+								command: "roo-cline-oss.plusButtonClicked",
 								group: "navigation@1",
-								when: "activeWebviewPanelId == roo-cline-gpt-oss.TabPanelProvider",
+								when: "activeWebviewPanelId == roo-cline-oss.TabPanelProvider",
 							},
 							{
-								command: "roo-cline-gpt-oss.settingsButtonClicked",
+								command: "roo-cline-oss.settingsButtonClicked",
 								group: "navigation@6",
-								when: "activeWebviewPanelId == roo-cline-gpt-oss.TabPanelProvider",
+								when: "activeWebviewPanelId == roo-cline-oss.TabPanelProvider",
 							},
 							{
-								command: "roo-cline-gpt-oss.accountButtonClicked",
+								command: "roo-cline-oss.accountButtonClicked",
 								group: "navigation@6",
-								when: "activeWebviewPanelId == roo-cline-gpt-oss.TabPanelProvider",
+								when: "activeWebviewPanelId == roo-cline-oss.TabPanelProvider",
 							},
 						],
 					},
 					submenus: [
 						{
-							id: "roo-cline-gpt-oss.contextMenu",
+							id: "roo-cline-oss.contextMenu",
 							label: "%views.contextMenu.label%",
 						},
 						{
-							id: "roo-cline-gpt-oss.terminalMenu",
+							id: "roo-cline-oss.terminalMenu",
 							label: "%views.terminalMenu.label%",
 						},
 					],
 					configuration: {
 						title: "%configuration.title%",
 						properties: {
-							"roo-cline-gpt-oss.allowedCommands": {
+							"roo-cline-oss.allowedCommands": {
 								type: "array",
 								items: {
 									type: "string",
@@ -95,7 +95,7 @@ describe("generatePackageJson", () => {
 								default: ["npm test", "npm install", "tsc", "git log", "git diff", "git show"],
 								description: "%commands.allowedCommands.description%",
 							},
-							"roo-cline-gpt-oss.customStoragePath": {
+							"roo-cline-oss.customStoragePath": {
 								type: "string",
 								default: "",
 								description: "%settings.customStoragePath.description%",
@@ -115,7 +115,7 @@ describe("generatePackageJson", () => {
 				icon: "assets/icons/icon-nightly.png",
 				scripts: {},
 			},
-			substitution: ["roo-cline-gpt-oss", "roo-code-nightly"],
+			substitution: ["roo-cline-oss", "roo-code-nightly"],
 		})
 
 		expect(generatedPackageJson).toStrictEqual({

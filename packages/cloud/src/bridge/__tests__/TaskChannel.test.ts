@@ -24,7 +24,7 @@ describe("TaskChannel", () => {
 	const taskId = "test-task-456"
 
 	const appProperties: StaticAppProperties = {
-		appName: "roo-code",
+		appName: "roo-code-oss",
 		appVersion: "1.0.0",
 		vscodeVersion: "1.0.0",
 		platform: "darwin",

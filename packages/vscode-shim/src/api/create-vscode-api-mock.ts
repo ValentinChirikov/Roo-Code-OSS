@@ -280,7 +280,7 @@ export function createVSCodeAPIMock(
 			all: [],
 			getExtension: (extensionId: string) => {
 				// Mock the extension object with extensionUri for theme loading
-				if (extensionId === "RooVeterinaryInc.roo-cline-gpt-oss") {
+				if (extensionId === "RooVeterinaryInc.roo-cline-oss") {
 					return {
 						id: extensionId,
 						extensionUri: context.extensionUri,

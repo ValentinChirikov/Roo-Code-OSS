@@ -14,7 +14,7 @@ vi.mock("vscode", () => ({
 // Mock Package module
 vi.mock("../../../shared/package", () => ({
 	Package: {
-		name: "roo-cline-gpt-oss",
+		name: "roo-cline-oss",
 		publisher: "RooVeterinaryInc",
 		version: "1.0.0",
 		outputChannel: "Roo-Code",
@@ -563,7 +563,7 @@ describe("newTaskTool", () => {
 			})
 
 			// Verify that VSCode configuration was accessed with Package.name
-			expect(mockGetConfiguration).toHaveBeenCalledWith("roo-cline-gpt-oss")
+			expect(mockGetConfiguration).toHaveBeenCalledWith("roo-cline-oss")
 			expect(mockGet).toHaveBeenCalledWith("newTaskRequireTodos", false)
 		})
 

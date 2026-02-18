@@ -33,11 +33,11 @@ suite("Roo Code Extension", function () {
 		]
 
 		const commands = new Set(
-			(await vscode.commands.getCommands(true)).filter((cmd) => cmd.startsWith("roo-cline-gpt-oss")),
+			(await vscode.commands.getCommands(true)).filter((cmd) => cmd.startsWith("roo-cline-oss")),
 		)
 
 		for (const command of expectedCommands) {
-			assert.ok(commands.has(`roo-cline-gpt-oss.${command}`), `Command ${command} should be registered`)
+			assert.ok(commands.has(`roo-cline-oss.${command}`), `Command ${command} should be registered`)
 		}
 	})
 })

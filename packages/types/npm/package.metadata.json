@@ -17,6 +17,6 @@
 		"url": "https://github.com/ValentinChirikov/Roo-Code/issues"
 	},
 	"homepage": "https://roocode.com",
-	"keywords": ["roo", "roo-code", "ai"],
+	"keywords": ["roo", "roo-code-oss", "ai"],
 	"files": ["dist"]
 }

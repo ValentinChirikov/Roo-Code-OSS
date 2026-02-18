@@ -110,7 +110,7 @@ describe("CodeActionProvider", () => {
 			const actions = provider.provideCodeActions(mockDocument, mockRange, mockContext)
 
 			expect(actions).toEqual([])
-			expect(vscode.workspace.getConfiguration).toHaveBeenCalledWith("roo-cline-gpt-oss")
+			expect(vscode.workspace.getConfiguration).toHaveBeenCalledWith("roo-cline-oss")
 			expect(mockGet).toHaveBeenCalledWith("enableCodeActions", true)
 		})
 

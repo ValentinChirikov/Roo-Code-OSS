@@ -18,7 +18,7 @@ export const EXTERNAL_LINKS = {
 	PRIVACY_POLICY_EXTENSION: "https://github.com/ValentinChirikov/Roo-Code/blob/main/PRIVACY.md",
 	INTEGRATIONS: "https://docs.roocode.com/community",
 	TUTORIALS: "https://docs.roocode.com/tutorial-videos",
-	MARKETPLACE: "https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline-gpt-oss",
+	MARKETPLACE: "https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline-oss",
 	SECURITY: "https://trust.roocode.com",
 	EVALS: "https://roocode.com/evals",
 	BLOG_SUBSTACK: "https://blog.roocode.com",

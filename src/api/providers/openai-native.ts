@@ -89,7 +89,7 @@ export class OpenAiNativeHandler extends BaseProvider implements SingleCompletio
 			baseURL: this.options.openAiNativeBaseUrl || undefined,
 			apiKey,
 			defaultHeaders: {
-				originator: "roo-code",
+				originator: "roo-code-oss",
 				session_id: this.sessionId,
 				"User-Agent": userAgent,
 			},
@@ -402,7 +402,7 @@ export class OpenAiNativeHandler extends BaseProvider implements SingleCompletio
 		const taskId = metadata?.taskId
 		const userAgent = `roo-code/${Package.version} (${os.platform()} ${os.release()}; ${os.arch()}) node/${process.version.slice(1)}`
 		const requestHeaders: Record<string, string> = {
-			originator: "roo-code",
+			originator: "roo-code-oss",
 			session_id: taskId || this.sessionId,
 			"User-Agent": userAgent,
 		}
@@ -556,7 +556,7 @@ export class OpenAiNativeHandler extends BaseProvider implements SingleCompletio
 				headers: {
 					"Content-Type": "application/json",
 					Authorization: `Bearer ${apiKey}`,
-					originator: "roo-code",
+					originator: "roo-code-oss",
 					session_id: taskId || this.sessionId,
 					"User-Agent": userAgent,
 				},

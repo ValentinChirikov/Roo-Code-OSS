@@ -28,7 +28,7 @@ export async function getVSCodeReviews() {
 					criteria: [
 						{
 							filterType: 7,
-							value: "RooVeterinaryInc.roo-cline-gpt-oss",
+							value: "RooVeterinaryInc.roo-cline-oss",
 						},
 					],
 				},
@@ -72,7 +72,7 @@ export async function getVSCodeDownloads() {
 					criteria: [
 						{
 							filterType: 7,
-							value: "RooVeterinaryInc.roo-cline-gpt-oss",
+							value: "RooVeterinaryInc.roo-cline-oss",
 						},
 					],
 				},

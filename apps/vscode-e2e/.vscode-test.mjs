@@ -12,5 +12,5 @@ export default defineConfig({
 		ui: "tdd",
 		timeout: 60000,
 	},
-	launchArgs: ["--enable-proposed-api=RooVeterinaryInc.roo-cline-gpt-oss", "--disable-extensions"],
+	launchArgs: ["--enable-proposed-api=RooVeterinaryInc.roo-cline-oss", "--disable-extensions"],
 })

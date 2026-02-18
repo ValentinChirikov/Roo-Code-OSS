@@ -1,4 +1,4 @@
-// pnpm --filter roo-cline-gpt-oss test core/webview/__tests__/ClineProvider.spec.ts
+// pnpm --filter roo-cline-oss test core/webview/__tests__/ClineProvider.spec.ts
 
 import Anthropic from "@anthropic-ai/sdk"
 import * as vscode from "vscode"

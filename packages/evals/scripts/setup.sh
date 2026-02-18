@@ -286,8 +286,8 @@ code --install-extension redhat.java &>/dev/null || exit 1
 code --install-extension ms-python.python&>/dev/null || exit 1
 code --install-extension rust-lang.rust-analyzer &>/dev/null || exit 1
 
-if ! code --list-extensions 2>/dev/null | grep -q "RooVeterinaryInc.roo-cline-gpt-oss"; then
-  code --install-extension RooVeterinaryInc.roo-cline-gpt-oss &>/dev/null || exit 1
+if ! code --list-extensions 2>/dev/null | grep -q "RooVeterinaryInc.roo-cline-oss"; then
+  code --install-extension RooVeterinaryInc.roo-cline-oss &>/dev/null || exit 1
 fi
 
 echo "✅ Done"
