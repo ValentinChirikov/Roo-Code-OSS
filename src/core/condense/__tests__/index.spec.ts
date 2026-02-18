@@ -1566,3 +1566,4 @@ describe("transformMessagesForCondensing", () => {
 		expect(messages[0].content[0].type).toBe("tool_use")
 	})
 })
+})
