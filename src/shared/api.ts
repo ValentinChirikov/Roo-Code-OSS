@@ -6,7 +6,7 @@ import {
 	DEFAULT_MAX_TOKENS,
 	isDynamicProvider,
 	isLocalProvider,
-} from "@roo-code/types"
+} from "@roo-code-oss/types"
 
 // ApiHandlerOptions
 // Extend ProviderSettings (minus apiProvider) with handler-specific toggles.

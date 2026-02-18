@@ -17,9 +17,9 @@ if (fs.existsSync(envPath)) {
 	}
 }
 
-import type { CloudUserInfo, AuthState } from "@roo-code/types"
-import { CloudService, BridgeOrchestrator } from "@roo-code/cloud"
-import { customToolRegistry } from "@roo-code/core"
+import type { CloudUserInfo, AuthState } from "@roo-code-oss/types"
+import { CloudService, BridgeOrchestrator } from "@roo-code-oss/cloud"
+import { customToolRegistry } from "@roo-code-oss/core"
 
 import "./utils/path" // Necessary to have access to String.prototype.toPosix.
 import { createOutputChannelLogger, createDualLogger } from "./utils/outputChannelLogger"
@@ -382,7 +382,7 @@ export async function activate(context: vscode.ExtensionContext) {
 			{ path: context.extensionPath, pattern: "**/*.ts" },
 			{ path: path.join(context.extensionPath, "../packages/types"), pattern: "**/*.ts" },
 			{ path: path.join(context.extensionPath, "../packages/telemetry"), pattern: "**/*.ts" },
-			{ path: path.join(context.extensionPath, "node_modules/@roo-code/cloud"), pattern: "**/*" },
+			{ path: path.join(context.extensionPath, "node_modules/@roo-code-oss/cloud"), pattern: "**/*" },
 		]
 
 		console.log(

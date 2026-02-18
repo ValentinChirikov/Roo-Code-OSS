@@ -6,7 +6,7 @@ import {
 	type OrganizationAllowList,
 	type ExtensionMessage,
 	litellmDefaultModelId,
-} from "@roo-code/types"
+} from "@roo-code-oss/types"
 
 import { RouterName } from "@roo/api"
 

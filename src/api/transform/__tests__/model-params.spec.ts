@@ -1,6 +1,6 @@
 // npx vitest run api/transform/__tests__/model-params.spec.ts
 
-import { type ModelInfo, DEFAULT_MAX_TOKENS } from "@roo-code/types"
+import { type ModelInfo, DEFAULT_MAX_TOKENS } from "@roo-code-oss/types"
 
 import { getModelParams } from "../model-params"
 import {

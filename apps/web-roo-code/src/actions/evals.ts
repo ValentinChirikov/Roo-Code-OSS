@@ -1,7 +1,7 @@
 "use server"
 
-import { getModelId, rooCodeSettingsSchema } from "@roo-code/types"
-import { getRuns, getLanguageScores } from "@roo-code/evals"
+import { getModelId, rooCodeSettingsSchema } from "@roo-code-oss/types"
+import { getRuns, getLanguageScores } from "@roo-code-oss/evals"
 
 import { formatScore } from "@/lib"
 

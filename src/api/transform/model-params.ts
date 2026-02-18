@@ -4,7 +4,7 @@ import {
 	type VerbosityLevel,
 	type ReasoningEffortExtended,
 	DEFAULT_MAX_TOKENS,
-} from "@roo-code/types"
+} from "@roo-code-oss/types"
 
 import {
 	DEFAULT_HYBRID_REASONING_MODEL_MAX_TOKENS,

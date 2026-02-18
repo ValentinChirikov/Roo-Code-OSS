@@ -53,9 +53,9 @@ import {
 	ConsecutiveMistakeError,
 	MAX_MCP_TOOLS_THRESHOLD,
 	countEnabledMcpTools,
-} from "@roo-code/types"
+} from "@roo-code-oss/types"
 
-import { CloudService, BridgeOrchestrator } from "@roo-code/cloud"
+import { CloudService, BridgeOrchestrator } from "@roo-code-oss/cloud"
 
 // api
 import { ApiHandler, ApiHandlerCreateMessageMetadata, buildApiHandler } from "../../api"

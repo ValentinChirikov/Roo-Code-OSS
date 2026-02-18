@@ -14,7 +14,7 @@ import {
 	isDynamicProvider,
 	isRetiredProvider,
 	getProviderDefaultModelId,
-} from "@roo-code/types"
+} from "@roo-code-oss/types"
 
 import { useRouterModels } from "./useRouterModels"
 import { useLmStudioModels } from "./useLmStudioModels"

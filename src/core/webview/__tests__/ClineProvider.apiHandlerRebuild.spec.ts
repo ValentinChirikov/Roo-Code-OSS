@@ -3,7 +3,7 @@
 import * as vscode from "vscode"
 
 
-import { getModelId } from "@roo-code/types"
+import { getModelId } from "@roo-code-oss/types"
 
 import { ContextProxy } from "../../config/ContextProxy"
 import { Task, TaskOptions } from "../../task/Task"
@@ -120,7 +120,7 @@ vi.mock("../../task/Task", () => ({
 	}),
 }))
 
-vi.mock("@roo-code/cloud", () => ({
+vi.mock("@roo-code-oss/cloud", () => ({
 	CloudService: {
 		hasInstance: vi.fn().mockReturnValue(true),
 		get instance() {

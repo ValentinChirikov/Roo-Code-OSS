@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest"
 import { webviewMessageHandler } from "../webviewMessageHandler"
-import { CloudService } from "@roo-code/cloud"
+import { CloudService } from "@roo-code-oss/cloud"
 
-vi.mock("@roo-code/cloud", () => ({
+vi.mock("@roo-code-oss/cloud", () => ({
 	CloudService: {
 		hasInstance: vi.fn(),
 		instance: {

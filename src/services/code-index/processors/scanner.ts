@@ -27,7 +27,7 @@ import {
 } from "../constants"
 import { isPathInIgnoredDirectory } from "../../glob/ignore-utils"
 
-import { TelemetryEventName } from "@roo-code/types"
+import { TelemetryEventName } from "@roo-code-oss/types"
 import { sanitizeErrorMessage } from "../shared/validation-helpers"
 import { Package } from "../../../shared/package"
 

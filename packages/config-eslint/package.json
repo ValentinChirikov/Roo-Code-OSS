@@ -1,5 +1,5 @@
 {
-	"name": "@roo-code/config-eslint",
+	"name": "@roo-code-oss/config-eslint",
 	"private": true,
 	"type": "module",
 	"exports": {

@@ -94,7 +94,7 @@ apps/web-roo-code/src/app/evals/
 └── types.ts      # EvalRun type (extends packages/evals types)
 ```
 
-This page **displays** eval results on the public roocode.com website. It imports types from `@roo-code/evals` but does NOT run evals.
+This page **displays** eval results on the public roocode.com website. It imports types from `@roo-code-oss/evals` but does NOT run evals.
 
 ## Architecture Overview
 
@@ -179,7 +179,7 @@ cd packages/evals && npx vitest run
 cd apps/web-evals && npx vitest run
 ```
 
-## Key Types/Exports from `@roo-code/evals`
+## Key Types/Exports from `@roo-code-oss/evals`
 
 The package exports are defined in [`packages/evals/src/index.ts`](packages/evals/src/index.ts):
 

@@ -11,7 +11,7 @@ import {
 	providerSettingsWithIdSchema,
 	isProviderName,
 	type ProviderSettingsWithId,
-} from "@roo-code/types"
+} from "@roo-code-oss/types"
 
 
 import { ProviderSettingsManager, providerProfilesSchema } from "./ProviderSettingsManager"

@@ -1,4 +1,4 @@
-import { RooCodeSettings } from "@roo-code/types"
+import { RooCodeSettings } from "@roo-code-oss/types"
 
 import { useCLIStore } from "../store.js"
 

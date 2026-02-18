@@ -4,9 +4,9 @@ import * as path from "path"
 import * as vscode from "vscode"
 import * as yaml from "yaml"
 
-import type { OrganizationSettings, MarketplaceItem, MarketplaceItemType, McpMarketplaceItem } from "@roo-code/types"
+import type { OrganizationSettings, MarketplaceItem, MarketplaceItemType, McpMarketplaceItem } from "@roo-code-oss/types"
 
-import { CloudService } from "@roo-code/cloud"
+import { CloudService } from "@roo-code-oss/cloud"
 
 import { GlobalFileNames } from "../../shared/globalFileNames"
 import { ensureSettingsDirectoryExists } from "../../utils/globalContext"

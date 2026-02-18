@@ -299,10 +299,10 @@ client.sendMessage({
 
 ## Type Guards
 
-The CLI uses type guards from `@roo-code/types` for categorization:
+The CLI uses type guards from `@roo-code-oss/types` for categorization:
 
 ```typescript
-import { isIdleAsk, isInteractiveAsk, isResumableAsk, isNonBlockingAsk } from "@roo-code/types"
+import { isIdleAsk, isInteractiveAsk, isResumableAsk, isNonBlockingAsk } from "@roo-code-oss/types"
 
 const ask = message.ask
 if (isInteractiveAsk(ask)) {

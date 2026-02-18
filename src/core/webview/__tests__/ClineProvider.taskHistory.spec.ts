@@ -1,7 +1,7 @@
 // pnpm --filter roo-cline-oss test core/webview/__tests__/ClineProvider.taskHistory.spec.ts
 
 import * as vscode from "vscode"
-import type { HistoryItem, ExtensionMessage } from "@roo-code/types"
+import type { HistoryItem, ExtensionMessage } from "@roo-code-oss/types"
 
 
 import { ContextProxy } from "../../config/ContextProxy"
@@ -204,7 +204,7 @@ vi.mock("../diff/strategies/multi-search-replace", () => ({
 	})),
 }))
 
-vi.mock("@roo-code/cloud", () => ({
+vi.mock("@roo-code-oss/cloud", () => ({
 	CloudService: {
 		hasInstance: vi.fn().mockReturnValue(true),
 		get instance() {

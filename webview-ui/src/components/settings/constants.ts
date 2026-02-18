@@ -1,4 +1,4 @@
-import { type ProviderName, type ModelInfo, openAiNativeModels, openAiCodexModels } from "@roo-code/types"
+import { type ProviderName, type ModelInfo, openAiNativeModels, openAiCodexModels } from "@roo-code-oss/types"
 
 export const MODELS_BY_PROVIDER: Partial<Record<ProviderName, Record<string, ModelInfo>>> = {
 	"openai-native": openAiNativeModels,

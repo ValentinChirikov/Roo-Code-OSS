@@ -15,7 +15,7 @@ import {
 	type ReasoningEffortExtended,
 	type ServiceTier,
 	ApiProviderError,
-} from "@roo-code/types"
+} from "@roo-code-oss/types"
 
 import type { ApiHandlerOptions } from "../../shared/api"
 

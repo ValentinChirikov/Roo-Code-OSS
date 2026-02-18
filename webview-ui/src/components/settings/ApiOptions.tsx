@@ -9,7 +9,7 @@ import {
 	isRetiredProvider,
 	litellmDefaultModelId,
 	openAiNativeDefaultModelId,
-} from "@roo-code/types"
+} from "@roo-code-oss/types"
 
 import {
 	getDefaultModelIdForProvider,

@@ -13,7 +13,7 @@ import {
 	type ProviderName,
 	isProviderName,
 	isRetiredProvider,
-} from "@roo-code/types"
+} from "@roo-code-oss/types"
 
 
 import { Mode, modes } from "../../shared/modes"

@@ -15,7 +15,7 @@ import type {
 	UserSettingsConfig,
 	UserSettingsData,
 	UserFeatures,
-} from "@roo-code/types"
+} from "@roo-code-oss/types"
 
 import { TaskNotFoundError } from "./errors.js"
 import { WebAuthService } from "./WebAuthService.js"

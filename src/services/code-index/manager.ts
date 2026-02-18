@@ -14,7 +14,7 @@ import ignore from "ignore"
 import path from "path"
 import { t } from "../../i18n"
 
-import { TelemetryEventName } from "@roo-code/types"
+import { TelemetryEventName } from "@roo-code-oss/types"
 
 export class CodeIndexManager {
 	// --- Singleton Implementation ---

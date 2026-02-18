@@ -20,9 +20,9 @@ import {
 	ExperimentId,
 	checkoutDiffPayloadSchema,
 	checkoutRestorePayloadSchema,
-} from "@roo-code/types"
-import { customToolRegistry } from "@roo-code/core"
-import { CloudService } from "@roo-code/cloud"
+} from "@roo-code-oss/types"
+import { customToolRegistry } from "@roo-code-oss/core"
+import { CloudService } from "@roo-code-oss/cloud"
 
 
 import { type ApiMessage } from "../task-persistence/apiMessages"

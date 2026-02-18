@@ -1,5 +1,5 @@
 {
-	"extends": "@roo-code/config-typescript/base.json",
+	"extends": "@roo-code-oss/config-typescript/base.json",
 	"compilerOptions": {
 		"types": ["node"]
 	},

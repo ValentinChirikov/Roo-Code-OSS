@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { renderHook } from "@testing-library/react"
 import type { Mock } from "vitest"
 
-import { ProviderSettings, ModelInfo, litellmDefaultModelInfo, openAiModelInfoSaneDefaults } from "@roo-code/types"
+import { ProviderSettings, ModelInfo, litellmDefaultModelInfo, openAiModelInfoSaneDefaults } from "@roo-code-oss/types"
 
 import { useSelectedModel } from "../useSelectedModel"
 import { useRouterModels } from "../useRouterModels"

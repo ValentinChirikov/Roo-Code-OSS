@@ -1,5 +1,5 @@
-import type { ProviderName, ModelInfo, ProviderSettings } from "@roo-code/types"
-import { openAiNativeDefaultModelId } from "@roo-code/types"
+import type { ProviderName, ModelInfo, ProviderSettings } from "@roo-code-oss/types"
+import { openAiNativeDefaultModelId } from "@roo-code-oss/types"
 
 import { MODELS_BY_PROVIDER } from "../constants"
 

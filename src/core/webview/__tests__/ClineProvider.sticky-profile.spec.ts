@@ -4,7 +4,7 @@ import * as vscode from "vscode"
 
 import { ClineProvider } from "../ClineProvider"
 import { ContextProxy } from "../../config/ContextProxy"
-import type { HistoryItem } from "@roo-code/types"
+import type { HistoryItem } from "@roo-code-oss/types"
 
 vi.mock("vscode", () => ({
 	ExtensionContext: vi.fn(),
@@ -105,7 +105,7 @@ vi.mock("../../diff/strategies/multi-search-replace", () => ({
 	})),
 }))
 
-vi.mock("@roo-code/cloud", () => ({
+vi.mock("@roo-code-oss/cloud", () => ({
 	CloudService: {
 		hasInstance: vi.fn().mockReturnValue(true),
 		get instance() {

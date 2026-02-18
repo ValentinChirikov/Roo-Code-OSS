@@ -11,7 +11,7 @@ import {
 	IpcMessageType,
 	TaskCommandName,
 	ipcMessageSchema,
-} from "@roo-code/types"
+} from "@roo-code-oss/types"
 
 export class IpcClient extends EventEmitter<IpcClientEvents> {
 	private readonly _socketPath: string

@@ -1,10 +1,10 @@
 {
-	"name": "@roo-code/types",
+	"name": "@roo-code-oss/types",
 	"version": "1.106.0",
 	"description": "TypeScript type definitions for Roo Code.",
 	"publishConfig": {
 		"access": "public",
-		"name": "@roo-code/types",
+		"name": "@roo-code-oss/types",
 		"registry": "https://registry.npmjs.org/"
 	},
 	"author": "Roo Code Team",

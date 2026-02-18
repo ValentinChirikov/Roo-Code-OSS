@@ -6,7 +6,7 @@ import crypto from "crypto"
 import { ApiHandler, ApiHandlerCreateMessageMetadata } from "../../api"
 import { MAX_CONDENSE_THRESHOLD, MIN_CONDENSE_THRESHOLD, summarizeConversation, SummarizeResponse } from "../condense"
 import { ApiMessage } from "../task-persistence/apiMessages"
-import { DEFAULT_MAX_TOKENS } from "@roo-code/types"
+import { DEFAULT_MAX_TOKENS } from "@roo-code-oss/types"
 import { RooIgnoreController } from "../ignore/RooIgnoreController"
 
 /**

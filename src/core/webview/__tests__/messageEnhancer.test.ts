@@ -1,4 +1,4 @@
-import { ProviderSettings, ClineMessage } from "@roo-code/types"
+import { ProviderSettings, ClineMessage } from "@roo-code-oss/types"
 
 
 import { MessageEnhancer } from "../messageEnhancer"
@@ -7,7 +7,7 @@ import { ProviderSettingsManager } from "../../config/ProviderSettingsManager"
 
 // Mock dependencies
 vi.mock("../../../utils/single-completion-handler")
-vi.mock("@roo-code/telemetry")
+vi.mock("@roo-code-oss/telemetry")
 
 describe("MessageEnhancer", () => {
 	let mockProviderSettingsManager: ProviderSettingsManager

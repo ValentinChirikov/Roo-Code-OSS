@@ -1,4 +1,4 @@
-import { DEFAULT_MAX_TOKENS } from "@roo-code/types"
+import { DEFAULT_MAX_TOKENS } from "@roo-code-oss/types"
 
 /**
  * Result of token distribution calculation

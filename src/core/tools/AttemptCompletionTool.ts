@@ -1,6 +1,6 @@
 import * as vscode from "vscode"
 
-import { RooCodeEventName, type HistoryItem } from "@roo-code/types"
+import { RooCodeEventName, type HistoryItem } from "@roo-code-oss/types"
 
 
 import { Task } from "../task/Task"

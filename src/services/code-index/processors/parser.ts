@@ -8,7 +8,7 @@ import { ICodeParser, CodeBlock } from "../interfaces"
 import { scannerExtensions, shouldUseFallbackChunking } from "../shared/supported-extensions"
 import { MAX_BLOCK_CHARS, MIN_BLOCK_CHARS, MIN_CHUNK_REMAINDER_CHARS, MAX_CHARS_TOLERANCE_FACTOR } from "../constants"
 
-import { TelemetryEventName } from "@roo-code/types"
+import { TelemetryEventName } from "@roo-code-oss/types"
 import { sanitizeErrorMessage } from "../shared/validation-helpers"
 
 /**

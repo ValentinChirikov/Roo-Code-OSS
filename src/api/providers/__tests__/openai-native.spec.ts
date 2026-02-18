@@ -5,7 +5,7 @@ const mockCaptureException = vitest.fn()
 import { Anthropic } from "@anthropic-ai/sdk"
 import OpenAI from "openai"
 
-import { ApiProviderError } from "@roo-code/types"
+import { ApiProviderError } from "@roo-code-oss/types"
 
 import { OpenAiNativeHandler } from "../openai-native"
 import { ApiHandlerOptions } from "../../../shared/api"

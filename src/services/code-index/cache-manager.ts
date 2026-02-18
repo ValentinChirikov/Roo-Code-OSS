@@ -4,7 +4,7 @@ import { ICacheManager } from "./interfaces/cache"
 import debounce from "lodash.debounce"
 import { safeWriteJson } from "../../utils/safeWriteJson"
 
-import { TelemetryEventName } from "@roo-code/types"
+import { TelemetryEventName } from "@roo-code-oss/types"
 
 /**
  * Manages the cache for code indexing

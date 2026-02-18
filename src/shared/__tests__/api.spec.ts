@@ -1,4 +1,4 @@
-import { type ModelInfo, type ProviderSettings, DEFAULT_MAX_TOKENS } from "@roo-code/types"
+import { type ModelInfo, type ProviderSettings, DEFAULT_MAX_TOKENS } from "@roo-code-oss/types"
 
 import { getModelMaxOutputTokens, shouldUseReasoningBudget, shouldUseReasoningEffort } from "../api"
 

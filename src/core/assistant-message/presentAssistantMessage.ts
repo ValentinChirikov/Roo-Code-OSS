@@ -1,10 +1,10 @@
 import { serializeError } from "serialize-error"
 import { Anthropic } from "@anthropic-ai/sdk"
 
-import type { ToolName, ClineAsk, ToolProgressStatus } from "@roo-code/types"
-import { ConsecutiveMistakeError, TelemetryEventName } from "@roo-code/types"
+import type { ToolName, ClineAsk, ToolProgressStatus } from "@roo-code-oss/types"
+import { ConsecutiveMistakeError, TelemetryEventName } from "@roo-code-oss/types"
 
-import { customToolRegistry } from "@roo-code/core"
+import { customToolRegistry } from "@roo-code-oss/core"
 
 import { t } from "../../i18n"
 

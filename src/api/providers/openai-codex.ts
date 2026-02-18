@@ -11,7 +11,7 @@ import {
 	type ReasoningEffort,
 	type ReasoningEffortExtended,
 	ApiProviderError,
-} from "@roo-code/types"
+} from "@roo-code-oss/types"
 
 import { Package } from "../../shared/package"
 import type { ApiHandlerOptions } from "../../shared/api"
