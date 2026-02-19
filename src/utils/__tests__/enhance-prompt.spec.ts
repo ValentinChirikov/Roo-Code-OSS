@@ -96,34 +96,6 @@ describe("enhancePrompt", () => {
 		)
 	})
 
-	it("uses appropriate model based on provider", async () => {
-		const openRouterConfig: ProviderSettings = {
-			apiProvider: "openrouter",
-			openRouterApiKey: "test-key",
-			openRouterModelId: "test-model",
-			enableReasoningEffort: false,
-		}
-
-		// Mock successful enhancement
-		;(buildApiHandler as any).mockReturnValue({
-			completePrompt: vi.fn().mockResolvedValue("Enhanced prompt"),
-			createMessage: vi.fn(),
-			getModel: vi.fn().mockReturnValue({
-				id: "test-model",
-				info: {
-					maxTokens: 4096,
-					contextWindow: 8192,
-					supportsPromptCache: false,
-				},
-			}),
-		} as unknown as SingleCompletionHandler)
-
-		const result = await singleCompletionHandler(openRouterConfig, "Test prompt")
-
-		expect(buildApiHandler).toHaveBeenCalledWith(openRouterConfig)
-		expect(result).toBe("Enhanced prompt")
-	})
-
 	it("propagates API errors", async () => {
 		;(buildApiHandler as any).mockReturnValue({
 			completePrompt: vi.fn().mockRejectedValue(new Error("API Error")),

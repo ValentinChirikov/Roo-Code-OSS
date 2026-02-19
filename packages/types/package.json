@@ -1,7 +1,7 @@
 {
 	"name": "@roo-code-oss/types",
 	"description": "Roo Code types",
-	"version": "0.0.0",
+	"private": true,
 	"type": "module",
 	"exports": "./src/index.ts",
 	"scripts": {

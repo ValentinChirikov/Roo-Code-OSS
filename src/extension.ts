@@ -209,13 +209,13 @@ export async function activate(context: vscode.ExtensionContext) {
 						? CloudService.instance.authService?.getSessionToken()
 						: undefined
 					await refreshModels({
-						provider: "roo",
+						provider: "openai",
 						baseUrl: process.env.ROO_CODE_PROVIDER_URL ?? "https://api.roocode.com/proxy",
 						apiKey: sessionToken,
 					})
 				} else {
 					// Flush without refresh on logout
-					await flushModels({ provider: "roo" }, false)
+					await flushModels({ provider: "lmstudio" }, false)
 				}
 			} catch (error) {
 				cloudLogger(
@@ -238,7 +238,7 @@ export async function activate(context: vscode.ExtensionContext) {
 							provider.contextProxy.getGlobalState("currentApiConfigName") || "default"
 						// Update it with the stored model using upsertProviderProfile
 						await provider.upsertProviderProfile(currentConfigName, {
-							apiProvider: "roo",
+							apiProvider: "openai",
 							apiModelId: storedModel,
 						})
 						// Clear the stored model after applying

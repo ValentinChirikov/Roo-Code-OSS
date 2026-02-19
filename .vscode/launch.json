@@ -12,7 +12,7 @@
 			"runtimeExecutable": "${execPath}",
 			"args": ["--extensionDevelopmentPath=${workspaceFolder}/src"],
 			"sourceMaps": true,
-			"outFiles": ["${workspaceFolder}/src/dist/**/*.js"],
+			"outFiles": ["${workspaceFolder}/src/**/*.js"],
 			"preLaunchTask": "${defaultBuildTask}",
 			"env": {
 				"NODE_ENV": "development",
